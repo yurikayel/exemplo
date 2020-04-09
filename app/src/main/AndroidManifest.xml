@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.exemplo"
+    >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        >
+
+        <activity
+            android:name="telainicial.ActSplash"
+            android:theme="@style/SplashTheme"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="activity.MainActivity" />
+        <activity android:name="activity.ActMain" />
+        <activity android:name="layouts.ActLinear" />
+        <activity android:name="components.ComponentsActivity" />
+        <activity android:name="intent.ActHome" />
+        <activity android:name="intent.ActVermelha" />
+        <activity android:name="intent.ActVerde" />
+        <activity android:name="intent.ActAzul" />
+        <activity android:name="fragment.ActFragment" />
+        <activity android:name="fragment.ActFragments" />
+
+    </application>
+
+</manifest>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Vertical"
+    android:background="@color/blue_100"
+    >
+
+    <TextView
+        style="@style/Item"
+        android:background="@color/green_500"
+        android:gravity="center"
+        android:text="TextView em LinearLayout"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <Button
+        style="@style/Item"
+        android:background="@color/yellow_500"
+        android:text="Button"
+        />
+
+    <EditText
+        style="@style/Item"
+        android:background="@color/pink_500"
+        android:hint="EditText"
+        android:padding="16dp"
+        />
+
+    <FrameLayout
+        style="@style/Item"
+        android:layout_height="160dp"
+        android:background="@drawable/azul_curvado"
+        >
+
+        <View
+            style="@style/Item"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/fundopc"
+            android:alpha="0.05"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_launcher_foreground"
+            />
+
+        <TextView
+            style="@style/Item"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:text="TextView em FrameLayout"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            />
+
+    </FrameLayout>
+
+    <android.support.constraint.ConstraintLayout
+        style="@style/Item"
+        android:layout_height="240dp"
+        android:background="@drawable/laranja_curvado"
+        >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:background="@drawable/ic_launcher_background"
+            />
+
+        <ImageView
+            android:id="@+id/droid"
+            android:layout_width="108dp"
+            android:layout_height="108dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_launcher_foreground"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/droid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="TextView em ConstraintLayout"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            />
+
+    </android.support.constraint.ConstraintLayout>
+
+</LinearLayout>
