@@ -38,6 +38,7 @@
         <activity android:name="intent.ActAzul" />
         <activity android:name="fragment.ActFragment" />
         <activity android:name="fragment.ActFragments" />
+        <activity android:name="fragment.ActFragmentsKotlin" />
     </application>
 
 </manifest>

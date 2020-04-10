@@ -3,7 +3,6 @@ package fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -45,9 +44,9 @@ public class ActFragments extends AppCompatActivity {
     }
 
     private void colocaClick() {
-        clickBotao(vermelho, new FragVermelho());
-        clickBotao(azul, new FragAzul());
-        clickBotao(verde, new FragVerde());
+        clickBotao(vermelho, FragVermelho.newInstance(pacoteVermei));
+        clickBotao(azul, FragAzul.newInstance(pacoteAzul));
+        clickBotao(verde, FragVerde.newInstance(pacotePalmeirense));
     }
 
     private void clickBotao(Button button, Fragment frag) {

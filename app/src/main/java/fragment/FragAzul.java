@@ -12,6 +12,12 @@ import com.example.exemplo.R;
 
 public class FragAzul extends Fragment {
 
+    public static FragAzul newInstance(Bundle bundle){
+        FragAzul frag = new FragAzul();
+        frag.setArguments(bundle);
+        return frag;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
