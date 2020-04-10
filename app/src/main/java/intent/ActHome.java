@@ -11,6 +11,7 @@ import android.widget.Button;
 import com.example.exemplo.R;
 
 import fragment.ActFragments;
+import fragment.ActFragmentsKotlin;
 
 public class ActHome extends AppCompatActivity {
 
@@ -48,7 +49,7 @@ public class ActHome extends AppCompatActivity {
         vermelho.setOnClickListener(vaPara(ActVermelha.class, pacoteVermei));
         verde.setOnClickListener(vaPara(ActVerde.class, pacotePalmeirense));
         azul.setOnClickListener(vaPara(ActAzul.class, pacoteAzul));
-        frags.setOnClickListener(vaPara(ActFragments.class, new Bundle()));
+        frags.setOnClickListener(vaPara(ActFragmentsKotlin.class, new Bundle()));
     }
 
     private View.OnClickListener vaPara(final Class umaClasse, final Bundle pacote) {

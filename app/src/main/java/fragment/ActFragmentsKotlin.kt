@@ -41,17 +41,15 @@ class ActFragmentsKotlin : AppCompatActivity() {
     }
 
     private fun colocaClick() {
-        vermelho.clickBotao(FragVermelho.newInstance(pacoteVermei))
+        vermelho.clickBotao(FragVermelhoKotlin.newInstance(pacoteVermei))
         azul.clickBotao(FragAzul.newInstance(pacoteAzul))
         verde.clickBotao(FragVerde.newInstance(pacotePalmeirense))
     }
 
     private fun Button.clickBotao(frag: Fragment) = setOnClickListener {
-        View.OnClickListener {
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.framelayout_amarelo, frag)
-                .commit()
-        }
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.framelayout_amarelo, frag)
+            .commit()
     }
 }
