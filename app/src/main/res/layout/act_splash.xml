@@ -37,4 +37,12 @@
         android:text="Tela Azul"
         />
 
+    <Button
+        android:id="@+id/button_fragments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Tela Fragments"
+        />
+
 </LinearLayout>

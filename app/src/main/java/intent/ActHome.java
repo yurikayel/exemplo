@@ -10,9 +10,11 @@ import android.widget.Button;
 
 import com.example.exemplo.R;
 
+import fragment.ActFragments;
+
 public class ActHome extends AppCompatActivity {
 
-    Button vermelho, verde, azul;
+    Button vermelho, verde, azul, frags;
 
     Bundle pacoteVermei, pacotePalmeirense, pacoteAzul;
 
@@ -29,6 +31,7 @@ public class ActHome extends AppCompatActivity {
         vermelho = findViewById(R.id.button_vermelho);
         verde = findViewById(R.id.button_verde);
         azul = findViewById(R.id.button_azul);
+        frags = findViewById(R.id.button_fragments);
     }
 
     private void configuraPacote() {
@@ -45,6 +48,7 @@ public class ActHome extends AppCompatActivity {
         vermelho.setOnClickListener(vaPara(ActVermelha.class, pacoteVermei));
         verde.setOnClickListener(vaPara(ActVerde.class, pacotePalmeirense));
         azul.setOnClickListener(vaPara(ActAzul.class, pacoteAzul));
+        frags.setOnClickListener(vaPara(ActFragments.class, new Bundle()));
     }
 
     private View.OnClickListener vaPara(final Class umaClasse, final Bundle pacote) {

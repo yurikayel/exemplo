@@ -12,17 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         >
-
+        <activity
+            android:name="fragment.ActAbas"
+            android:label="@string/title_activity_act_abas"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
+        <activity android:name="fragment.ActVazia" />
         <activity
             android:name="telainicial.ActSplash"
             android:theme="@style/SplashTheme"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name="activity.MainActivity" />
         <activity android:name="activity.ActMain" />
         <activity android:name="layouts.ActLinear" />
@@ -33,7 +38,6 @@
         <activity android:name="intent.ActAzul" />
         <activity android:name="fragment.ActFragment" />
         <activity android:name="fragment.ActFragments" />
-
     </application>
 
 </manifest>
