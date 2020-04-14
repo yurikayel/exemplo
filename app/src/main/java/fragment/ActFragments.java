@@ -3,7 +3,7 @@ package fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +17,8 @@ public class ActFragments extends AppCompatActivity {
     Button vermelho, verde, azul;
 
     Bundle pacoteVermei, pacotePalmeirense, pacoteAzul;
+
+    FragmentManager manager = getSupportFragmentManager();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,11 +60,18 @@ public class ActFragments extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.framelayout_amarelo, fragment);
-                transaction.commit();
+                boolean fragVoltou = voltaSeTiver(fragment.getClass().getName());
+
+                if (!fragVoltou) manager
+                        .beginTransaction()
+                        .replace(R.id.framelayout_amarelo, fragment)
+                        .addToBackStack(fragment.getClass().getName())
+                        .commit();
             }
         };
     }
 
+    private boolean voltaSeTiver(String fragName) {
+        return manager.popBackStackImmediate(fragName, 0);
+    }
 }

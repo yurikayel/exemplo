@@ -39,6 +39,8 @@
         <activity android:name="fragment.ActFragment" />
         <activity android:name="fragment.ActFragments" />
         <activity android:name="fragment.ActFragmentsKotlin" />
+        <activity android:name="fragcomunica.ActFragComunicacao" />
+        <activity android:name="fragment.ActComunicaFrags" />
     </application>
 
 </manifest>

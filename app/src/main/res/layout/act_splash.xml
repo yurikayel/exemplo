@@ -45,4 +45,12 @@
         android:text="Tela Fragments"
         />
 
+    <Button
+        android:id="@+id/button_comunica_frags"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Tela Comunica Frags"
+        />
+
 </LinearLayout>
