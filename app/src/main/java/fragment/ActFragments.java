@@ -55,7 +55,6 @@ public class ActFragments extends AppCompatActivity {
         button.setOnClickListener(carregaFragmento(frag));
     }
 
-    @NotNull
     private View.OnClickListener carregaFragmento(final Fragment fragment) {
         return new View.OnClickListener() {
             @Override

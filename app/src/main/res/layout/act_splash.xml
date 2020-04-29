@@ -53,4 +53,12 @@
         android:text="Tela Comunica Frags"
         />
 
+    <Button
+        android:id="@+id/button_comunica_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Recycler"
+        />
+
 </LinearLayout>

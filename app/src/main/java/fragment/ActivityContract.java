@@ -7,5 +7,4 @@ interface ActivityContract {
     void setTextVerde(String texto);
 
     void setTextAzul(String texto);
-
 }

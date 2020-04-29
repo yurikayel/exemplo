@@ -41,6 +41,7 @@
         <activity android:name="fragment.ActFragmentsKotlin" />
         <activity android:name="fragcomunica.ActFragComunicacao" />
         <activity android:name="fragment.ActComunicaFrags" />
+        <activity android:name="recycler.ActRecycler" />
     </application>
 
 </manifest>

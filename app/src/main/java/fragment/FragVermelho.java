@@ -34,7 +34,6 @@ public class FragVermelho extends Fragment {
         return inflater.inflate(R.layout.frag_vermelho, container, false);
     }
 
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

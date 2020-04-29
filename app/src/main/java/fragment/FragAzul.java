@@ -22,7 +22,7 @@ public class FragAzul extends Fragment {
 
     ActivityContract activity;
 
-    public static FragAzul newInstance(Bundle bundle){
+    public static FragAzul newInstance(Bundle bundle) {
         FragAzul frag = new FragAzul();
         frag.setArguments(bundle);
         return frag;
