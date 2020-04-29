@@ -72,6 +72,16 @@
             android:text="@string/tela_comunica_frags"
             />
 
+        <Button
+            android:id="@+id/button_revisao_frags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/revisao"
+            />
 
         <Button
             android:id="@+id/button_nav_a"

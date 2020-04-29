@@ -22,11 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="intent.ActHome" />
         <activity android:name="activity.ActMainJava" />
         <activity android:name="activity.ActMainKotlin" />
         <activity android:name="layouts.ActLinear" />
         <activity android:name="components.ComponentsActivity" />
-        <activity android:name="intent.ActHome" />
         <activity android:name="intent.ActVermelha" />
         <activity android:name="intent.ActVerde" />
         <activity android:name="intent.ActAzul" />
@@ -36,6 +36,12 @@
         <activity android:name="drawer.ActDrawer" />
         <activity android:name="navdrawer.ActNavDrawer" />
         <activity android:name="recycler.ActRecycler" />
+        <activity android:name="revisao.ActCadastroKotlin" />
+        <activity android:name="revisao.ActMainKotlin" />
+        <activity android:name="revisao.ActCadastro" />
+        <activity android:name="revisao.ActComunicaFragsRevisao" />
+        <activity android:name="revisao.ActRevisaoFrags" />
+        <activity android:name="revisao.ActFragmentsRevisao" />
     </application>
 
 </manifest>

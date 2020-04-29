@@ -22,7 +22,6 @@
     <string name="drawerlayout_header">DrawerLayout Header</string>
     <string name="cadastro_de_funcion_rio">Cadastro de Funcionário</string>
     <string name="nome">nome</string>
-    <string name="email">email</string>
     <string name="endere_o">endereço</string>
     <string name="profiss_o">profissão</string>
     <string name="enviar">Enviar</string>
@@ -34,4 +33,14 @@
     <string name="drawer">Drawer</string>
     <string name="nav_drawer">Nav Drawer</string>
     <string name="recycler">Recycler</string>
+    <string name="revisao">Ré visão Frags</string>
+    <string name="email">email</string>
+    <string name="senha">senha</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="fusca_69_lindo">Fusca 69 LINDO!</string>
+    <string name="camaro_meia_boca">Camaro Meia Boca</string>
+    <string name="fusca_69">Fusca 69</string>
+    <string name="camaro_69">Camaro 69</string>
+    <string name="ir_para_fragmentos">Ir para Fragmentos</string>
+    <string name="ir_para_comunica_o_de_fragmentos">Ir para Comunicação de Fragmentos</string>
 </resources>
