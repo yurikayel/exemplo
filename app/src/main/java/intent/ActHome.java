@@ -5,20 +5,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.exemplo.R;
 
+import drawer.ActDrawer;
 import fragment.ActComunicaFrags;
 import fragment.ActFragments;
-import fragment.ActFragmentsKotlin;
+import navdrawer.ActNavDrawer;
 import recycler.ActRecycler;
 
 public class ActHome extends AppCompatActivity {
 
-    Button vermelho, verde, azul, frags, comunicaFrags, recycler;
+    Button vermelho, verde, azul, frags, comunicaFrags, navDrawerA, navDrawerB, recycler;
 
     Bundle pacoteVermei, pacotePalmeirense, pacoteAzul;
 
@@ -37,6 +37,8 @@ public class ActHome extends AppCompatActivity {
         azul = findViewById(R.id.button_azul);
         frags = findViewById(R.id.button_fragments);
         comunicaFrags = findViewById(R.id.button_comunica_frags);
+        navDrawerA = findViewById(R.id.button_nav_a);
+        navDrawerB = findViewById(R.id.button_nav_b);
         recycler = findViewById(R.id.button_comunica_recycler);
     }
 
@@ -56,6 +58,8 @@ public class ActHome extends AppCompatActivity {
         azul.setOnClickListener(vaPara(ActAzul.class, pacoteAzul));
         frags.setOnClickListener(vaPara(ActFragments.class, new Bundle()));
         comunicaFrags.setOnClickListener(vaPara(ActComunicaFrags.class, new Bundle()));
+        navDrawerA.setOnClickListener(vaPara(ActDrawer.class, new Bundle()));
+        navDrawerB.setOnClickListener(vaPara(ActNavDrawer.class, new Bundle()));
         recycler.setOnClickListener(vaPara(ActRecycler.class, new Bundle()));
     }
 

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="activity.MainActivity">
+    tools:context="activity.ActMainJava">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,7 +13,7 @@
         android:layout_marginTop="130dp"
         android:fontFamily="sans-serif-black"
         android:gravity="center"
-        android:text="Cadastro de Funcionário"
+        android:text="@string/cadastro_de_funcion_rio"
         android:textSize="28sp"
         android:textStyle="bold" />
 
@@ -28,7 +28,7 @@
             android:id="@+id/edit_nome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="nome" />
+            android:hint="@string/nome" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -42,7 +42,7 @@
             android:id="@+id/edit_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="email" />
+            android:hint="@string/email" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -56,7 +56,7 @@
             android:id="@+id/edit_endereco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="endereço" />
+            android:hint="@string/endere_o" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -70,7 +70,7 @@
             android:id="@+id/edit_profissao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="profissão" />
+            android:hint="@string/profiss_o" />
     </android.support.design.widget.TextInputLayout>
 
     <View
@@ -85,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:background="@drawable/azul_curvado"
-        android:text="Enviar"
+        android:text="@string/enviar"
         android:textAllCaps="false"
         android:textColor="#FFF" />
 

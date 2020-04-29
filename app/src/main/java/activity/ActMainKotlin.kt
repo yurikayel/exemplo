@@ -9,7 +9,7 @@ import android.widget.Toast.LENGTH_LONG
 import android.widget.Toast.makeText
 import com.example.exemplo.R
 
-class ActMain : Activity() {
+class ActMainKotlin : Activity() {
 
     private val textoVazio = ""
 

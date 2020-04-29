@@ -14,7 +14,7 @@ import com.example.exemplo.R;
 
 import static android.widget.Toast.makeText;
 
-public class MainActivity extends Activity {
+public class ActMainJava extends Activity {
 
     EditText nome, email, endereco, profissao;
 

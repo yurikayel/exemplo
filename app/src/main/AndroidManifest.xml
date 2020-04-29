@@ -5,19 +5,13 @@
     >
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/AppTheme.NoActionBar"
         >
-        <activity
-            android:name="fragment.ActAbas"
-            android:label="@string/title_activity_act_abas"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
-        <activity android:name="fragment.ActVazia" />
         <activity
             android:name="telainicial.ActSplash"
             android:theme="@style/SplashTheme"
@@ -28,19 +22,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="activity.MainActivity" />
-        <activity android:name="activity.ActMain" />
+        <activity android:name="activity.ActMainJava" />
+        <activity android:name="activity.ActMainKotlin" />
         <activity android:name="layouts.ActLinear" />
         <activity android:name="components.ComponentsActivity" />
         <activity android:name="intent.ActHome" />
         <activity android:name="intent.ActVermelha" />
         <activity android:name="intent.ActVerde" />
         <activity android:name="intent.ActAzul" />
-        <activity android:name="fragment.ActFragment" />
         <activity android:name="fragment.ActFragments" />
         <activity android:name="fragment.ActFragmentsKotlin" />
-        <activity android:name="fragcomunica.ActFragComunicacao" />
         <activity android:name="fragment.ActComunicaFrags" />
+        <activity android:name="drawer.ActDrawer" />
+        <activity android:name="navdrawer.ActNavDrawer" />
         <activity android:name="recycler.ActRecycler" />
     </application>
 
