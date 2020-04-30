@@ -1,6 +1,8 @@
 package intent;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,17 +12,20 @@ import android.widget.Button;
 
 import com.example.exemplo.R;
 
+import custom.LazyDialog;
+import custom.LazyDialogKt;
 import drawer.ActDrawer;
 import fragment.ActComunicaFrags;
 import fragment.ActFragments;
 import navdrawer.ActNavDrawer;
 import recycler.ActRecycler;
 import revisao.ActCadastro;
-import revisao.ActRevisaoFrags;
+
+import static custom.LazyDialogKt.lazyDialog;
 
 public class ActHome extends AppCompatActivity {
 
-    Button vermelho, verde, azul, frags, comunicaFrags, revisaoFrags, navDrawerA, navDrawerB, recycler;
+    Button vermelho, verde, azul, frags, comunicaFrags, revisaoFrags, navDrawerA, navDrawerB, recycler, dialog;
 
     Bundle pacoteVermei, pacotePalmeirense, pacoteAzul;
 
@@ -43,6 +48,7 @@ public class ActHome extends AppCompatActivity {
         navDrawerA = findViewById(R.id.button_nav_a);
         navDrawerB = findViewById(R.id.button_nav_b);
         recycler = findViewById(R.id.button_comunica_recycler);
+        dialog = findViewById(R.id.button_dialog);
     }
 
     private void configuraPacote() {
@@ -65,6 +71,31 @@ public class ActHome extends AppCompatActivity {
         navDrawerA.setOnClickListener(vaPara(ActDrawer.class, new Bundle()));
         navDrawerB.setOnClickListener(vaPara(ActNavDrawer.class, new Bundle()));
         recycler.setOnClickListener(vaPara(ActRecycler.class, new Bundle()));
+        dialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LazyDialog lazyDialog = lazyDialog(view.getContext(),"Título","Mensagem");
+                lazyDialog.setOnPositive(new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                lazyDialog.setOnNeutral(new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                lazyDialog.setOnNegative(new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                lazyDialog.show();
+            }
+        });
     }
 
     private View.OnClickListener vaPara(final Class umaClasse, final Bundle pacote) {

@@ -23,12 +23,12 @@ class ViewBuilderExemplo : RecyclerViewBuilder() {
 
 //  EXTENSION FUNCTIONS
 
-fun <T> Collection<T>.get(index: Int): T? {
+private fun <T> Collection<T>.get(index: Int): T? {
     forEachIndexed { indexed, element -> if (indexed == index) return element }
     throw IndexOutOfBoundsException()
 }
 
-fun View.stringAny(text: Any?): CharSequence = when (text) {
+private fun View.stringAny(text: Any?): CharSequence = when (text) {
     is String -> text
     is CharSequence -> text
     is Int -> context.getResourceOrToString(text)
@@ -41,7 +41,7 @@ private fun Context.getResourceOrToString(text: Int) = try {
     text.toString()
 }
 
-fun View.onClick(block: View.() -> Unit) = setOnClickListener { block.invoke(this) }
+private fun View.onClick(block: View.() -> Unit) = setOnClickListener { block.invoke(this) }
 
-fun View.toast(message: Any?) =
+private fun View.toast(message: Any?) =
     Toast.makeText(context, stringAny(message), Toast.LENGTH_LONG).show()
