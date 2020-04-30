@@ -31,9 +31,9 @@ class LazyDialog(
     init {
         setTitle(title)
         setMessage(message)
-        setPositiveButton(textNegative, onPositive)
+        setPositiveButton(textPositive, onPositive)
         setNeutralButton(textNeutral, onNeutral)
-        setNegativeButton(textPositive, onNegative)
+        setNegativeButton(textNegative, onNegative)
     }
 }
 
