@@ -1,5 +1,7 @@
 package recycler;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.exemplo.R;
+
+import revisao.ActRevisaoFrags;
 
 public class AdapterChamada extends RecyclerView.Adapter<ChamadaViewHolder> {
 
@@ -31,8 +35,10 @@ public class AdapterChamada extends RecyclerView.Adapter<ChamadaViewHolder> {
         chamadaViewHolder.textViewTexticulo.setText(nome);
         chamadaViewHolder.textViewTexticulo.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), nome, Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+                Context context = view.getContext();
+                Intent intent = new Intent(context, ActRevisaoFrags.class).putExtra("nome", nome);
+                context.startActivity(intent);
             }
         });
     }

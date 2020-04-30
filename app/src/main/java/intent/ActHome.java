@@ -1,7 +1,6 @@
 package intent;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import android.widget.Button;
 import com.example.exemplo.R;
 
 import custom.LazyDialog;
-import custom.LazyDialogKt;
 import drawer.ActDrawer;
 import fragment.ActComunicaFrags;
 import fragment.ActFragments;
