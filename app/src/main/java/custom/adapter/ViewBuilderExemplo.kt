@@ -7,16 +7,16 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.exemplo.R
 
-class ViewBuilderExemplo : RecyclerViewBuilder() {
+class ViewBuilderExemplo : RecyclerViewBuilder<String>() {
 
     override val layout = R.layout.recycler_view_item
 
     override fun View.onBind(position: Int) {
-        val data = collection.get(position)
+        val string = collection.get(position)
 
         findViewById<TextView>(R.id.whiskas_text).run {
-            text = stringAny(data)
-            onClick { toast(data) }
+            text = string
+            onClick { toast(string) }
         }
     }
 }

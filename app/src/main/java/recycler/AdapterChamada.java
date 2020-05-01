@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 import com.example.exemplo.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import revisao.ActRevisaoFrags;
 
 public class AdapterChamada extends RecyclerView.Adapter<ChamadaViewHolder> {
@@ -32,6 +35,7 @@ public class AdapterChamada extends RecyclerView.Adapter<ChamadaViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ChamadaViewHolder chamadaViewHolder, int position) {
         final String nome = chamada[position];
+
         chamadaViewHolder.textViewTexticulo.setText(nome);
         chamadaViewHolder.textViewTexticulo.setOnClickListener(new View.OnClickListener() {
             @Override

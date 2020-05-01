@@ -5,23 +5,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-open class RecyclerViewHolder(val builder: RecyclerViewBuilder) :
+open class RecyclerViewHolder(val builder: RecyclerViewBuilder<*>) :
     RecyclerView.ViewHolder(builder.build())
 
-abstract class RecyclerViewBuilder {
+abstract class RecyclerViewBuilder<Type> {
     abstract val layout: Int
     lateinit var viewGroup: ViewGroup
     lateinit var view: View
-    lateinit var collection: Collection<Any>
+    lateinit var collection: Collection<Type>
 
-    fun init(viewGroup: ViewGroup, collection: Collection<Any>): RecyclerViewBuilder {
+    @Suppress("UNCHECKED_CAST")
+    fun init(viewGroup: ViewGroup, collection: Collection<*>): RecyclerViewBuilder<Type> {
         this.viewGroup = viewGroup
-        this.collection = collection
+        this.collection = collection as Collection<Type>
         return this
     }
 
     fun build(): View {
-        view = LayoutInflater.from(viewGroup.context).inflate(layout, null, false)
+        view = LayoutInflater.from(viewGroup.context).inflate(layout, viewGroup, false)
         return view
     }
 

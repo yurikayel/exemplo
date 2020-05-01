@@ -17,9 +17,10 @@ public class ActVerde extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_verde);
-
-        textoRecebido = getIntent().getExtras().getString("chave");
-        campoDeTexto = findViewById(R.id.textView2);
-        campoDeTexto.setText(textoRecebido);
+        if (getIntent().getExtras() != null) {
+            textoRecebido = getIntent().getExtras().getString("chave");
+            campoDeTexto = findViewById(R.id.textView2);
+            campoDeTexto.setText(textoRecebido);
+        }
     }
 }

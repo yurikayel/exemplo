@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import com.example.exemplo.R;
 
+import java.util.Objects;
+
 public class ActVermelha extends AppCompatActivity {
 
     String textoRecebido;
@@ -17,8 +19,10 @@ public class ActVermelha extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_vermelha);
-        textoRecebido = getIntent().getExtras().getString("chave");
-        campoDeTexto = findViewById(R.id.textView);
-        campoDeTexto.setText(textoRecebido);
+        if (getIntent().getExtras() != null) {
+            textoRecebido = Objects.requireNonNull(getIntent().getExtras()).getString("chave");
+            campoDeTexto = findViewById(R.id.textView);
+            campoDeTexto.setText(textoRecebido);
+        }
     }
 }
