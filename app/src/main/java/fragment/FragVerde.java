@@ -37,7 +37,7 @@ public class FragVerde extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        activity = (ActivityContract) context;
+        if (context instanceof ActivityContract) activity = (ActivityContract) context;
     }
 
     @Override

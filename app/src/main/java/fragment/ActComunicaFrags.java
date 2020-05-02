@@ -43,7 +43,6 @@ public class ActComunicaFrags extends AppCompatActivity implements ActivityContr
         hideSoftKeyBoard();
     }
 
-
     private void hideSoftKeyBoard() {
         InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 
