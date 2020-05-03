@@ -43,6 +43,9 @@
         <activity android:name="revisao.ActComunicaFragsRevisao" />
         <activity android:name="revisao.ActRevisaoFrags" />
         <activity android:name="revisao.ActFragmentsRevisao" />
+        <activity android:name="binding.ActWhiskas" />
+        <activity android:name="binding.ActBind" />
+        <activity android:name="binding.ActSache" />
     </application>
 
 </manifest>

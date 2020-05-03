@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout.VERTICAL
+import binding.ActSache
+import binding.ActWhiskas
 import com.example.exemplo.R
 import custom.adapter.RecyclerViewBuilder
 import custom.adapter.recyclerAdapter
@@ -39,7 +41,9 @@ class ActHost : AppCompatActivity() {
                     ActCadastro::class,
                     ActDrawer::class,
                     ActNavDrawer::class,
-                    ActRecycler::class
+                    ActRecycler::class,
+                    ActWhiskas::class,
+                    ActSache::class
                 )
             )
         }
