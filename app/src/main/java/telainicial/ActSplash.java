@@ -13,7 +13,6 @@ public class ActSplash extends ActBase {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler());
         startActivity(new Intent(this, ActHost.class));
         finish();
     }
