@@ -44,8 +44,14 @@
         <activity android:name="revisao.ActRevisaoFrags" />
         <activity android:name="revisao.ActFragmentsRevisao" />
         <activity android:name="binding.ActWhiskas" />
-        <activity android:name="binding.ActBind" />
+        <activity android:name="base.ActBind" />
         <activity android:name="binding.ActSache" />
+        <activity android:name="debugging.ActDebugging" />
+        <activity android:name="debugging.ActException" />
+        <activity android:name="binding.ActRafinha" />
+        <activity android:name="base.ActBase" />
+        <activity android:name="base.ActSample" />
+        <activity android:name="base.ActSampleJava" />
     </application>
 
 </manifest>

@@ -4,6 +4,18 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
 
+    <string name="timestamp" >Timestamp</string >
+    <string name="device_information" >Device Information</string >
+    <string name="brand" >Brand</string >
+    <string name="device" >Device</string >
+    <string name="model" >Model</string >
+    <string name="id" >Id</string >
+    <string name="product" >Product</string >
+    <string name="build_info" >Build Info</string >
+    <string name="sdk" >SDK</string >
+    <string name="release" >Release</string >
+    <string name="incremental" >Incremental</string >
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -45,4 +57,7 @@
     <string name="ir_para_comunica_o_de_fragmentos">Ir para Comunicação de Fragmentos</string>
     <string name="whiskas_sache">WHISKAS SACHE</string>
     <string name="dialog">Dialog</string>
+    <string name="rafinha_exception">Rafinha Exception</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla at risus. Quisque purus magna, auctor et, sagittis ac, posuere eu, lectus. Nam mattis, felis ut adipiscing.</string>
+    <string name="vacilaum">Vacilão</string>
 </resources>

@@ -1,14 +1,15 @@
 package binding
 
+import base.ActBind
 import com.example.exemplo.R
-import com.example.exemplo.databinding.ActWhiskasBinding
+import com.example.exemplo.databinding.ActSacheBinding
 
-class ActWhiskas : ActBind<ActWhiskasBinding>(ActWhiskasBinding::class.java) {
+class ActWhiskas : ActBind<ActSacheBinding>(ActSacheBinding::class.java) {
 
     var switchA = false
     var switchB = false
 
-    override fun ActWhiskasBinding.onView() {
+    override fun ActSacheBinding.onBoundView() {
         whiskasText.setOnClickListener {
             whiskasText.text = getString(if (switchA) R.string.app_name else R.string.whiskas_sache)
             switchA = !switchA
