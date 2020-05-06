@@ -13,7 +13,7 @@ class ActPager : ActBind<ActPagerBinding>(ActPagerBinding::class.java) {
     private val nomes = listOf("Xandão", "Rafão", "Peter Henry II")
 
     override fun ActPagerBinding.onBoundView() {
-        whiskasTabLayout.setupWithViewPager(whiskasViewPager)
-        whiskasViewPager.setupPagerAdapter(fragmentArray, nomes)
+        tabLayout.setupWithViewPager(viewPager)
+        viewPager.setupPagerAdapter(fragmentArray, nomes)
     }
 }

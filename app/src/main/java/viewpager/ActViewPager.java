@@ -28,8 +28,8 @@ public class ActViewPager extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_pager);
-        viewPager = findViewById(R.id.whiskas_view_pager);
-        tabLayout = findViewById(R.id.whiskas_tab_layout);
+        viewPager = findViewById(R.id.view_pager);
+        tabLayout = findViewById(R.id.tab_layout);
 
         fragmentList.add(FragVermelho.newInstance(new Bundle()));
         fragmentList.add(FragVerde.newInstance(new Bundle()));
