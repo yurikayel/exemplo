@@ -2,6 +2,7 @@ package viewpager
 
 import base.ActBind
 import com.example.exemplo.databinding.ActPagerBinding
+import custom.setupPagerAdapter
 import fragment.FragAzul
 import fragment.FragVerde
 import fragment.FragVermelho
@@ -13,6 +14,6 @@ class ActPager : ActBind<ActPagerBinding>(ActPagerBinding::class.java) {
 
     override fun ActPagerBinding.onBoundView() {
         whiskasTabLayout.setupWithViewPager(whiskasViewPager)
-        whiskasViewPager.adapter = WhiskasPagerAdapter(fragmentArray, nomes, supportFragmentManager)
+        whiskasViewPager.setupPagerAdapter(fragmentArray, nomes)
     }
 }
