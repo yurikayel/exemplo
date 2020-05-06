@@ -52,6 +52,8 @@
         <activity android:name="base.ActBase" />
         <activity android:name="base.ActSample" />
         <activity android:name="base.ActSampleJava" />
+        <activity android:name="viewpager.ActViewPager" />
+        <activity android:name="viewpager.ActPager" />
     </application>
 
 </manifest>

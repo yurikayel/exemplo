@@ -24,6 +24,8 @@ import intent.ActVermelha
 import navdrawer.ActNavDrawer
 import recycler.ActRecycler
 import revisao.ActCadastro
+import viewpager.ActPager
+import viewpager.ActViewPager
 import kotlin.reflect.KClass
 
 class ActHost : AppCompatActivity() {
@@ -47,7 +49,9 @@ class ActHost : AppCompatActivity() {
                     ActWhiskas::class,
                     ActSache::class,
                     ActDebugging::class,
-                    ActRafinha::class
+                    ActRafinha::class,
+                    ActViewPager::class,
+                    ActPager::class
                 )
             )
         }
