@@ -1,19 +1,10 @@
 package custom
 
-import android.content.Intent
-import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.view.View
-import android.widget.Button
-import android.widget.LinearLayout.VERTICAL
+import base.ActBind
 import binding.ActRafinha
 import binding.ActSache
 import binding.ActWhiskas
-import com.example.exemplo.R
-import custom.adapter.RecyclerViewBuilder
-import custom.adapter.recyclerAdapter
+import com.example.exemplo.databinding.ActHostBinding
 import debugging.ActDebugging
 import drawer.ActDrawer
 import fragment.ActComunicaFrags
@@ -26,52 +17,28 @@ import recycler.ActRecycler
 import revisao.ActCadastro
 import viewpager.ActPager
 import viewpager.ActViewPager
-import kotlin.reflect.KClass
 
-class ActHost : AppCompatActivity() {
+class ActHost : ActBind<ActHostBinding>(ActHostBinding::class.java) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.act_host)
-        findViewById<RecyclerView>(R.id.act_host_recycler).run {
-            layoutManager = LinearLayoutManager(this@ActHost, VERTICAL, false)
-            adapter = recyclerAdapter<ClassViewBuilder>(
-                listOf(
-                    ActVermelha::class,
-                    ActVerde::class,
-                    ActAzul::class,
-                    ActFragments::class,
-                    ActComunicaFrags::class,
-                    ActCadastro::class,
-                    ActDrawer::class,
-                    ActNavDrawer::class,
-                    ActRecycler::class,
-                    ActWhiskas::class,
-                    ActSache::class,
-                    ActDebugging::class,
-                    ActRafinha::class,
-                    ActViewPager::class,
-                    ActPager::class
-                )
+    override fun ActHostBinding.onBoundView() {
+        actHostRecycler.setRecyclerAdapter<ActHostItemBuilder>(
+            listOf(
+                ActVermelha::class,
+                ActVerde::class,
+                ActAzul::class,
+                ActFragments::class,
+                ActComunicaFrags::class,
+                ActCadastro::class,
+                ActDrawer::class,
+                ActNavDrawer::class,
+                ActRecycler::class,
+                ActWhiskas::class,
+                ActSache::class,
+                ActDebugging::class,
+                ActRafinha::class,
+                ActViewPager::class,
+                ActPager::class
             )
-        }
+        )
     }
-}
-
-class ClassViewBuilder : RecyclerViewBuilder<KClass<AppCompatActivity>>() {
-    override val layout = R.layout.act_host_button
-
-    override fun View.onBind(position: Int) {
-        collection.get(position).run {
-            findViewById<Button>(R.id.act_host_button).run {
-                text = java.name
-                setOnClickListener { context.startActivity(Intent(context, java)) }
-            }
-        }
-    }
-}
-
-fun <T> Collection<T>.get(index: Int): T {
-    forEachIndexed { indexed, element -> if (indexed == index) return element }
-    throw IndexOutOfBoundsException()
 }

@@ -7,6 +7,6 @@ class ActWhiskas : ActBind<ActSacheBinding>(ActSacheBinding::class.java) {
 
     override fun ActSacheBinding.onBoundView() {
         whiskasText.text = "Rafinha"
-        whiskasImage.setImageResource()
+//        whiskasImage.setImageResource()
     }
 }

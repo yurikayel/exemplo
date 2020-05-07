@@ -1,32 +1,43 @@
 package custom.adapter
 
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.viewbinding.ViewBinding
 
-open class RecyclerViewHolder(val builder: RecyclerViewBuilder<*>) :
+open class RecyclerViewHolder(val builder: RecyclerViewBuilder<*, *>) :
     RecyclerView.ViewHolder(builder.build())
 
-abstract class RecyclerViewBuilder<Type> {
-    abstract val layout: Int
-    lateinit var viewGroup: ViewGroup
-    lateinit var view: View
-    lateinit var collection: Collection<Type>
+abstract class RecyclerViewBuilder<Data, Binding : ViewBinding> {
+
+    abstract val bindClass: Class<Binding>
+    private lateinit var binding : Binding
+    lateinit var collection: Collection<Data>
+
+    private lateinit var viewGroup: ViewGroup
 
     @Suppress("UNCHECKED_CAST")
-    fun init(viewGroup: ViewGroup, collection: Collection<*>): RecyclerViewBuilder<Type> {
+    fun init(viewGroup: ViewGroup, collection: Collection<*>): RecyclerViewBuilder<Data, Binding> {
         this.viewGroup = viewGroup
-        this.collection = collection as Collection<Type>
+        this.collection = collection as Collection<Data>
         return this
     }
 
-    fun build(): View {
-        view = LayoutInflater.from(viewGroup.context).inflate(layout, viewGroup, false)
-        return view
+    fun build() : View {
+        binding = inflate()
+        return binding.root
     }
 
-    fun bind(position: Int) = view.onBind(position)
+    @Suppress("UNCHECKED_CAST")
+    fun inflate() =
+        bindClass.getMethod("inflate", LayoutInflater::class.java).invoke(
+            null, ((viewGroup.context) as AppCompatActivity).layoutInflater
+        ) as Binding
 
-    abstract fun View.onBind(position: Int)
+
+    fun bind(position: Int) = binding.onBind(position)
+
+    abstract fun Binding.onBind(position: Int)
 }

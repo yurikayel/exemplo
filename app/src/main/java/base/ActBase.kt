@@ -6,9 +6,13 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import debugging.ExceptionHandler
 
+const val teste = "teste"
+
 open class ActBase(val layout: Any? = null) : AppCompatActivity() {
 
     companion object {
+        const val teste = "string"
+
         @JvmStatic lateinit var currentActivity: AppCompatActivity
         @JvmStatic var exceptionHandler = ExceptionHandler()
     }

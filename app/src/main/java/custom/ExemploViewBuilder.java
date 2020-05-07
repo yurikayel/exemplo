@@ -1,26 +1,23 @@
 package custom;
 
-import android.view.View;
-import android.widget.TextView;
-
-import com.example.exemplo.R;
+import com.example.exemplo.databinding.ExemploItemBinding;
 
 import org.jetbrains.annotations.NotNull;
 
 import custom.adapter.RecyclerViewBuilder;
 
-import static custom.ActHostKt.get;
+import static custom.ExtFunKt.get;
 
-public class ExemploViewBuilder extends RecyclerViewBuilder<CharSequence> {
+public class ExemploViewBuilder extends RecyclerViewBuilder<CharSequence, ExemploItemBinding> {
 
+    @NotNull
     @Override
-    public int getLayout() {
-        return R.layout.exemplo_item;
+    public Class<ExemploItemBinding> getBindClass() {
+        return ExemploItemBinding.class;
     }
 
     @Override
-    public void onBind(@NotNull View view, int position) {
-        TextView textView = view.findViewById(R.id.joao_textview);
-        textView.setText(get(getCollection(), position));
+    public void onBind(@NotNull ExemploItemBinding binding, int position) {
+        binding.joaoTextview.setText(get(getCollection(), position));
     }
 }

@@ -3,18 +3,17 @@ package custom.adapter
 import android.content.Context
 import android.content.res.Resources
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
-import com.example.exemplo.R
+import com.example.exemplo.databinding.RecyclerViewItemBinding
 
-class ViewBuilderExemplo : RecyclerViewBuilder<String>() {
+class ViewBuilderExemplo : RecyclerViewBuilder<String, RecyclerViewItemBinding>() {
 
-    override val layout = R.layout.recycler_view_item
+    override val bindClass = RecyclerViewItemBinding::class.java
 
-    override fun View.onBind(position: Int) {
+    override fun RecyclerViewItemBinding.onBind(position: Int) {
         val string = collection.get(position)
 
-        findViewById<TextView>(R.id.whiskas_text).run {
+        whiskasText.run {
             text = string
             onClick { toast(string) }
         }
