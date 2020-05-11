@@ -1,12 +1,14 @@
 package custom
 
+import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 
-fun ViewPager.setupPagerAdapter(frags: Any, titles: Any) {
+fun ViewPager.setup(frags: Any, titles: Any, tabLayout: TabLayout? = null) {
+    tabLayout?.setupWithViewPager(this)
     adapter = CustomPagerAdapter(
         frags, titles, (context as AppCompatActivity).supportFragmentManager
     )
