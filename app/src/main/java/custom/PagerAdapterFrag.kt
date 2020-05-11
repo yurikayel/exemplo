@@ -9,12 +9,12 @@ import android.support.v7.app.AppCompatActivity
 
 fun ViewPager.setup(frags: Any, titles: Any, tabLayout: TabLayout? = null) {
     tabLayout?.setupWithViewPager(this)
-    adapter = CustomPagerAdapter(
+    adapter = PagerAdapterFrag(
         frags, titles, (context as AppCompatActivity).supportFragmentManager
     )
 }
 
-class CustomPagerAdapter(
+class PagerAdapterFrag(
     private val frags: Any,
     private val titles: Any,
     fragmentManager: FragmentManager

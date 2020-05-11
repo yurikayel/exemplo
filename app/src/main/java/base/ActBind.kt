@@ -4,8 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.viewbinding.ViewBinding
 
-abstract class ActBind<T : ViewBinding>(private val clazz: Class<T>)
-    : ActBase() {
+abstract class ActBind<T : ViewBinding>(private val clazz: Class<T>) : ActBase() {
 
     lateinit var binding: T
 

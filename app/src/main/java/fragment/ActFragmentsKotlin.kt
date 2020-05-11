@@ -3,53 +3,69 @@ package fragment
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import android.widget.Button
 import com.example.exemplo.R
 
 class ActFragmentsKotlin : AppCompatActivity() {
 
-    private lateinit var vermelho: Button
-    private lateinit var verde: Button
-    private lateinit var azul: Button
-    private lateinit var pacoteVermei: Bundle
-    private lateinit var pacotePalmeirense: Bundle
-    private lateinit var pacoteAzul: Bundle
+    lateinit var azul : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         achaViews()
-        configuraPacote()
         colocaClick()
     }
 
     private fun achaViews() {
         setContentView(R.layout.act_fragments)
-        vermelho = findViewById(R.id.button_vermelho)
-        verde = findViewById(R.id.button_verde)
         azul = findViewById(R.id.button_azul)
     }
 
-    private fun configuraPacote() {
-        pacoteVermei = Bundle()
-        pacotePalmeirense = Bundle()
-        pacoteAzul = Bundle()
-
-        pacoteVermei.putString("chave", "Não, aí eu coloco a variavel")
-        pacotePalmeirense.putString("chave", "Não tem o quê? Melhor não comentar")
-        pacoteAzul.putString("chave", "Caneta Azul, Azul Caneeeetaaaaaaaa")
-    }
-
     private fun colocaClick() {
-        vermelho.clickBotao(FragVermelhoKotlin.newInstance(pacoteVermei))
-        azul.clickBotao(FragAzul.newInstance(pacoteAzul))
-        verde.clickBotao(FragVerde.newInstance(pacotePalmeirense))
+        findViewById<Button>(R.id.button_vermelho).carregaFrag(
+            FragVermelhoKotlin.newInstance(Bundle())
+        )
+        azul.carregaFrag(
+            FragAzul.newInstance(Bundle().apply {
+                putString("chave", "Azul Caneta Caneta Azul")
+            })
+        )
+        findViewById<Button>(R.id.button_verde).carregaFrag(
+            FragVerde.newInstance(Bundle().apply {
+                putString("chave", "Não tem mundial")
+            })
+        )
     }
 
-    private fun Button.clickBotao(frag: Fragment) = setOnClickListener {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.framelayout_amarelo, frag)
-            .commit()
+    //Função de expressão única
+    //Quando a função retorna uma única expressão,
+    //as chaves enroladinhas podem ser omitidas e o corpo da função pode ser apontado
+    //usando o operador ATRIBUIR (=) "assign"
+//    private fun Button.clickBotao(frag: Fragment) = setOnClickListener {
+//        supportFragmentManager
+//            .beginTransaction()
+//            .replace(R.id.framelayout_amarelo, frag)
+//            .commit()
+//    }
+
+    // Uma função de extensão serve principalmente pra extender o
+    // comportamento geralmente de classes base da framework.
+    private fun Button.carregaFrag(frag: Fragment) {
+        setOnClickListener {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.framelayout_amarelo, frag)
+                .commit()
+        }
+
+//        Mema coisa:
+//        setOnClickListener(object : View.OnClickListener{
+//            override fun onClick(view: View?) {
+//                view?.context
+//            }
+//        })
     }
 }
+
+fun somar(x: Int, y: Int): Int = x + y
+fun somarSemEspecificar(x: Int, y: Int) = x + y
