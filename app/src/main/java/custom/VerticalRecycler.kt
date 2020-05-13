@@ -12,5 +12,6 @@ class VerticalRecycler @JvmOverloads constructor(
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         layoutManager = LinearLayoutManager(context, VERTICAL, false)
+        setHasFixedSize(true)
     }
 }

@@ -5,7 +5,8 @@ import binding.ActSache
 import binding.ActWhiskas
 import com.example.exemplo.databinding.ActHostBinding
 import custom.ActHostItemBuilder
-import custom.setRecyclerAdapter
+import custom.setup
+import data.ActChamada
 import debugging.ActDebugging
 import drawer.ActDrawer
 import fragment.ActComunicaFrags
@@ -38,10 +39,11 @@ class ActHost : ActBind<ActHostBinding>(ActHostBinding::class.java) {
         ActRafinha::class,
         ActViewPager::class,
         ActPager::class,
-        ActFragmentsKotlin::class
+        ActFragmentsKotlin::class,
+        ActChamada::class
     )
 
     override fun ActHostBinding.onBoundView() {
-        actHostRecycler.setRecyclerAdapter<ActHostItemBuilder>(list)
+        actHostRecycler.setup<ActHostItemBuilder>(list)
     }
 }

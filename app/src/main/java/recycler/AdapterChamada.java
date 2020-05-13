@@ -18,9 +18,9 @@ import revisao.ActRevisaoFrags;
 
 public class AdapterChamada extends RecyclerView.Adapter<ChamadaViewHolder> {
 
-    private String[] chamada;
+    private List<String> chamada;
 
-    public AdapterChamada(String[] chamada) {
+    public AdapterChamada(List<String> chamada) {
         this.chamada = chamada;
     }
 
@@ -34,7 +34,7 @@ public class AdapterChamada extends RecyclerView.Adapter<ChamadaViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ChamadaViewHolder chamadaViewHolder, int position) {
-        final String nome = chamada[position];
+        final String nome = chamada.get(position);
 
         chamadaViewHolder.textViewTexticulo.setText(nome);
         chamadaViewHolder.textViewTexticulo.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +49,6 @@ public class AdapterChamada extends RecyclerView.Adapter<ChamadaViewHolder> {
 
     @Override
     public int getItemCount() {
-        return chamada.length;
+        return chamada.size();
     }
 }

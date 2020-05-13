@@ -8,6 +8,8 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.example.exemplo.R;
 
+import static custom.ExtFunKt.hideSoftKeyBoard;
+
 public class ActComunicaFrags extends AppCompatActivity implements ActivityContract {
 
     FragVermelho fragVermelho;
@@ -28,26 +30,18 @@ public class ActComunicaFrags extends AppCompatActivity implements ActivityContr
     @Override
     public void setTextVermelho(String texto) {
         fragVermelho.setTextVermelho(texto);
-        hideSoftKeyBoard();
+        hideSoftKeyBoard(this);
     }
 
     @Override
     public void setTextVerde(String texto) {
         fragVerde.setTextVerde(texto);
-        hideSoftKeyBoard();
+        hideSoftKeyBoard(this);
     }
 
     @Override
     public void setTextAzul(String texto) {
         fragAzul.setTextAzul(texto);
-        hideSoftKeyBoard();
-    }
-
-    private void hideSoftKeyBoard() {
-        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-
-        if (imm != null && getCurrentFocus() != null && imm.isAcceptingText()) { // verify if the soft keyboard is open
-            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-        }
+        hideSoftKeyBoard(this);
     }
 }

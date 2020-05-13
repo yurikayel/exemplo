@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        >
+
+        <EditText
+            android:id="@+id/chamada_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/id"
+            app:layout_constraintEnd_toStartOf="@id/chamada_nome"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <EditText
+            android:id="@+id/chamada_nome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/nome"
+            app:layout_constraintEnd_toStartOf="@id/chamada_sobrenome"
+            app:layout_constraintStart_toEndOf="@id/chamada_id"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <EditText
+            android:id="@+id/chamada_sobrenome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/nhe"
+            app:layout_constraintEnd_toStartOf="@id/chamada_idade"
+            app:layout_constraintStart_toEndOf="@id/chamada_nome"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <EditText
+            android:id="@+id/chamada_idade"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/idade"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/chamada_sobrenome"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <Button
+            android:id="@+id/chamada_create"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/cyan_600"
+            android:text="@string/create"
+            app:layout_constraintEnd_toStartOf="@id/chamada_read"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chamada_id"
+            />
+
+        <Button
+            android:id="@+id/chamada_read"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/red_400"
+            android:text="@string/read"
+            app:layout_constraintEnd_toStartOf="@id/chamada_update"
+            app:layout_constraintStart_toEndOf="@id/chamada_create"
+            app:layout_constraintTop_toBottomOf="@id/chamada_id"
+            />
+
+        <Button
+            android:id="@+id/chamada_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/yellow_600"
+            android:text="@string/update"
+            app:layout_constraintEnd_toStartOf="@id/chamada_destroy"
+            app:layout_constraintStart_toEndOf="@id/chamada_read"
+            app:layout_constraintTop_toBottomOf="@id/chamada_id"
+            />
+
+        <Button
+            android:id="@+id/chamada_destroy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:text="@string/destroy"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/chamada_update"
+            app:layout_constraintTop_toBottomOf="@id/chamada_id"
+            />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+    <custom.VerticalRecycler
+        android:id="@+id/chamada_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        />
+
+</LinearLayout>

@@ -8,12 +8,19 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.exemplo.R;
 
+import java.util.List;
+
+import custom.ActHostItemBuilder;
+import custom.ExtFunKt;
+
+import static java.util.Arrays.asList;
+
 public class ActRecycler extends AppCompatActivity {
 
     RecyclerView recycler;
     RecyclerView.LayoutManager layoutManager;
     AdapterChamada adapter;
-    String[] chamada = {
+    List<String> chamada = asList(
             "Rafinha",
             "Henrique",
             "Xandão",
@@ -25,7 +32,7 @@ public class ActRecycler extends AppCompatActivity {
             "Eduardo",
             "Sandro",
             "Felipe",
-            "Gabriel"};
+            "Gabriel");
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,5 +44,6 @@ public class ActRecycler extends AppCompatActivity {
 
         recycler.setLayoutManager(layoutManager);
         recycler.setAdapter(adapter);
+
     }
 }
