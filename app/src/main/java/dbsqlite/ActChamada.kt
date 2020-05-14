@@ -1,4 +1,4 @@
-package data
+package dbsqlite
 
 import android.content.Context
 import android.view.View.OnClickListener
@@ -7,11 +7,22 @@ import android.widget.Toast.makeText
 import base.ActBind
 import com.example.exemplo.databinding.ActChamadaBinding
 import custom.*
+import dbsqlite.DataAccessSQLite.Companion.ID_PKA
+import dbsqlite.DataAccessSQLite.Companion.int
+import dbsqlite.DataAccessSQLite.Companion.string
 
 class ActChamada : ActBind<ActChamadaBinding>(ActChamadaBinding::class.java) {
 
-    private val factory by lazy { FactoryDataBase(this, "pessoas") }
-    private val access by lazy { AccessPessoa(this, factory) }
+    private val tableName = "pessoas"
+    private val tableParams = ID_PKA +
+            string("nome", 20) +
+            string("sobrenome", 20) +
+            int("idade", end = true)
+
+    private val dataAccess by lazy {
+        DataAccessPessoa(this, tableName, tableParams, 2)
+    }
+
     private val pessoas: MutableList<Pessoa> = mutableListOf()
 
     override fun ActChamadaBinding.onBoundView() {
@@ -20,7 +31,7 @@ class ActChamada : ActBind<ActChamadaBinding>(ActChamadaBinding::class.java) {
         chamadaUpdate.setOnClickListener(onUpdate())
         chamadaDestroy.setOnClickListener(onDestroyPessoa())
 
-        pessoas.update(access.read())
+        pessoas.update(dataAccess.read())
         chamadaRecycler.setup<ChamadaViewBuilder>(pessoas)
     }
 
@@ -30,40 +41,44 @@ class ActChamada : ActBind<ActChamadaBinding>(ActChamadaBinding::class.java) {
             chamadaSobrenome.string,
             chamadaIdade.int
         )
-        access.create(pessoa)
+        dataAccess.create(pessoa)
         pessoa.apply { toast("CREATE\n\n$nome\n$sobrenome\n$idade anos") }
-        update()
+        updateUI()
     }
 
     private fun ActChamadaBinding.onRead() = OnClickListener {
         if (chamadaId.string.isEmpty()) {
             var nomes = ""
-            for (pessoa in access.read()) {
+            for (pessoa in dataAccess.read()) {
                 nomes += pessoa.nome + "\n"
             }
             toast("READ\n\n$nomes")
         } else {
-            access.read(chamadaId.int)?.run {
+            dataAccess.read(chamadaId.int).run {
                 toast("READ\n\n$nome\n$sobrenome\n$idade anos")
             }
         }
-        update()
+        updateUI()
     }
 
     private fun onUpdate() = OnClickListener {
         binding.run {
-            Pessoa(chamadaNome.string, chamadaSobrenome.string, chamadaIdade.int).run {
-                access.update(chamadaId.int, this)
+            Pessoa(
+                chamadaNome.string,
+                chamadaSobrenome.string,
+                chamadaIdade.int
+            ).run {
+                dataAccess.update(chamadaId.int, this)
                 toast("UPDATE\n\n$nome\n$sobrenome\n$idade anos")
             }
         }
-        update()
+        updateUI()
     }
 
     private fun ActChamadaBinding.onDestroyPessoa() = OnClickListener {
-        access.destroy(chamadaId.int)
+        dataAccess.destroy(chamadaId.int)
         toast("DESTROY\n\nID ${chamadaId.int} destruído")
-        update()
+        updateUI()
     }
 
     // Abaixo funções auxiliares não mandatórios
@@ -72,11 +87,11 @@ class ActChamada : ActBind<ActChamadaBinding>(ActChamadaBinding::class.java) {
         makeText(this, message, LENGTH_LONG).show()
     }
 
-    private fun update() {
+    private fun updateUI() {
         limpaCampos()
-        pessoas.update(access.read())
+        pessoas.update(dataAccess.read())
         binding.chamadaRecycler.update()
-        hideSoftKeyBoard()
+        hideKeyBoard()
     }
 
     private fun limpaCampos() {

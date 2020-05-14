@@ -1,4 +1,4 @@
-package data
+package dbsqlite
 
 import com.example.exemplo.R
 import com.example.exemplo.databinding.ItemChamadaBinding

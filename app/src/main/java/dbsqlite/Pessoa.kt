@@ -1,4 +1,4 @@
-package data
+package dbsqlite
 
 //POKO
 //Não confundir com BOJO
@@ -11,4 +11,10 @@ data class Pessoa(
 ) {
     constructor(nome: String, sobrenome: String, idade: Int)
             : this(0, nome, sobrenome, idade)
+
+    companion object {
+        @JvmStatic
+        fun pessoaVazia() = Pessoa("N/A", "N/A", 0)
+    }
+
 }

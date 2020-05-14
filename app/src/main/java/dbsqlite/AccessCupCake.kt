@@ -1,7 +1,4 @@
-package data
-
-import android.content.Context
-import android.database.sqlite.SQLiteDatabase
+package dbsqlite
 
 //class AccessCupCake(val context: Context, private val banco: SQLiteDatabase) : CRUD<CupCake> {
 //    override fun create(objekt: CupCake) {

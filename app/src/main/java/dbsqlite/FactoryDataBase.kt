@@ -1,4 +1,4 @@
-package data
+package dbsqlite
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
@@ -6,12 +6,10 @@ import android.database.sqlite.SQLiteOpenHelper
 
 class FactoryDataBase(
     context: Context,
-    private val table: String = "semNome",
-    private val params: String = "id integer primary key autoincrement," +
-            "nome varchar (20)," +
-            "sobrenome varchar (20)," +
-            "idade integer"
-) : SQLiteOpenHelper(context, table, null, 1) {
+    private val table: String,
+    private val params: String,
+    private val version: Int = 1
+) : SQLiteOpenHelper(context, table, null, version) {
 
     override fun onCreate(database: SQLiteDatabase?) {
         database?.execSQL("create table $table($params)")

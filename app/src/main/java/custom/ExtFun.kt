@@ -1,9 +1,7 @@
 package custom
 
 import android.app.Activity
-import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
-import android.support.v4.content.ContextCompat.getSystemService
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
@@ -42,7 +40,7 @@ fun <T> MutableList<T>.update(collection: Collection<T>) {
     collection.forEach { add(it) }
 }
 
-fun Activity.hideSoftKeyBoard() =
+fun Activity.hideKeyBoard() =
     (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager?)?.run {
         if (currentFocus != null && isAcceptingText) {
             hideSoftInputFromWindow(currentFocus?.windowToken, 0)

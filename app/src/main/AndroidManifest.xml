@@ -55,7 +55,7 @@
         <activity android:name="viewpager.ActViewPager" />
         <activity android:name="viewpager.ActPager" />
         <activity android:name="fragment.ActComunicaFragsKotlin" />
-        <activity android:name="data.ActChamada" />
+        <activity android:name="dbsqlite.ActChamada" />
     </application>
 
 </manifest>

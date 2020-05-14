@@ -1,4 +1,4 @@
-package data
+package dbsqlite
 
 data class CupCake(
     val peso: Double,

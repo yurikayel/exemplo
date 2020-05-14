@@ -4,11 +4,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.inputmethod.InputMethodManager;
 
 import com.example.exemplo.R;
 
-import static custom.ExtFunKt.hideSoftKeyBoard;
+import static custom.ExtFunKt.hideKeyBoard;
 
 public class ActComunicaFrags extends AppCompatActivity implements ActivityContract {
 
@@ -30,18 +29,18 @@ public class ActComunicaFrags extends AppCompatActivity implements ActivityContr
     @Override
     public void setTextVermelho(String texto) {
         fragVermelho.setTextVermelho(texto);
-        hideSoftKeyBoard(this);
+        hideKeyBoard(this);
     }
 
     @Override
     public void setTextVerde(String texto) {
         fragVerde.setTextVerde(texto);
-        hideSoftKeyBoard(this);
+        hideKeyBoard(this);
     }
 
     @Override
     public void setTextAzul(String texto) {
         fragAzul.setTextAzul(texto);
-        hideSoftKeyBoard(this);
+        hideKeyBoard(this);
     }
 }
