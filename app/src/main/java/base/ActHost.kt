@@ -6,6 +6,7 @@ import binding.ActWhiskas
 import com.example.exemplo.databinding.ActHostBinding
 import custom.ActHostItemBuilder
 import custom.setup
+import dbroomkt.ActChamadaRoom
 import dbsqlite.ActChamada
 import debugging.ActDebugging
 import drawer.ActDrawer
@@ -40,7 +41,8 @@ class ActHost : ActBind<ActHostBinding>(ActHostBinding::class.java) {
         ActViewPager::class,
         ActPager::class,
         ActFragmentsKotlin::class,
-        ActChamada::class
+        ActChamada::class,
+        ActChamadaRoom::class
     )
 
     override fun ActHostBinding.onBoundView() {
