@@ -54,7 +54,7 @@ class ActChamada : ActBind<ActChamadaBinding>(ActChamadaBinding::class.java) {
             }
             toast("READ\n\n$nomes")
         } else {
-            dataAccess.read(chamadaId.int).run {
+            dataAccess.read(chamadaId.int)[0].run {
                 toast("READ\n\n$nome\n$sobrenome\n$idade anos")
             }
         }

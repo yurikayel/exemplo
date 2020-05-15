@@ -5,30 +5,32 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 
-abstract class DataAccessSQLite(
+abstract class DataAccessSQLite<Type>(
     context: Context,
     private val tableName: String,
     tableParams: String,
     version: Int = 1
-) {
+) : CRUD<Type> {
     abstract val cols: Array<String>
 
-    val banco: SQLiteDatabase by lazy {
+    private val banco: SQLiteDatabase by lazy {
         FactoryDataBase(context, tableName, tableParams, version).writableDatabase
     }
 
-    // Extras:
-
-    fun SQLiteDatabase.insert(values: ContentValues.() -> Unit) {
-        insert(tableName, null, ContentValues().apply(values))
+    fun insert(values: ContentValues.() -> Unit) {
+        banco.insert(tableName, null, ContentValues().apply(values))
     }
 
-    fun SQLiteDatabase.query(selection: String? = null, lambda: Cursor.() -> Any) {
+    fun query(
+        selection: String? = null,
+        args: Array<String>? = null,
+        lambda: Cursor.() -> Any
+    ) {
         val cursor = banco.query(
             tableName,
             cols,
             selection,
-            null,
+            args,
             null,
             null,
             null
@@ -37,18 +39,20 @@ abstract class DataAccessSQLite(
         cursor.close()
     }
 
-    fun SQLiteDatabase.update(whereClause: String, id: Int, values: ContentValues.() -> Unit) {
+    fun update(whereClause: String, id: Int, values: ContentValues.() -> Unit) {
         banco.update(tableName, ContentValues().apply(values), whereClause, arrayOf(id.toString()))
     }
 
-    fun SQLiteDatabase.delete(whereClause: String, id: Int) {
+    fun delete(whereClause: String, id: Int) {
         banco.delete(tableName, whereClause, arrayOf(id.toString()))
     }
 
     companion object {
-        const val ID_PKA = "id integer primary key autoincrement"
         const val WHERE_ID_IS = "id = ?"
         const val VIRGULA = ","
+        const val ID_PKA = "id integer primary key autoincrement$VIRGULA"
+
+        fun where(col: String) = "$col = ?"
 
         fun string(string: CharSequence, size: Int, end: Boolean = false) =
             "$string varchar ($size)${if (end) "" else ","}"

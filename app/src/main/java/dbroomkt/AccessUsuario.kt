@@ -2,9 +2,8 @@ package dbroomkt
 
 import android.arch.persistence.room.*
 
-
 @Dao
-interface UsuarioDao {
+interface AccessUsuario {
 
     @Query("SELECT * FROM usuario")
     fun puxaTodaLista(): MutableList<Usuario>

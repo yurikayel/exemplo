@@ -8,7 +8,7 @@ class FactoryDataBase(
     context: Context,
     private val table: String,
     private val params: String,
-    private val version: Int = 1
+    version: Int = 1
 ) : SQLiteOpenHelper(context, table, null, version) {
 
     override fun onCreate(database: SQLiteDatabase?) {

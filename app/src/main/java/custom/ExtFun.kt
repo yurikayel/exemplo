@@ -8,7 +8,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import custom.adapter.RecyclerViewBuilder
 import custom.adapter.RecyclerViewHolder
-import dbroom.User
 
 fun <T> Collection<T>.get(index: Int): T {
     forEachIndexed { indexed, element -> if (indexed == index) return element }

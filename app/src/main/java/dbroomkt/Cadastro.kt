@@ -4,8 +4,8 @@ import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 
-@Entity(tableName = "usuario")
-data class Usuario(
+@Entity(tableName = "cadastro")
+data class Cadastro(
 
     @PrimaryKey(autoGenerate = true)
     var id: Int,
