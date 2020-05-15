@@ -2,40 +2,34 @@ package thread
 
 import base.ActBind
 import com.example.exemplo.databinding.ActThreadBinding
+import custom.int
 import custom.toast
 
 class ActThread : ActBind<ActThreadBinding>(ActThreadBinding::class.java) {
 
-    var stopThread = false
+    var run = false
 
     override fun ActThreadBinding.onBoundView() {
         threadWhiskas.setOnCheckedChangeListener { switch, isChecked ->
             toast(if (isChecked) "whiskas" else "sache")
         }
 
-        threadStart.setOnClickListener { startThread() }
-        threadStart.setOnClickListener { stopThread() }
+        threadStart.setOnClickListener {
+            run = true
+            val numeroInserido = threadInput.int
+            Thread(runnable(numeroInserido)).start()
+        }
+
+        threadStop.setOnClickListener {
+            run = false
+        }
     }
 
-    fun startThread() {
-        stopThread = false
-        Thread(exampleRunnable(binding.threadInput.toString().toInt())).start()
-    }
-
-    fun stopThread() {
-        stopThread = true
-    }
-
-    private fun exampleRunnable(seconds: Int) = object : Runnable {
-        override fun run() {
-            for (second in 0 until seconds) {
-                if (stopThread) return
+    private fun runnable(seconds: Int) = Runnable {
+        for (second in 0..seconds) {
+            if (run) {
                 runOnUiThread { binding.threadStart.text = second.toString() }
-                try {
-                    Thread.sleep(1000)
-                } catch (e: InterruptedException) {
-                    e.printStackTrace()
-                }
+                Thread.sleep(1000)
             }
         }
     }

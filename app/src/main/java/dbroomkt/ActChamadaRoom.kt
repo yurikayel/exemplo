@@ -27,22 +27,22 @@ class ActChamadaRoom : ActBind<ActChamadaBinding>(ActChamadaBinding::class.java)
     }
 
     private fun ActChamadaBinding.onCreateUsuario() = OnClickListener {
-        val pessoa = Usuario(
+        val usuario = Usuario(
             0,
             chamadaNome.string,
             chamadaSobrenome.string,
             chamadaIdade.int
         )
-        accessUsuario.inserir(pessoa)
-        pessoa.apply { toast("CREATE\n\n$nome\n$sobrenome\n$idade anos") }
+        Thread(Runnable { accessUsuario.inserir(usuario) }).start()
+        usuario.apply { toast("CREATE\n\n$nome\n$sobrenome\n$idade anos") }
         updateUI()
     }
 
     private fun ActChamadaBinding.onRead() = OnClickListener {
         if (chamadaId.string.isEmpty()) {
             var nomes = ""
-            for (pessoa in accessUsuario.puxaTodaLista()) {
-                nomes += pessoa.nome + "\n"
+            for (usuario in accessUsuario.puxaTodaLista()) {
+                nomes += usuario.nome + "\n"
             }
             toast("READ\n\n$nomes")
         } else {
@@ -93,5 +93,4 @@ class ActChamadaRoom : ActBind<ActChamadaBinding>(ActChamadaBinding::class.java)
         binding.chamadaSobrenome.setText("")
         binding.chamadaIdade.setText("")
     }
-
 }
