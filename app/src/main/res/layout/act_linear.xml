@@ -2,15 +2,17 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/Vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/blue_100"
+    android:orientation="vertical"
     >
 
     <TextView
         style="@style/Item"
         android:background="@color/green_500"
         android:gravity="center"
-        android:text="TextView em LinearLayout"
+        android:text="@string/textview_em_linearlayout"
         android:textColor="@color/black"
         android:textSize="16sp"
         />
@@ -18,13 +20,15 @@
     <Button
         style="@style/Item"
         android:background="@color/yellow_500"
-        android:text="Button"
+        android:text="@string/button"
         />
 
     <EditText
         style="@style/Item"
+        android:autofillHints="@string/whiskas_sache"
         android:background="@color/pink_500"
-        android:hint="EditText"
+        android:hint="@string/edittext"
+        android:inputType="text"
         android:padding="16dp"
         />
 
@@ -38,23 +42,24 @@
             style="@style/Item"
             android:layout_height="match_parent"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/fundopc"
             android:alpha="0.05"
+            android:background="@drawable/fundopc"
             />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:contentDescription="@string/imagem"
             android:src="@drawable/ic_launcher_foreground"
             />
 
         <TextView
             style="@style/Item"
             android:layout_gravity="bottom"
-            android:gravity="center"
-            android:text="TextView em FrameLayout"
             android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="@string/textview_em_framelayout"
             android:textColor="@color/black"
             android:textSize="16sp"
             />
@@ -78,22 +83,23 @@
             android:id="@+id/droid"
             android:layout_width="108dp"
             android:layout_height="108dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/imagem"
             android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/droid"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="TextView em ConstraintLayout"
+            android:text="@string/textview_em_constraintlayout"
             android:textColor="@color/black"
             android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/droid"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             />
 
     </android.support.constraint.ConstraintLayout>

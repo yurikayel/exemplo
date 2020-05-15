@@ -19,6 +19,7 @@ import intent.ActVermelha
 import navdrawer.ActNavDrawer
 import recycler.ActRecycler
 import revisao.ActCadastro
+import thread.ActThread
 import viewpager.ActPager
 import viewpager.ActViewPager
 
@@ -42,7 +43,8 @@ class ActHost : ActBind<ActHostBinding>(ActHostBinding::class.java) {
         ActPager::class,
         ActFragmentsKotlin::class,
         ActChamada::class,
-        ActChamadaRoom::class
+        ActChamadaRoom::class,
+        ActThread::class
     )
 
     override fun ActHostBinding.onBoundView() {

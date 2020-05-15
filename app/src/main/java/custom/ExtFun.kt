@@ -1,11 +1,13 @@
 package custom
 
 import android.app.Activity
+import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.Toast
 import custom.adapter.RecyclerViewBuilder
 import custom.adapter.RecyclerViewHolder
 
@@ -54,3 +56,7 @@ val Int.isOdd get() = this % 2 != 0
 val EditText.string get() = text.toString()
 
 val EditText.int get() = string.toInt()
+
+fun Context.toast(message: String) {
+    Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+}

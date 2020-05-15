@@ -67,4 +67,12 @@
     <string name="sobrenome">sobrenome</string>
     <string name="idade">idade</string>
     <string name="nhe">nhe</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="segundos">segundos</string>
+    <string name="textview_em_linearlayout">TextView em LinearLayout</string>
+    <string name="button">Button</string>
+    <string name="edittext">EditText</string>
+    <string name="textview_em_framelayout">TextView em FrameLayout</string>
+    <string name="textview_em_constraintlayout">TextView em ConstraintLayout</string>
 </resources>
