@@ -1,17 +1,16 @@
 package thread
 
-import android.content.Context
-import custom.toast
+class ExemploThread : Thread() {
 
-class ExemploThread(val context: Context, private val segundos: Int) : Thread() {
     override fun run() {
-        for (segundo in 0 until segundos) {
-            context.toast(segundo.toString())
-            try {
-                sleep(1000)
-            } catch (e: InterruptedException) {
-                e.printStackTrace()
-            }
-        }
+
     }
+
 }
+//
+//doAsync {
+//    // bloco de código rodando em outra thread
+//    onPost {
+//        // após chamada acima, que é assíncrona, faça isso aqui
+//    }
+//}

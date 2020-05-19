@@ -10,9 +10,6 @@ import com.example.exemplo.R;
 
 import java.util.List;
 
-import custom.ActHostItemBuilder;
-import custom.ExtFunKt;
-
 import static java.util.Arrays.asList;
 
 public class ActRecycler extends AppCompatActivity {
@@ -39,7 +36,8 @@ public class ActRecycler extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_recycler);
         recycler = findViewById(R.id.recycler);
-        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        layoutManager = new LinearLayoutManager(
+                this, LinearLayoutManager.VERTICAL, false);
         adapter = new AdapterChamada(chamada);
 
         recycler.setLayoutManager(layoutManager);

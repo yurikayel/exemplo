@@ -9,7 +9,7 @@
     >
 
     <Switch
-        android:id="@+id/thread_whiskas"
+        android:id="@+id/thread_chave"
         style="@style/WRAP_CONTENT"
         />
 
@@ -17,6 +17,7 @@
         android:id="@+id/thread_input"
         style="@style/WRAP_CONTENT"
         android:autofillHints="@string/whiskas_sache"
+        android:gravity="center"
         android:hint="@string/segundos"
         android:inputType="number"
         />
@@ -31,6 +32,13 @@
         android:id="@+id/thread_stop"
         style="@style/Button"
         android:text="@string/stop"
+        />
+
+    <Button
+        android:id="@+id/thread_ui"
+        style="@style/Button"
+        android:background="@color/red_500"
+        android:text="@string/ui"
         />
 
 </LinearLayout>

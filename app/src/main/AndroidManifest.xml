@@ -58,6 +58,8 @@
         <activity android:name="dbsqlite.ActChamada" />
         <activity android:name="dbroomkt.ActChamadaRoom" />
         <activity android:name="thread.ActThread" />
+        <activity android:name="dbroomkt.ActivityChamadaRoom" />
+        <activity android:name="thread.ActAsync" />
     </application>
 
 </manifest>

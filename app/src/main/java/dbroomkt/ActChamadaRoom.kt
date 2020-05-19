@@ -40,11 +40,14 @@ class ActChamadaRoom : ActBind<ActChamadaBinding>(ActChamadaBinding::class.java)
 
     private fun ActChamadaBinding.onRead() = OnClickListener {
         if (chamadaId.string.isEmpty()) {
-            var nomes = ""
-            for (usuario in accessUsuario.puxaTodaLista()) {
-                nomes += usuario.nome + "\n"
+            val aoLerItem = Runnable {
+                var nomes = ""
+                for (usuario in accessUsuario.puxaTodaLista()) {
+                    nomes += usuario.nome + "\n"
+                }
+                runOnUiThread { toast("READ\n\n$nomes") }
             }
-            toast("READ\n\n$nomes")
+            Thread(aoLerItem).start()
         } else {
             accessUsuario.encontrarPorId(chamadaId.int).run {
                 toast("READ\n\n$nome\n$sobrenome\n$idade anos")
@@ -54,24 +57,28 @@ class ActChamadaRoom : ActBind<ActChamadaBinding>(ActChamadaBinding::class.java)
     }
 
     private fun onUpdate() = OnClickListener {
-        binding.run {
-            Usuario(
-                chamadaId.int,
-                chamadaNome.string,
-                chamadaSobrenome.string,
-                chamadaIdade.int
-            ).run {
-                accessUsuario.atualizar(this)
-                toast("UPDATE\n\n$nome\n$sobrenome\n$idade anos")
+        Thread(Runnable {
+            binding.run {
+                Usuario(
+                    chamadaId.int,
+                    chamadaNome.string,
+                    chamadaSobrenome.string,
+                    chamadaIdade.int
+                ).run {
+                    accessUsuario.atualizar(this)
+                    toast("UPDATE\n\n$nome\n$sobrenome\n$idade anos")
+                }
             }
-        }
-        updateUI()
+            runOnUiThread { updateUI() }
+        }).start()
     }
 
     private fun ActChamadaBinding.onDestroyUsuario() = OnClickListener {
-        accessUsuario.deletar(Usuario(chamadaId.int, "", "", 0))
-        toast("DESTROY\n\nID ${chamadaId.int} destruído")
-        updateUI()
+        Thread(Runnable {
+            accessUsuario.deletar(Usuario(chamadaId.int, "", "", 0))
+            toast("DESTROY\n\nID ${chamadaId.int} destruído")
+            runOnUiThread { updateUI() }
+        }).start()
     }
 
     // Abaixo funções auxiliares não mandatórios
