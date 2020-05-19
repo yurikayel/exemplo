@@ -12,23 +12,17 @@ class ActAsync : ActBind<ActThreadBinding>(ActThreadBinding::class.java) {
 
             preExecute {
 
-                runOnUiThread {
 
-                }
             }
 
             onUpdate {
 
-                runOnUiThread {
 
-                }
             }
 
             postExecute {
 
-                runOnUiThread {
 
-                }
             }
         }
     }
