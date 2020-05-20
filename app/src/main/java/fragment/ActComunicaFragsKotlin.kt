@@ -1,12 +1,11 @@
 package fragment
 
-import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
-import android.view.inputmethod.InputMethodManager
 import com.example.exemplo.R
+import custom.hideKeyBoard
 
 class ActComunicaFragsKotlin : AppCompatActivity(), ActivityContract {
 
@@ -36,23 +35,16 @@ class ActComunicaFragsKotlin : AppCompatActivity(), ActivityContract {
 //        if(fragVermelho != null){
 //            fragVermelho.setTextVermelho(texto)
 //        }
-        escondeTeclado()
+        hideKeyBoard()
     }
 
     override fun setTextVerde(texto: String) {
         (fragVerde as FragVerde).setTextVerde(texto)
-        escondeTeclado()
+        hideKeyBoard()
     }
 
     override fun setTextAzul(texto: String) {
         fragAzul.setTextAzul(texto)
-        escondeTeclado()
-    }
-
-    private fun escondeTeclado() {
-        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        if (imm != null && currentFocus != null && imm.isAcceptingText) { // verify if the soft keyboard is open
-            imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
-        }
+        hideKeyBoard()
     }
 }

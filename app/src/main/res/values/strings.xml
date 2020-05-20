@@ -76,4 +76,7 @@
     <string name="textview_em_framelayout">TextView em FrameLayout</string>
     <string name="textview_em_constraintlayout">TextView em ConstraintLayout</string>
     <string name="ui">Travar a Tela</string>
+    <string name="par_ou_impar">Par ou ímpar?</string>
+    <string name="is_par">Este número é PAR</string>
+    <string name="is_impar">Este número é ÍMPAR</string>
 </resources>

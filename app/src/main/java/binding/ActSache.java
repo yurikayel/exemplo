@@ -8,8 +8,10 @@ import base.ActBind;
 
 public class ActSache extends ActBind<ActSacheBinding> {
 
-    public ActSache() {
-        super(ActSacheBinding.class);
+    @NotNull
+    @Override
+    public Class<ActSacheBinding> getBindClass() {
+        return ActSacheBinding.class;
     }
 
     @Override

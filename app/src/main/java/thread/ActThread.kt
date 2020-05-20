@@ -5,7 +5,9 @@ import com.example.exemplo.databinding.ActThreadBinding
 import custom.int
 import custom.toast
 
-class ActThread : ActBind<ActThreadBinding>(ActThreadBinding::class.java) {
+class ActThread : ActBind<ActThreadBinding>() {
+
+    override val bindClass = ActThreadBinding::class.java
 
     var run = false
 

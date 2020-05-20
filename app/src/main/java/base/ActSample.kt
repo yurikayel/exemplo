@@ -1,18 +1,13 @@
 package base
 
-import android.arch.lifecycle.ViewModel
 import android.os.Bundle
 import com.example.exemplo.databinding.ActSampleBinding
 
-class ActSample : ActBind<ActSampleBinding>(ActSampleBinding::class.java){
+class ActSample : ActBind<ActSampleBinding>() {
 
-    override var viewModel: ViewModel? = null
+    override val bindClass = ActSampleBinding::class.java
 
     override fun Bundle.onExtras() {
-
-    }
-
-    override fun ViewModel.onViewModel() {
 
     }
 

@@ -1,8 +1,11 @@
 package custom
 
 import android.app.Activity
+import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
+import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
@@ -60,3 +63,13 @@ val EditText.int get() = string.toInt()
 fun Context.toast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_LONG).show()
 }
+
+fun String.isDigit(): Boolean {
+    for (char in this) {
+        if (!char.isDigit()) return false
+    }
+    return true
+}
+
+inline fun <reified T : ViewModel> FragmentActivity.newViewModel(): T =
+    ViewModelProviders.of(this).get(T::class.java)

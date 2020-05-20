@@ -16,6 +16,7 @@ import fragment.ActFragmentsKotlin
 import intent.ActAzul
 import intent.ActVerde
 import intent.ActVermelha
+import mvvm.ActArquitetura
 import navdrawer.ActNavDrawer
 import recycler.ActRecycler
 import revisao.ActCadastro
@@ -23,7 +24,9 @@ import thread.ActThread
 import viewpager.ActPager
 import viewpager.ActViewPager
 
-class ActHost : ActBind<ActHostBinding>(ActHostBinding::class.java) {
+class ActHost : ActBind<ActHostBinding>() {
+
+    override val bindClass = ActHostBinding::class.java
 
     private val list = listOf(
         ActVermelha::class,
@@ -44,7 +47,8 @@ class ActHost : ActBind<ActHostBinding>(ActHostBinding::class.java) {
         ActFragmentsKotlin::class,
         ActChamada::class,
         ActChamadaRoom::class,
-        ActThread::class
+        ActThread::class,
+        ActArquitetura::class
     )
 
     override fun ActHostBinding.onBoundView() {

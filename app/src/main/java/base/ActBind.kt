@@ -1,19 +1,20 @@
 package base
 
-import android.content.Context
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.viewbinding.ViewBinding
 
-abstract class ActBind<T : ViewBinding>(private val clazz: Class<T>) : ActBase() {
+abstract class ActBind<T : ViewBinding> : ActBase() {
 
+    abstract val bindClass: Class<T>
     lateinit var binding: T
 
-    val context: Context by lazy { binding.root.context }
+    val activity by lazy { binding.root.context as AppCompatActivity }
 
     @Suppress("UNCHECKED_CAST")
     fun inflate() =
-        clazz.getMethod("inflate", LayoutInflater::class.java)
+        bindClass.getMethod("inflate", LayoutInflater::class.java)
             .invoke(null, layoutInflater) as T
 
     override fun onCreate(savedInstanceState: Bundle?) {

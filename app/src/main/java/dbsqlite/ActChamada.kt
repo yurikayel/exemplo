@@ -11,7 +11,9 @@ import dbsqlite.DataAccessSQLite.Companion.ID_PKA
 import dbsqlite.DataAccessSQLite.Companion.int
 import dbsqlite.DataAccessSQLite.Companion.string
 
-class ActChamada : ActBind<ActChamadaBinding>(ActChamadaBinding::class.java) {
+class ActChamada : ActBind<ActChamadaBinding>() {
+
+    override val bindClass = ActChamadaBinding::class.java
 
     private val tableName = "pessoas"
     private val tableParams = ID_PKA +

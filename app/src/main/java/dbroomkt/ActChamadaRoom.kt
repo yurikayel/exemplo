@@ -8,7 +8,9 @@ import base.ActBind
 import com.example.exemplo.databinding.ActChamadaBinding
 import custom.*
 
-class ActChamadaRoom : ActBind<ActChamadaBinding>(ActChamadaBinding::class.java) {
+class ActChamadaRoom : ActBind<ActChamadaBinding>() {
+
+    override val bindClass = ActChamadaBinding::class.java
 
     private val accessUsuario by lazy {
         DatabaseBuilder.getAppDatabase(this).accessUsuario()

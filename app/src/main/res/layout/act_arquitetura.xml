@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple_400"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
+
+    <EditText
+        android:id="@+id/arq_input"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:textSize="24sp"
+        />
+
+    <Button
+        android:id="@+id/arq_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/par_ou_impar"
+        android:textSize="24sp"
+        />
+
+    <TextView
+        android:id="@+id/arq_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:textSize="24sp"
+        tools:text="O número é par"
+        />
+
+
+</LinearLayout>

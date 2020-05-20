@@ -3,7 +3,9 @@ package thread
 import base.ActBind
 import com.example.exemplo.databinding.ActThreadBinding
 
-class ActAsync : ActBind<ActThreadBinding>(ActThreadBinding::class.java) {
+class ActAsync : ActBind<ActThreadBinding>() {
+
+    override val bindClass = ActThreadBinding::class.java
 
     //TODO PENDENTE DE TESTES
 
@@ -12,16 +14,13 @@ class ActAsync : ActBind<ActThreadBinding>(ActThreadBinding::class.java) {
 
             preExecute {
 
-
             }
 
             onUpdate {
 
-
             }
 
             postExecute {
-
 
             }
         }
