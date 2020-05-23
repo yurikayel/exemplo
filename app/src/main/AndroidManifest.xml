@@ -60,6 +60,7 @@
         <activity android:name="thread.ActThread" />
         <activity android:name="thread.ActAsync" />
         <activity android:name="mvvm.ActArquitetura" />
+        <activity android:name="retrofit.ActRetroFit" />
     </application>
 
 </manifest>

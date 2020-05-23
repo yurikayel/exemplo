@@ -18,6 +18,8 @@ class LazyDialog(
     theme: Int = R.attr.alertDialogTheme
 ) : AlertDialog.Builder(context, context.resolveAttribute(theme)) {
 
+    constructor(context: Context) : this(context, "", "")
+
     var textPositive = "OK!"
     var textNeutral = "Isentão"
     var textNegative = "NO!"
@@ -27,6 +29,7 @@ class LazyDialog(
     var onNegative = DialogInterface.OnClickListener { _, _ -> context.toast(textNegative) }
 
     init {
+        setView(0)
         setTitle(title)
         setMessage(message)
         setPositiveButton(textPositive, onPositive)

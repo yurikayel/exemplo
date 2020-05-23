@@ -19,8 +19,11 @@ fun <T> Collection<T>.get(index: Int): T {
     throw IndexOutOfBoundsException()
 }
 
-inline fun <reified Builder : RecyclerViewBuilder<*, *>> RecyclerView.setup(list: Collection<*>) =
-    recyclerAdapter<Builder>(list).apply { adapter = this }
+inline fun <reified Builder : RecyclerViewBuilder<*, *>>
+        RecyclerView.setup(list: Collection<*>): RecyclerView {
+    adapter = recyclerAdapter<Builder>(list)
+    return this
+}
 
 inline fun <reified Builder : RecyclerViewBuilder<*, *>> recyclerAdapter(collection: Collection<*>) =
     object : RecyclerAdapter<RecyclerViewHolder>(collection) {
@@ -46,11 +49,9 @@ fun <T> MutableList<T>.update(collection: MutableList<T>) {
 }
 
 fun Activity.hideKeyBoard() =
-    (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager?)?.run {
-        if (currentFocus != null && isAcceptingText) {
-            hideSoftInputFromWindow(currentFocus?.windowToken, 0)
-        }
-    }
+    (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager?)
+        ?.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+
 
 val Int.isEven get() = this % 2 == 0
 
@@ -73,3 +74,26 @@ fun String.isDigit(): Boolean {
 
 inline fun <reified T : ViewModel> FragmentActivity.newViewModel(): T =
     ViewModelProviders.of(this).get(T::class.java)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

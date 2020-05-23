@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import debugging.ExceptionHandler
 
-open class ActBase(val layout: Any? = null) : AppCompatActivity() {
+open class ActBase(open val layout: Any? = null) : AppCompatActivity() {
 
     companion object {
         @JvmStatic lateinit var currentActivity: AppCompatActivity
@@ -16,8 +16,8 @@ open class ActBase(val layout: Any? = null) : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         Thread.setDefaultUncaughtExceptionHandler(exceptionHandler)
         when (layout) {
-            is Int -> setContentView(layout)
-            is View -> setContentView(layout)
+            is Int -> setContentView(layout as Int)
+            is View -> setContentView(layout as View)
         }
         intent?.extras?.onExtras()
         onView()
