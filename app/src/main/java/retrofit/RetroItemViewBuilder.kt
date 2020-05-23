@@ -6,7 +6,7 @@ import custom.adapter.RecyclerViewBuilder
 import custom.get
 import custom.isOdd
 
-class RetroItemViewBuilder : RecyclerViewBuilder<Int, ItemChamadaBinding>() {
+class RetroItemViewBuilder<T> : RecyclerViewBuilder<T, ItemChamadaBinding>() {
 
     override val bindClass = ItemChamadaBinding::class.java
 
