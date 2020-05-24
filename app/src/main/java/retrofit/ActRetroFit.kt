@@ -7,13 +7,13 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.LinearLayout
 import base.ActBase
 import custom.VerticalRecycler
-import custom.asList
+import custom.listOfRange
 import custom.setup
 
 class ActRetroFit : ActBase() {
 
-    val list = ('A'..'Z').asList()
-    lateinit var recyclerView: RecyclerView
+    val list = listOfRange('A'..'Z')
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,5 +22,4 @@ class ActRetroFit : ActBase() {
         recyclerView.setup<RetroItemViewBuilder<Char>>(list)
         setContentView(recyclerView)
     }
-
 }

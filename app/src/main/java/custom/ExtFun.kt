@@ -75,9 +75,9 @@ fun String.isDigit(): Boolean {
 inline fun <reified T : ViewModel> FragmentActivity.newViewModel(): T =
     ViewModelProviders.of(this).get(T::class.java)
 
-fun <T : Comparable<T>> Iterable<T>.asList(): MutableList<T> {
+fun <T : Comparable<T>> listOfRange(iterable: Iterable<T>): MutableList<T> {
     val list = mutableListOf<T>()
-    forEach { list.add(it) }
+    iterable.forEach { list.add(it) }
     return list
 }
 

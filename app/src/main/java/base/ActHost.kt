@@ -19,6 +19,7 @@ import intent.ActVermelha
 import mvvm.ActArquitetura
 import navdrawer.ActNavDrawer
 import recycler.ActRecycler
+import retrofit.ActRandom
 import retrofit.ActRetroFit
 import revisao.ActCadastro
 import thread.ActThread
@@ -50,7 +51,8 @@ class ActHost : ActBind<ActHostBinding>() {
         ActChamadaRoom::class,
         ActThread::class,
         ActArquitetura::class,
-        ActRetroFit::class
+        ActRetroFit::class,
+        ActRandom::class
     )
 
     override fun ActHostBinding.onBoundView() {
