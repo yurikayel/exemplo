@@ -79,4 +79,5 @@
     <string name="par_ou_impar">Par ou ímpar?</string>
     <string name="is_par">Este número é PAR</string>
     <string name="is_impar">Este número é ÍMPAR</string>
+    <string name="randomizar">Randomizar</string>
 </resources>
