@@ -20,5 +20,4 @@ class ChamadaViewBuilder : RecyclerViewBuilder<Pessoa, ItemChamadaBinding>() {
             chamadaItemId.text = id.toString()
         }
     }
-
 }

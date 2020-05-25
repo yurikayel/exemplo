@@ -5,9 +5,9 @@ import android.support.v7.app.AppCompatActivity
 import android.viewbinding.ViewBinding
 import custom.adapter.InflateBinding
 
-abstract class ActBind<T : ViewBinding> : ActBase(), InflateBinding {
+abstract class ActBind<Binding : ViewBinding> : ActBase(), InflateBinding {
 
-    abstract val binding: T
+    abstract val binding: Binding
 
     val activity by lazy { binding.root.context as AppCompatActivity }
 
@@ -17,7 +17,7 @@ abstract class ActBind<T : ViewBinding> : ActBase(), InflateBinding {
         binding.onBoundView()
     }
 
-    abstract fun T.onBoundView()
+    abstract fun Binding.onBoundView()
 }
 
 
