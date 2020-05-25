@@ -1,25 +1,41 @@
 package retrofit
 
-import android.os.Bundle
-import android.support.v7.widget.RecyclerView
-import android.view.ViewGroup.LayoutParams.MATCH_PARENT
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import android.widget.LinearLayout
-import base.ActBase
-import custom.VerticalRecycler
-import custom.listOfRange
-import custom.setup
+import base.ActBind
+import com.example.exemplo.databinding.ActRandomBinding
+import retrofit.RetroInit.Companion.retroFit
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class ActRetroFit : ActBase() {
+private var AppId = "2e65127e909e178d0af311a81f39948c"
+private var lat = "35"
+private var lon = "139"
 
-    val list = listOfRange('A'..'Z')
-    private lateinit var recyclerView: RecyclerView
+class ActRetroFit : ActBind<ActRandomBinding>(), Callback<WeatherResponse> {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        recyclerView = VerticalRecycler(this)
-        recyclerView.layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
-        recyclerView.setup<RetroItemViewBuilder<Char>>(list)
-        setContentView(recyclerView)
+    override val bindClass = ActRandomBinding::class.java
+    private val weatherService = retroFit(WeatherService::class, "https://api.openweathermap.org/")
+
+    override fun ActRandomBinding.onBoundView() {
+        randomButton.text = "Consultar o Tempo"
+        randomButton.setOnClickListener { getWeather(lat, lon, AppId) }
+    }
+
+    private fun getWeather(lat: String, lon: String, AppId: String) =
+        weatherService.getCurrentWeatherData(lat, lon, AppId).enqueue(this@ActRetroFit)
+
+    override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {
+        binding.randomText.text = if (response.code() == 200) response.body()?.run {
+            "Country: " + sys?.country + "\n" +
+            "Temperature: " + main?.temp + "\n" +
+            "Temperature(Min): " + main?.temp_min + "\n" +
+            "Temperature(Max): " + main?.temp_max + "\n" +
+            "Humidity: " + main?.humidity + "\n" +
+            "Pressure: " + main?.pressure
+        } else "Erro de Back End"
+    }
+
+    override fun onFailure(call: Call<WeatherResponse>, throwable: Throwable) {
+        binding.randomText.text = throwable.message
     }
 }

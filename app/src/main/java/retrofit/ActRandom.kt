@@ -12,7 +12,9 @@ class ActRandom : ActBind<ActRandomBinding>() {
     override fun ActRandomBinding.onBoundView() {
         randomButton.setOnClickListener {
             var textoRandomizado = "Lista Randomizada\nde 1 a 20:\n"
-            randomizeIndexes(list.size).forEach { randIndex -> textoRandomizado += "\n" + list[randIndex] }
+            randomizeIndexes(list.size).forEach { randIndex ->
+                textoRandomizado += "\n" + list[randIndex]
+            }
             randomText.text = textoRandomizado
         }
     }
