@@ -10,8 +10,8 @@ public class ActSampleJava extends ActBind<ActSampleBinding> {
 
     @NotNull
     @Override
-    public Class<ActSampleBinding> getBindClass() {
-        return ActSampleBinding.class;
+    public ActSampleBinding getBinding() {
+        return bind(this, ActSampleBinding.class);
     }
 
     @Override

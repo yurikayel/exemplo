@@ -8,10 +8,6 @@ private val gsonConverter: GsonConverterFactory = GsonConverterFactory.create()
 
 class RetroInit(url: String) {
 
-    companion object {
-        fun <T : Any> retroFit(klass: KClass<T>, url: String) = RetroInit(url).create(klass)
-    }
-
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(url)
         .addConverterFactory(gsonConverter)

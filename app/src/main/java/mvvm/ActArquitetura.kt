@@ -11,7 +11,7 @@ import custom.toast
 
 class ActArquitetura : ActBind<ActArquiteturaBinding>() {
 
-    override val bindClass = ActArquiteturaBinding::class.java
+    override val binding by lazy { bind(ActArquiteturaBinding::class) }
     private val viewModel by lazy { newViewModel<ViewModelArquitetura>() }
 
     override fun ActArquiteturaBinding.onBoundView() {

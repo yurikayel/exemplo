@@ -6,7 +6,7 @@ import custom.listOfRange
 
 class ActRandom : ActBind<ActRandomBinding>() {
 
-    override val bindClass = ActRandomBinding::class.java
+    override val binding by lazy { bind(ActRandomBinding::class) }
     val list = listOfRange(1..20)
 
     override fun ActRandomBinding.onBoundView() {

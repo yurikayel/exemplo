@@ -8,7 +8,7 @@ import com.example.exemplo.databinding.RecyclerViewItemBinding
 
 class ViewBuilderExemplo : RecyclerViewBuilder<String, RecyclerViewItemBinding>() {
 
-    override val bindClass = RecyclerViewItemBinding::class.java
+    override val binding by lazy { bind(RecyclerViewItemBinding::class) }
 
     override fun RecyclerViewItemBinding.onBind(position: Int) {
         val string = collection.get(position)

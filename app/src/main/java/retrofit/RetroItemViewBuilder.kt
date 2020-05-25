@@ -8,7 +8,7 @@ import custom.isOdd
 
 class RetroItemViewBuilder<T> : RecyclerViewBuilder<T, ItemChamadaBinding>() {
 
-    override val bindClass = ItemChamadaBinding::class.java
+    override val binding by lazy { bind(ItemChamadaBinding::class) }
 
     override fun ItemChamadaBinding.onBind(position: Int) {
         root.setBackgroundColor(context.getColor(if (position.isOdd) R.color.amber_50 else R.color.indigo_50))

@@ -5,7 +5,7 @@ import com.example.exemplo.databinding.ActSampleBinding
 
 class ActSample : ActBind<ActSampleBinding>() {
 
-    override val bindClass = ActSampleBinding::class.java
+    override val binding by lazy { bind(ActSampleBinding::class) }
 
     override fun Bundle.onExtras() {
 

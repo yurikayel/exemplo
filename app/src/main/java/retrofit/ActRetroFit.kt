@@ -2,7 +2,6 @@ package retrofit
 
 import base.ActBind
 import com.example.exemplo.databinding.ActRandomBinding
-import retrofit.RetroInit.Companion.retroFit
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -10,11 +9,13 @@ import retrofit2.Response
 private var AppId = "2e65127e909e178d0af311a81f39948c"
 private var lat = "35"
 private var lon = "139"
+private var url = "https://api.openweathermap.org/"
+private var service = WeatherService::class
 
 class ActRetroFit : ActBind<ActRandomBinding>(), Callback<WeatherResponse> {
 
-    override val bindClass = ActRandomBinding::class.java
-    private val weatherService = retroFit(WeatherService::class, "https://api.openweathermap.org/")
+    override val binding by lazy { bind(ActRandomBinding::class) }
+    private val weatherService = RetroInit(url).create(service)
 
     override fun ActRandomBinding.onBoundView() {
         randomButton.text = "Consultar o Tempo"

@@ -5,7 +5,7 @@ import custom.adapter.RecyclerViewBuilder
 
 class ExemploViewBuilderKotlin : RecyclerViewBuilder<CharSequence, ExemploItemBinding>() {
 
-    override val bindClass = ExemploItemBinding::class.java
+    override val binding by lazy { bind(ExemploItemBinding::class) }
 
     override fun ExemploItemBinding.onBind(position: Int) {
         joaoTextview.text = collection.get(position)

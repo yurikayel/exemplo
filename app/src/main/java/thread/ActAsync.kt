@@ -5,7 +5,7 @@ import com.example.exemplo.databinding.ActThreadBinding
 
 class ActAsync : ActBind<ActThreadBinding>() {
 
-    override val bindClass = ActThreadBinding::class.java
+    override val binding by lazy { bind(ActThreadBinding::class) }
 
     //TODO PENDENTE DE TESTES
 

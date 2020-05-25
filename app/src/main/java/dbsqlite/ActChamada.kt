@@ -13,7 +13,7 @@ import dbsqlite.DataAccessSQLite.Companion.string
 
 class ActChamada : ActBind<ActChamadaBinding>() {
 
-    override val bindClass = ActChamadaBinding::class.java
+    override val binding by lazy { bind(ActChamadaBinding::class) }
 
     private val tableName = "pessoas"
     private val tableParams = ID_PKA +

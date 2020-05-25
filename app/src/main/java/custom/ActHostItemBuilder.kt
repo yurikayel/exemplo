@@ -8,7 +8,7 @@ import kotlin.reflect.KClass
 
 class ActHostItemBuilder : RecyclerViewBuilder<KClass<AppCompatActivity>, ActHostItemBinding>() {
 
-    override val bindClass = ActHostItemBinding::class.java
+    override val binding by lazy { bind(ActHostItemBinding::class) }
 
     override fun ActHostItemBinding.onBind(position: Int) {
         val activity = collection.get(position)

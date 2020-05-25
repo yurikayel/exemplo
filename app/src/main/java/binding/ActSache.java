@@ -10,8 +10,8 @@ public class ActSache extends ActBind<ActSacheBinding> {
 
     @NotNull
     @Override
-    public Class<ActSacheBinding> getBindClass() {
-        return ActSacheBinding.class;
+    public ActSacheBinding getBinding() {
+        return bind(this, ActSacheBinding.class);
     }
 
     @Override

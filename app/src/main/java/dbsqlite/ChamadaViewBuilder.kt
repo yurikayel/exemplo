@@ -8,7 +8,7 @@ import custom.isEven
 
 class ChamadaViewBuilder : RecyclerViewBuilder<Pessoa, ItemChamadaBinding>() {
 
-    override val bindClass = ItemChamadaBinding::class.java
+    override val binding by lazy { bind(ItemChamadaBinding::class) }
 
     override fun ItemChamadaBinding.onBind(position: Int) {
         root.setBackgroundColor(context.getColor(if (position.isEven) R.color.amber_50 else R.color.indigo_50))

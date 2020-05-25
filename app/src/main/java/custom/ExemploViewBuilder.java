@@ -12,8 +12,8 @@ public class ExemploViewBuilder extends RecyclerViewBuilder<CharSequence, Exempl
 
     @NotNull
     @Override
-    public Class<ExemploItemBinding> getBindClass() {
-        return ExemploItemBinding.class;
+    public ExemploItemBinding getBinding() {
+        return bind(this, ExemploItemBinding.class);
     }
 
     @Override

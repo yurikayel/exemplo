@@ -28,7 +28,7 @@ import viewpager.ActViewPager
 
 class ActHost : ActBind<ActHostBinding>() {
 
-    override val bindClass = ActHostBinding::class.java
+    override val binding by lazy { bind(ActHostBinding::class) }
 
     private val list = listOf(
         ActVermelha::class,

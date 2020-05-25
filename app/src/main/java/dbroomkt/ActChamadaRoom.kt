@@ -10,7 +10,7 @@ import custom.*
 
 class ActChamadaRoom : ActBind<ActChamadaBinding>() {
 
-    override val bindClass = ActChamadaBinding::class.java
+    override val binding by lazy { bind(ActChamadaBinding::class) }
 
     private val accessUsuario by lazy {
         DatabaseBuilder.getAppDatabase(this).accessUsuario()

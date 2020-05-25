@@ -36,7 +36,7 @@ inline fun <reified Builder : RecyclerViewBuilder<*, *>> recyclerAdapter(collect
         override fun getItemCount() = collection.size
 
         override fun onBindViewHolder(viewHolder: RecyclerViewHolder, position: Int) =
-            viewHolder.builder.bind(position)
+            viewHolder.builder.onBind(position)
     }
 
 val RecyclerView.recyclerAdapter get() = adapter as RecyclerAdapter?
