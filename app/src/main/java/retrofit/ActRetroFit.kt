@@ -10,9 +10,9 @@ private var AppId = "2e65127e909e178d0af311a81f39948c"
 private var lat = "35"
 private var lon = "139"
 private var url = "https://api.openweathermap.org/"
-private var service = WeatherService::class
+private var service = ServiceWeather::class
 
-class ActRetroFit : ActBind<ActRandomBinding>(), Callback<WeatherResponse> {
+class ActRetroFit : ActBind<ActRandomBinding>(), Callback<ResponseWeather> {
 
     override val binding by lazy { bind(ActRandomBinding::class) }
     private val weatherService = RetroInit(url).create(service)
@@ -25,8 +25,11 @@ class ActRetroFit : ActBind<ActRandomBinding>(), Callback<WeatherResponse> {
     private fun getWeather(lat: String, lon: String, AppId: String) =
         weatherService.getCurrentWeatherData(lat, lon, AppId).enqueue(this@ActRetroFit)
 
-    override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {
-        binding.randomText.text = if (response.code() == 200) response.body()?.run {
+    override fun onResponse(
+        call: Call<ResponseWeather>,
+        responseWeather: Response<ResponseWeather>
+    ) {
+        binding.randomText.text = if (responseWeather.code() == 200) responseWeather.body()?.run {
             "Country: " + sys?.country + "\n" +
             "Temperature: " + main?.temp + "\n" +
             "Temperature(Min): " + main?.temp_min + "\n" +
@@ -36,7 +39,7 @@ class ActRetroFit : ActBind<ActRandomBinding>(), Callback<WeatherResponse> {
         } else "Erro de Back End"
     }
 
-    override fun onFailure(call: Call<WeatherResponse>, throwable: Throwable) {
+    override fun onFailure(call: Call<ResponseWeather>, throwable: Throwable) {
         binding.randomText.text = throwable.message
     }
 }

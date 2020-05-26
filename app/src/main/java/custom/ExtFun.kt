@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
+import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
@@ -14,7 +15,7 @@ import android.widget.Toast
 import custom.adapter.RecyclerViewBuilder
 import custom.adapter.RecyclerViewHolder
 
-fun <T> Collection<T>.get(index: Int): T {
+fun <T> Collection<T>.viewModel(index: Int): T {
     forEachIndexed { indexed, element -> if (indexed == index) return element }
     throw IndexOutOfBoundsException()
 }
@@ -72,8 +73,11 @@ fun String.isDigit(): Boolean {
     return true
 }
 
-inline fun <reified T : ViewModel> FragmentActivity.newViewModel(): T =
-    ViewModelProviders.of(this).get(T::class.java)
+inline fun <reified Model : ViewModel> FragmentActivity.viewModel(): Model =
+    ViewModelProviders.of(this).get(Model::class.java)
+
+inline fun <reified Model : ViewModel> Fragment.viewModel(): Model =
+    ViewModelProviders.of(this).get(Model::class.java)
 
 fun <T : Comparable<T>> listOfRange(iterable: Iterable<T>): MutableList<T> {
     val list = mutableListOf<T>()

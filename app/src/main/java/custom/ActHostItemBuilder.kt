@@ -11,7 +11,7 @@ class ActHostItemBuilder : RecyclerViewBuilder<KClass<AppCompatActivity>, ActHos
     override val binding by lazy { bind(ActHostItemBinding::class) }
 
     override fun ActHostItemBinding.onBind(position: Int) {
-        val activity = collection.get(position)
+        val activity = collection.viewModel(position)
         actHostButton.run {
             text = activity.java.name
             setOnClickListener { context.startActivity(Intent(context, activity.java)) }

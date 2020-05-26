@@ -5,14 +5,14 @@ import base.ActBind
 import com.example.exemplo.R
 import com.example.exemplo.databinding.ActArquiteturaBinding
 import custom.hideKeyBoard
-import custom.newViewModel
 import custom.string
 import custom.toast
+import custom.viewModel
 
 class ActArquitetura : ActBind<ActArquiteturaBinding>() {
 
     override val binding by lazy { bind(ActArquiteturaBinding::class) }
-    private val viewModel by lazy { newViewModel<ViewModelArquitetura>() }
+    private val viewModel by lazy { viewModel<ViewModelArquitetura>() }
 
     override fun ActArquiteturaBinding.onBoundView() {
 

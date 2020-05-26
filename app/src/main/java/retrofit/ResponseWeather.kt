@@ -2,7 +2,7 @@ package retrofit
 
 import com.google.gson.annotations.SerializedName
 
-class WeatherResponse {
+class ResponseWeather {
 
     @SerializedName("coord")
     var coord: Coord? = null

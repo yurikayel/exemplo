@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 import custom.adapter.RecyclerViewBuilder;
 
-import static custom.ExtFunKt.get;
+import static custom.ExtFunKt.viewModel;
 
 public class ExemploViewBuilder extends RecyclerViewBuilder<CharSequence, ExemploItemBinding> {
 
@@ -18,6 +18,6 @@ public class ExemploViewBuilder extends RecyclerViewBuilder<CharSequence, Exempl
 
     @Override
     public void onBind(@NotNull ExemploItemBinding binding, int position) {
-        binding.joaoTextview.setText(get(getCollection(), position));
+        binding.joaoTextview.setText(viewModel(getCollection(), position));
     }
 }

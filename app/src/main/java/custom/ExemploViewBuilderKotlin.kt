@@ -8,6 +8,6 @@ class ExemploViewBuilderKotlin : RecyclerViewBuilder<CharSequence, ExemploItemBi
     override val binding by lazy { bind(ExemploItemBinding::class) }
 
     override fun ExemploItemBinding.onBind(position: Int) {
-        joaoTextview.text = collection.get(position)
+        joaoTextview.text = collection.viewModel(position)
     }
 }
