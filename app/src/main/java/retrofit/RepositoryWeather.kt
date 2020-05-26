@@ -7,7 +7,7 @@ class RepositoryWeather {
 
     private val weatherService = RetroInit(url).create(service)
 
-    suspend fun getWeather(lat: String, lon: String, appID: String): ResponseWeather {
-        return weatherService.getCurrentWeather(lat, lon, appID)
+    suspend fun getWeather(lat: String, lon: String): ResponseWeather {
+        return weatherService.getCurrentWeather(lat, lon)
     }
 }

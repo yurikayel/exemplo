@@ -6,8 +6,6 @@ import com.example.exemplo.databinding.ActRetrofitBinding
 import custom.string
 import custom.viewModel
 
-private const val APP_ID = "2e65127e909e178d0af311a81f39948c"
-
 class ActCorotina : ActBind<ActRetrofitBinding>() {
 
     override val binding by lazy { bind(ActRetrofitBinding::class) }
@@ -19,10 +17,10 @@ class ActCorotina : ActBind<ActRetrofitBinding>() {
         retroButton.setOnClickListener {
             viewModel.getWeather(
                 retroLatitude.string,
-                retroLongitude.string,
-                APP_ID
+                retroLongitude.string
             )
         }
+
         viewModel.stringFormatada.observe(activity, Observer { retroText.text = it })
     }
 }

@@ -28,7 +28,7 @@ class ActRetroFit : ActBind<ActRetrofitBinding>(), Callback<ResponseWeather> {
     }
 
     private fun getWeather(lat: String, lon: String, AppId: String) =
-        weatherService.getCurrentWeatherData(lat, lon, AppId).enqueue(this@ActRetroFit)
+        weatherService.getCurrentWeatherData(lat, lon).enqueue(this@ActRetroFit)
 
     override fun onResponse(call: Call<ResponseWeather>, response: Response<ResponseWeather>) {
         binding.retroText.text = if (response.code() == 200) response.body()?.run {
