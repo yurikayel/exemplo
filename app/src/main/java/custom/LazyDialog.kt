@@ -25,8 +25,22 @@ class LazyDialog(
     var textNegative = "NO!"
 
     var onPositive = DialogInterface.OnClickListener { _, _ -> context.toast(textPositive) }
+        set(value) {
+            field = value
+            setPositiveButton(textPositive, onPositive)
+        }
+
     var onNeutral = DialogInterface.OnClickListener { _, _ -> context.toast(textNeutral) }
+        set(value) {
+            field = value
+            setNeutralButton(textNeutral, onNeutral)
+        }
+
     var onNegative = DialogInterface.OnClickListener { _, _ -> context.toast(textNegative) }
+        set(value) {
+            field = value
+            setNegativeButton(textNegative, onNegative)
+        }
 
     init {
         setView(0)

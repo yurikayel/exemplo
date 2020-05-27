@@ -1,7 +1,6 @@
 package intent;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -69,40 +68,25 @@ public class ActHome extends AppCompatActivity {
         navDrawerA.setOnClickListener(vaPara(ActDrawer.class, new Bundle()));
         navDrawerB.setOnClickListener(vaPara(ActNavDrawer.class, new Bundle()));
         recycler.setOnClickListener(vaPara(ActRecycler.class, new Bundle()));
-        dialog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                LazyDialog lazyDialog = lazyDialog(view.getContext(),"Título","Mensagem");
-                lazyDialog.setOnPositive(new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+        dialog.setOnClickListener(view -> {
+            LazyDialog lazyDialog = lazyDialog(view.getContext(), "Título", "Mensagem");
+            lazyDialog.setOnPositive((dialog, which) -> {
 
-                    }
-                });
-                lazyDialog.setOnNeutral(new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+            });
+            lazyDialog.setOnNeutral((dialog, which) -> {
 
-                    }
-                });
-                lazyDialog.setOnNegative(new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+            });
+            lazyDialog.setOnNegative((dialog, which) -> {
 
-                    }
-                });
-                lazyDialog.show();
-            }
+            });
+            lazyDialog.show();
         });
     }
 
     private View.OnClickListener vaPara(final Class umaClasse, final Bundle pacote) {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Activity activity = (Activity) view.getContext();
-                activity.startActivity(new Intent(activity, umaClasse).putExtras(pacote));
-            }
+        return view -> {
+            Activity activity = (Activity) view.getContext();
+            activity.startActivity(new Intent(activity, umaClasse).putExtras(pacote));
         };
     }
 }
