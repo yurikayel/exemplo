@@ -7,6 +7,9 @@ import android.widget.Toast.makeText
 import base.ActBind
 import com.example.exemplo.databinding.ActChamadaBinding
 import custom.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 
 class ActChamadaRoom : ActBind<ActChamadaBinding>() {
 
@@ -35,7 +38,7 @@ class ActChamadaRoom : ActBind<ActChamadaBinding>() {
             chamadaSobrenome.string,
             chamadaIdade.int
         )
-        Thread(Runnable { accessUsuario.inserir(usuario) }).start()
+        CoroutineScope(IO).launch { accessUsuario.inserir(usuario) }
         usuario.apply { toast("CREATE\n\n$nome\n$sobrenome\n$idade anos") }
         updateUI()
     }

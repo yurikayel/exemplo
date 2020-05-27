@@ -4,17 +4,17 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
 
-    <string name="timestamp" >Timestamp</string >
-    <string name="device_information" >Device Information</string >
-    <string name="brand" >Brand</string >
-    <string name="device" >Device</string >
-    <string name="model" >Model</string >
-    <string name="id" >Id</string >
-    <string name="product" >Product</string >
-    <string name="build_info" >Build Info</string >
-    <string name="sdk" >SDK</string >
-    <string name="release" >Release</string >
-    <string name="incremental" >Incremental</string >
+    <string name="timestamp">Timestamp</string>
+    <string name="device_information">Device Information</string>
+    <string name="brand">Brand</string>
+    <string name="device">Device</string>
+    <string name="model">Model</string>
+    <string name="id">Id</string>
+    <string name="product">Product</string>
+    <string name="build_info">Build Info</string>
+    <string name="sdk">SDK</string>
+    <string name="release">Release</string>
+    <string name="incremental">Incremental</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -58,7 +58,8 @@
     <string name="whiskas_sache">WHISKAS SACHE</string>
     <string name="dialog">Dialog</string>
     <string name="rafinha_exception">Rafinha Exception</string>
-    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla at risus. Quisque purus magna, auctor et, sagittis ac, posuere eu, lectus. Nam mattis, felis ut adipiscing.</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa.</string>
+    <string name="pellentesque">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla at risus. Quisque purus magna, auctor et, sagittis ac, posuere eu, lectus. Nam mattis, felis ut adipiscing.</string>
     <string name="vacilaum">Vacilão</string>
     <string name="create">Create</string>
     <string name="read">READ</string>
@@ -80,4 +81,15 @@
     <string name="is_par">Este número é PAR</string>
     <string name="is_impar">Este número é ÍMPAR</string>
     <string name="randomizar">Randomizar</string>
+    <string name="panel">PANEL</string>
+    <string name="title">Title</string>
+    <string name="subtitle">subtitle</string>
+    <string name="yes">yes</string>
+    <string name="neutral">neutral</string>
+    <string name="no">no</string>
+    <string name="ricota_desc">Derivado de queijo de massa mole, fresco e com baixo teor de gordura. É um queijo uma vez que é preparado por meio da coagulação ácida das proteínas presentes no soro.</string>
+    <string name="ricota">Ricota</string>
+    <string name="consultar_tempo">Consultar o Tempo</string>
+    <string name="adoro">Adoro!</string>
+    <string name="nao_gosto">Não gosto</string>
 </resources>

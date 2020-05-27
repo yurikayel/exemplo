@@ -9,17 +9,17 @@ import kotlinx.coroutines.launch
 class ViewModelCorotina : ViewModel() {
 
     val stringFormatada = MutableLiveData<String>()
-    private val weatherRepo = RepositoryWeather()
+    private val repoWeather = RepositoryWeather()
 
     fun getWeather(lat: String, lon: String) = CoroutineScope(IO).launch {
-        weatherRepo.getWeather(lat, lon).let {
+        repoWeather.getWeather(lat, lon).let { resposta ->
             stringFormatada.postValue(
-                "País: " + it.sys?.country + "\n" +
-                "Temp: " + it.main?.temp + "\n" +
-                "Temp(Min): " + it.main?.temp_min + "\n" +
-                "Temp(Max): " + it.main?.temp_max + "\n" +
-                "Humildade: " + it.main?.humidity + "\n" +
-                "Pressão: " + it.main?.pressure
+                "País: " + resposta.sys?.country + "\n" +
+                "Temp: " + resposta.main?.temp + "\n" +
+                "Temp(Min): " + resposta.main?.temp_min + "\n" +
+                "Temp(Max): " + resposta.main?.temp_max + "\n" +
+                "Humildade: " + resposta.main?.humidity + "\n" +
+                "Pressão: " + resposta.main?.pressure
             )
         }
     }

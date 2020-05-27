@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
+import android.content.res.Resources.getSystem
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.RecyclerView
@@ -85,7 +86,19 @@ fun <T : Comparable<T>> listOfRange(iterable: Iterable<T>): MutableList<T> {
     return list
 }
 
+@Suppress("UNCHECKED_CAST")
+val <Type : Number> Type.dp
+    get() = (toFloat() * getSystem().displayMetrics.density) as Type
 
+@Suppress("UNCHECKED_CAST")
+val <Type : Number> Type.dpToPx
+    get() = (toFloat() / getSystem().displayMetrics.density) as Type
+
+//@Suppress("UNCHECKED_CAST")
+//val <Type : Number> Type.dp get() = (toFloat() * getSystem().displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT) as Type
+//
+//@Suppress("UNCHECKED_CAST")
+//val <Type: Number> Type.dpToPx get() = (toFloat() / getSystem().displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT) as Type
 
 
 

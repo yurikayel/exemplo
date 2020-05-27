@@ -1,8 +1,11 @@
 package retrofit
 
 import base.ActBind
+import com.example.exemplo.R
 import com.example.exemplo.databinding.ActRandomBinding
+import custom.AppDialog
 import custom.listOfRange
+import custom.toast
 
 class ActRandom : ActBind<ActRandomBinding>() {
 
@@ -16,11 +19,18 @@ class ActRandom : ActBind<ActRandomBinding>() {
                 textoRandomizado += "\n" + list[randIndex]
             }
             randomText.text = textoRandomizado
+
+            AppDialog(this@ActRandom) {
+                title.text = getString(R.string.ricota)
+                message.text = getString(R.string.ricota_desc)
+                positive.text = getString(R.string.adoro)
+                negative.text = getString(R.string.nao_gosto)
+                positive.setOnClickListener { toast("SIM!") }
+                negative.setOnClickListener { toast("NÃO!") }
+            }
+
         }
     }
-
-    fun random(start: Int, end: Int) =
-        if (start < end) (start..end).random() else (end..start).random()
 
     fun randomizeIndexes(sizeArg: Int) = mutableListOf<Int>().apply {
         while (size < sizeArg) {
@@ -31,4 +41,8 @@ class ActRandom : ActBind<ActRandomBinding>() {
             }
         }
     }
+
+    fun random(start: Int, end: Int) =
+        if (start < end) (start..end).random() else (end..start).random()
+
 }
