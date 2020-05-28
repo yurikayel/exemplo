@@ -3,21 +3,21 @@ package custom
 fun <K : Any, V : Any> crossMapOf(keys: List<K> = listOf(), values: List<V> = listOf()) =
     CrossMap<K, V>().apply { keys.forEachIndexed { index, key -> put(key, values[index]) } }
 
-class CrossMap<Key : Any, Value : Any> : Iterable<Key> {
+class CrossMap<Key : Any, Value : Any> : Map<Key, Value> {
 
     private val invertedMap = mutableMapOf<Value, Key>()
     private val map = mutableMapOf<Key, Value>()
-    val values get() = map.values
-    val keys get() = map.keys
-
-    val size get() = invertedMap.size
+    override val values get() = map.values
+    override val keys get() = map.keys
+    override val size get() = map.size
+    override val entries: Set<Map.Entry<Key, Value>> = map.entries
 
     fun put(key: Key, value: Value) {
         invertedMap[value] = key
         map[key] = value
     }
 
-    fun get(key: Key): Value? = map[key]
+    override fun get(key: Key): Value? = map[key]
 
     fun getValue(key: Key): Value? = map[key]
 
@@ -38,7 +38,9 @@ class CrossMap<Key : Any, Value : Any> : Iterable<Key> {
         invertedMap.remove(value)
     }
 
-    override fun iterator(): Iterator<Key> {
-        return keys.iterator()
-    }
+    override fun containsKey(key: Key) = map.containsKey(key)
+
+    override fun containsValue(value: Value) = map.containsValue(value)
+
+    override fun isEmpty() = map.isEmpty()
 }
