@@ -66,6 +66,7 @@
         <activity android:name="retrofit.ActRetroFit" />
         <activity android:name="retrofit.ActRandom" />
         <activity android:name="retrofit.ActCorotina" />
+        <activity android:name="custom.ActCrossMap" />
     </application>
 
 </manifest>

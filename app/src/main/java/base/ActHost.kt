@@ -4,6 +4,7 @@ import binding.ActRafinha
 import binding.ActSache
 import binding.ActWhiskas
 import com.example.exemplo.databinding.ActHostBinding
+import custom.ActCrossMap
 import custom.ActHostItemBuilder
 import custom.setup
 import dbroomkt.ActChamadaRoom
@@ -54,7 +55,8 @@ class ActHost : ActBind<ActHostBinding>() {
         ActArquitetura::class,
         ActRetroFit::class,
         ActRandom::class,
-        ActCorotina::class
+        ActCorotina::class,
+        ActCrossMap::class
     )
 
     override fun ActHostBinding.onBoundView() {

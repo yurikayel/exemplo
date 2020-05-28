@@ -32,13 +32,9 @@ class ActRandom : ActBind<ActRandomBinding>() {
         }
     }
 
-    fun randomizeIndexes(sizeArg: Int) = mutableListOf<Int>().apply {
+    fun randomizeIndexes(sizeArg: Int) = mutableSetOf<Int>().apply {
         while (size < sizeArg) {
-            random(0, sizeArg - 1).let {
-                if (!contains(it)) {
-                    add(it)
-                }
-            }
+            add(random(0, sizeArg - 1))
         }
     }
 
