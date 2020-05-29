@@ -9,37 +9,19 @@ import android.content.res.Resources.getSystem
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.RecyclerView
-import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
-import custom.adapter.RecyclerViewBuilder
-import custom.adapter.RecyclerViewHolder
+import custom.adapter.ItemViewBuilder
 
-fun <T> Collection<T>.viewModel(index: Int): T {
+fun <T> Collection<T>.get(index: Int): T {
     forEachIndexed { indexed, element -> if (indexed == index) return element }
     throw IndexOutOfBoundsException()
 }
 
-inline fun <reified Builder : RecyclerViewBuilder<*, *>>
-        RecyclerView.setup(list: Collection<*>): RecyclerView {
-    adapter = recyclerAdapter<Builder>(list)
-    return this
-}
-
-inline fun <reified Builder : RecyclerViewBuilder<*, *>> recyclerAdapter(collection: Collection<*>) =
-    object : RecyclerAdapter<RecyclerViewHolder>(collection) {
-
-        override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) =
-            RecyclerViewHolder(
-                Builder::class.java.newInstance().init(viewGroup, collection)
-            )
-
-        override fun getItemCount() = collection.size
-
-        override fun onBindViewHolder(viewHolder: RecyclerViewHolder, position: Int) =
-            viewHolder.builder.onBind(position)
-    }
+inline fun <reified Builder : ItemViewBuilder<*, *>>
+        RecyclerView.setup(list: Collection<*>) =
+    recyclerAdapter<Builder>(list).apply { adapter = this }
 
 val RecyclerView.recyclerAdapter get() = adapter as RecyclerAdapter?
 

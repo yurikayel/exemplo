@@ -7,10 +7,10 @@ import android.support.v7.widget.RecyclerView.LayoutParams.WRAP_CONTENT
 import android.view.ViewGroup
 import android.viewbinding.ViewBinding
 
-open class RecyclerViewHolder(val builder: RecyclerViewBuilder<*, *>) :
+open class RecyclerViewHolder(val builder: ItemViewBuilder<*, *>) :
     RecyclerView.ViewHolder(builder.build())
 
-abstract class RecyclerViewBuilder<Data, Binding : ViewBinding> : InflateBinding {
+abstract class ItemViewBuilder<Data, Binding : ViewBinding> : InflateBinding {
 
     abstract val binding: Binding
     lateinit var collection: Collection<Data>

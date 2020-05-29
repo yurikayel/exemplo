@@ -34,7 +34,7 @@ class ActChamada : ActBind<ActChamadaBinding>() {
         chamadaDestroy.setOnClickListener(onDestroyPessoa())
 
         pessoas.update(dataAccess.read())
-        chamadaRecycler.setup<ChamadaViewBuilder>(pessoas)
+        chamadaRecycler.setup<ItemViewChamada>(pessoas)
     }
 
     private fun ActChamadaBinding.onCreatePessoa() = OnClickListener {

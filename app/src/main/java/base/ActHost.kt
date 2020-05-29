@@ -5,7 +5,7 @@ import binding.ActSache
 import binding.ActWhiskas
 import com.example.exemplo.databinding.ActHostBinding
 import custom.ActCrossMap
-import custom.ActHostItemBuilder
+import custom.ItemViewActivity
 import custom.setup
 import dbroomkt.ActChamadaRoom
 import dbsqlite.ActChamada
@@ -21,6 +21,7 @@ import mvvm.ActArquitetura
 import navdrawer.ActNavDrawer
 import recycler.ActRecycler
 import retrofit.ActCorotina
+import retrofit.ActPagina
 import retrofit.ActRandom
 import retrofit.ActRetroFit
 import revisao.ActCadastro
@@ -56,10 +57,11 @@ class ActHost : ActBind<ActHostBinding>() {
         ActRetroFit::class,
         ActRandom::class,
         ActCorotina::class,
-        ActCrossMap::class
+        ActCrossMap::class,
+        ActPagina::class
     )
 
     override fun ActHostBinding.onBoundView() {
-        actHostRecycler.setup<ActHostItemBuilder>(list)
+        actHostRecycler.setup<ItemViewActivity>(list)
     }
 }

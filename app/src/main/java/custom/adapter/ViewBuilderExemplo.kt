@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.Toast
 import com.example.exemplo.databinding.RecyclerViewItemBinding
 
-class ViewBuilderExemplo : RecyclerViewBuilder<String, RecyclerViewItemBinding>() {
+class ViewBuilderExemplo : ItemViewBuilder<String, RecyclerViewItemBinding>() {
 
     override val binding by lazy { bind(RecyclerViewItemBinding::class) }
 

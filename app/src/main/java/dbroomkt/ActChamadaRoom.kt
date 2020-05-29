@@ -28,7 +28,7 @@ class ActChamadaRoom : ActBind<ActChamadaBinding>() {
         chamadaDestroy.setOnClickListener(onDestroyUsuario())
 
         usuarios.update(accessUsuario.puxaTodaLista())
-        chamadaRecycler.setup<UsuariosViewBuilder>(usuarios)
+        chamadaRecycler.setup<ItemViewUsuario>(usuarios)
     }
 
     private fun ActChamadaBinding.onCreateUsuario() = OnClickListener {

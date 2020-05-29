@@ -8,13 +8,13 @@ import kotlin.reflect.KClass
 interface InflateBinding {
 
     @Suppress("UNCHECKED_CAST")
-    fun <Binding : ViewBinding> RecyclerViewBuilder<*, Binding>.bind(bindClass: KClass<Binding>) =
+    fun <Binding : ViewBinding> ItemViewBuilder<*, Binding>.bind(bindClass: KClass<Binding>) =
         bindClass.java.getMethod("inflate", LayoutInflater::class.java).invoke(
             null, ((viewGroup.context) as AppCompatActivity).layoutInflater
         ) as Binding
 
     @Suppress("UNCHECKED_CAST")
-    fun <Binding : ViewBinding> RecyclerViewBuilder<*, Binding>.bind(bindClass: Class<Binding>) =
+    fun <Binding : ViewBinding> ItemViewBuilder<*, Binding>.bind(bindClass: Class<Binding>) =
         bindClass.getMethod("inflate", LayoutInflater::class.java).invoke(
             null, ((viewGroup.context) as AppCompatActivity).layoutInflater
         ) as Binding
