@@ -2,7 +2,7 @@ package custom.adapter
 
 import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
-import android.viewbinding.ViewBinding
+import androidx.viewbinding.ViewBinding
 import kotlin.reflect.KClass
 
 interface InflateBinding {
@@ -10,13 +10,13 @@ interface InflateBinding {
     @Suppress("UNCHECKED_CAST")
     fun <Binding : ViewBinding> ItemViewBuilder<*, Binding>.bind(bindClass: KClass<Binding>) =
         bindClass.java.getMethod("inflate", LayoutInflater::class.java).invoke(
-            null, ((viewGroup.context) as AppCompatActivity).layoutInflater
+            null, ((recycler.context) as AppCompatActivity).layoutInflater
         ) as Binding
 
     @Suppress("UNCHECKED_CAST")
     fun <Binding : ViewBinding> ItemViewBuilder<*, Binding>.bind(bindClass: Class<Binding>) =
         bindClass.getMethod("inflate", LayoutInflater::class.java).invoke(
-            null, ((viewGroup.context) as AppCompatActivity).layoutInflater
+            null, ((recycler.context) as AppCompatActivity).layoutInflater
         ) as Binding
 
     @Suppress("UNCHECKED_CAST")

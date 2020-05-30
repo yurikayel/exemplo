@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
+import androidx.core.os.bundleOf
 import com.example.exemplo.R
 
 class ActFragmentsKotlin : AppCompatActivity() {
@@ -23,13 +24,11 @@ class ActFragmentsKotlin : AppCompatActivity() {
 
     private fun colocaClick() {
         findViewById<Button>(R.id.button_vermelho).carregaFrag(
-            FragVermelhoKotlin.newInstance(Bundle())
+            FragVermelhoKotlin.newInstance(
+                bundleOf("verde" to "Palmera")
+            )
         )
-        azul.carregaFrag(
-            FragAzul.newInstance(Bundle().apply {
-                putString("chave", "Azul Caneta Caneta Azul")
-            })
-        )
+        azul.carregaFrag(FragAzul.newInstance(bundleOf("chave" to "Azul Caneta Caneta Azul")))
         findViewById<Button>(R.id.button_verde).carregaFrag(
             FragVerde.newInstance(Bundle().apply {
                 putString("chave", "Não tem mundial")

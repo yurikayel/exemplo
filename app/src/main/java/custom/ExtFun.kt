@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.RecyclerView
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.SearchView
 import android.widget.Toast
 import custom.adapter.ItemViewBuilder
 
@@ -82,7 +83,16 @@ val <Type : Number> Type.dpToPx
 //@Suppress("UNCHECKED_CAST")
 //val <Type: Number> Type.dpToPx get() = (toFloat() / getSystem().displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT) as Type
 
+fun onTextSubmit(block: (String) -> Unit) = object : SearchView.OnQueryTextListener {
+    override fun onQueryTextSubmit(dota: String): Boolean {
+        block(dota)
+        return false
+    }
 
+    override fun onQueryTextChange(s: String): Boolean {
+        return false
+    }
+}
 
 
 
