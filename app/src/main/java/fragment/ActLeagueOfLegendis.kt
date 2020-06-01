@@ -1,8 +1,9 @@
 package fragment
 
+import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.widget.SearchView
-import androidx.core.os.bundleOf
+//import androidx.core.os.bundleOf
 import base.ActBase
 import com.example.exemplo.R
 import custom.onTextSubmit
@@ -13,7 +14,7 @@ class ActLeagueOfLegendis : ActBase(R.layout.activity_main) {
 
     override fun onView() {
         findViewById<SearchView>(R.id.search_id).setOnQueryTextListener(onTextSubmit {
-            replaceFragment(FragVermelho.newInstance(bundleOf(PLAYER_KEY to it)))
+            replaceFragment(FragVermelho.newInstance(Bundle().apply { putString(PLAYER_KEY, it) }))
         })
     }
 

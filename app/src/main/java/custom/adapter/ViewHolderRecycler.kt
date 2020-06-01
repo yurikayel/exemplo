@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.RecyclerView.LayoutParams.MATCH_PARENT
 import android.support.v7.widget.RecyclerView.LayoutParams.WRAP_CONTENT
 import android.view.ViewGroup
-import android.viewbinding.ViewBinding
+import androidx.viewbinding.ViewBinding
 
 open class RecyclerViewHolder(val builder: ItemViewBuilder<*, *>) :
     RecyclerView.ViewHolder(builder.build())

@@ -12,7 +12,7 @@ class ActThread : ActBind<ActThreadBinding>() {
     var run = false
 
     override fun ActThreadBinding.onBoundView() {
-        threadChave.setOnCheckedChangeListener { switch, isChecked ->
+        threadChave.setOnCheckedChangeListener { _, isChecked ->
             toast(if (isChecked) "whiskas" else "sache")
         }
 

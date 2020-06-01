@@ -2,7 +2,7 @@ package base
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.viewbinding.ViewBinding
+import androidx.viewbinding.ViewBinding
 import custom.adapter.InflateBinding
 
 abstract class ActBind<Binding : ViewBinding> : ActBase(), InflateBinding {
