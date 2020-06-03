@@ -9,13 +9,17 @@ import android.content.res.Resources.getSystem
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.RecyclerView
+import android.util.AttributeSet
+import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.EditText
 import android.widget.SearchView
 import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import custom.adapter.ItemViewBuilder
 
-fun <T> Collection<T>.get(index: Int): T {
+operator fun <T> Collection<T>.get(index: Int): T {
     forEachIndexed { indexed, element -> if (indexed == index) return element }
     throw IndexOutOfBoundsException()
 }
@@ -33,10 +37,10 @@ fun <T> MutableList<T>.update(collection: MutableList<T>) {
     collection.forEach { add(it) }
 }
 
-fun Activity.hideKeyBoard() =
+fun Activity.hideKeyBoard() {
     (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager?)
         ?.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
-
+}
 
 val Int.isEven get() = this % 2 == 0
 
@@ -46,8 +50,12 @@ val EditText.string get() = text.toString()
 
 val EditText.int get() = string.toInt()
 
+private var toast: Toast? = null
+
 fun Context.toast(message: String) {
-    Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    toast?.cancel()
+    toast = Toast.makeText(this, message, LENGTH_SHORT)
+    toast?.show()
 }
 
 fun String.isDigit(): Boolean {
@@ -94,8 +102,28 @@ fun onTextSubmit(block: (String) -> Unit) = object : SearchView.OnQueryTextListe
     }
 }
 
+fun Context.newButton(style: Int = 0) =
+    Button(this, null, 0, style)
 
+// reflexão é uma forma da linguagem referenciar a própria linguagem
+// é uma forma de via código saber o que define uma classe
+inline fun <reified ViewType : View> Context.new(
+    style: Int,
+    setup: ViewType.() -> Unit = {}
+): ViewType {
+    val view = ViewType::class.java.getConstructor(
+        Context::class.java,
+        AttributeSet::class.java,
+        Int::class.java,
+        Int::class.java
+    ).newInstance(this, null, 0, style)
+    view.setup()
+    return view
+}
 
+fun <UmTipoDeView : View> UmTipoDeView.onClick(function: UmTipoDeView.() -> Unit) {
+    setOnClickListener { function() }
+}
 
 
 

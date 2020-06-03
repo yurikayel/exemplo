@@ -14,6 +14,9 @@ import drawer.ActDrawer
 import fragment.ActComunicaFrags
 import fragment.ActFragments
 import fragment.ActFragmentsKotlin
+import functions.ActExtension
+import functions.ActLambda
+import functions.ActReified
 import intent.ActAzul
 import intent.ActVerde
 import intent.ActVermelha
@@ -58,7 +61,10 @@ class ActHost : ActBind<ActHostBinding>() {
         ActRandom::class,
         ActCorotina::class,
         ActCrossMap::class,
-        ActPagina::class
+        ActPagina::class,
+        ActExtension::class,
+        ActLambda::class,
+        ActReified::class
     )
 
     override fun ActHostBinding.onBoundView() {

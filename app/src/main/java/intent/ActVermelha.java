@@ -24,5 +24,13 @@ public class ActVermelha extends AppCompatActivity {
             campoDeTexto = findViewById(R.id.textView);
             campoDeTexto.setText(textoRecebido);
         }
+
+        ExemploLOL exemplo = new ExemploLOL();
+
+        exemplo.patoFazQuack();
+
+        ExemploLOLKt.noobReclamaDoLag();
+
+        ExemploLOLKt.gatoMia("miau");
     }
 }

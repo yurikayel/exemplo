@@ -68,6 +68,9 @@
         <activity android:name="retrofit.ActCorotina" />
         <activity android:name="custom.ActCrossMap" />
         <activity android:name="retrofit.ActPagina" />
+        <activity android:name="functions.ActExtension" />
+        <activity android:name="functions.ActLambda" />
+        <activity android:name="functions.ActReified" />
     </application>
 
 </manifest>
