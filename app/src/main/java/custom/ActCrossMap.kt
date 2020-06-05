@@ -7,7 +7,7 @@ import com.example.exemplo.databinding.ActCrossMapBinding
 
 class ActCrossMap : ActBind<ActCrossMapBinding>() {
 
-    override val binding by lazy { bind(ActCrossMapBinding::class) }
+    override val binding: ActCrossMapBinding by viewBind()
 
     override fun ActCrossMapBinding.onBoundView() {
         val emptyCrossMap = crossMapOf<Float, Double>()

@@ -5,11 +5,14 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import debugging.ExceptionHandler
 
-open class ActBase(open val layout: Any? = null) : AppCompatActivity() {
+open class ActBase(open val layout: Any? = null) : AppCompatActivity(), IPermissionResult {
 
     companion object {
-        @JvmStatic lateinit var currentActivity: AppCompatActivity
-        @JvmStatic var exceptionHandler = ExceptionHandler()
+        @JvmStatic
+        lateinit var currentActivity: AppCompatActivity
+
+        @JvmStatic
+        var exceptionHandler = ExceptionHandler()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,4 +35,11 @@ open class ActBase(open val layout: Any? = null) : AppCompatActivity() {
 
     open fun onView() {}
 
+    override var iPermissionRequest: IPermissionRequest? = null
+
+    override fun onRequestPermissionsResult(
+        code: Int,
+        permissions: Array<out String>,
+        results: IntArray
+    ) = requestPermissionsResult(code, permissions, results)
 }

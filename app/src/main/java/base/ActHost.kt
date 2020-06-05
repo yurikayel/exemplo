@@ -22,19 +22,22 @@ import intent.ActVerde
 import intent.ActVermelha
 import mvvm.ActArquitetura
 import navdrawer.ActNavDrawer
+import permissions.ActPermissions
+import permissions.ActPermissionsJeitoChato
 import recycler.ActRecycler
 import retrofit.ActCorotina
 import retrofit.ActPagina
 import retrofit.ActRandom
 import retrofit.ActRetroFit
 import revisao.ActCadastro
+import share.ActShare
 import thread.ActThread
 import viewpager.ActPager
 import viewpager.ActViewPager
 
 class ActHost : ActBind<ActHostBinding>() {
 
-    override val binding by lazy { bind(ActHostBinding::class) }
+    override val binding: ActHostBinding by viewBind()
 
     private val list = listOf(
         ActVermelha::class,
@@ -64,7 +67,10 @@ class ActHost : ActBind<ActHostBinding>() {
         ActPagina::class,
         ActExtension::class,
         ActLambda::class,
-        ActReified::class
+        ActReified::class,
+        ActPermissions::class,
+        ActPermissionsJeitoChato::class,
+        ActShare::class
     )
 
     override fun ActHostBinding.onBoundView() {

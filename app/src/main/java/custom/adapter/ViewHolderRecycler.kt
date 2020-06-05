@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView.LayoutParams.MATCH_PARENT
 import android.support.v7.widget.RecyclerView.LayoutParams.WRAP_CONTENT
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
+import custom.bindView
 
 open class RecyclerViewHolder(val builder: ItemViewBuilder<*, *>) :
     RecyclerView.ViewHolder(builder.build())
@@ -31,4 +32,6 @@ abstract class ItemViewBuilder<Data, Binding : ViewBinding> : InflateBinding {
     fun onBind(position: Int) = binding.onBind(position)
 
     abstract fun Binding.onBind(position: Int)
+
+    inline fun <reified B : ViewBinding> viewBind() = lazy { context.bindView(B::class) }
 }

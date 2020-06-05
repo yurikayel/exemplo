@@ -10,7 +10,7 @@ import retrofit2.Response
 
 class ActRetroFit : ActBind<ActRetrofitBinding>(), Callback<ResponseWeather> {
 
-    override val binding by lazy { bind(ActRetrofitBinding::class) }
+    override val binding: ActRetrofitBinding by viewBind()
     private val weatherService =
         RetroInit("https://api.openweathermap.org/").create(ServiceWeather::class)
 

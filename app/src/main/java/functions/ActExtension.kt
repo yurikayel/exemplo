@@ -17,7 +17,7 @@ class ActExtension : ActBind<ActExtensionBinding>() {
     val blocoDeCodigo: () -> Unit = {}
     val invokado: Unit = blocoDeCodigo()
 
-    override val binding: ActExtensionBinding by lazy { bind(ActExtensionBinding::class) }
+    override val binding: ActExtensionBinding by viewBind()
 
     override fun ActExtensionBinding.onBoundView() {
         extensionButton.setOnClickListener {

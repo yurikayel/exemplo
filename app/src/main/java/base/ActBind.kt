@@ -1,15 +1,13 @@
 package base
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import custom.adapter.InflateBinding
+import custom.bindView
 
 abstract class ActBind<Binding : ViewBinding> : ActBase(), InflateBinding {
 
     abstract val binding: Binding
-
-    val activity by lazy { binding.root.context as AppCompatActivity }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +16,9 @@ abstract class ActBind<Binding : ViewBinding> : ActBase(), InflateBinding {
     }
 
     abstract fun Binding.onBoundView()
+
+    inline fun <reified B : ViewBinding> viewBind() = lazy { bindView(B::class) }
+
 }
 
 

@@ -12,7 +12,7 @@ import custom.toast
 
 class ActReified : ActBind<ActReifiedBinding>() {
 
-    override val binding by lazy { bind(ActReifiedBinding::class) }
+    override val binding: ActReifiedBinding by viewBind()
 
     val button by lazy { Button(this) }
 

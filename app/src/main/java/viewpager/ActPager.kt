@@ -9,7 +9,7 @@ import fragment.FragVermelho
 
 class ActPager : ActBind<ActPagerBinding>() {
 
-    override val binding by lazy { bind(ActPagerBinding::class) }
+    override val binding: ActPagerBinding by viewBind()
 
     private val fragmentArray = arrayOf(FragAzul(), FragVermelho(), FragVerde())
     private val nomes = listOf("Xandão", "Rafão", "Peter Henry II")

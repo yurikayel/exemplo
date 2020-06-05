@@ -11,7 +11,7 @@ import custom.viewModel
 
 class ActArquitetura : ActBind<ActArquiteturaBinding>() {
 
-    override val binding by lazy { bind(ActArquiteturaBinding::class) }
+    override val binding: ActArquiteturaBinding by viewBind()
     private val viewModel by lazy { viewModel<ViewModelArquitetura>() }
 
     override fun ActArquiteturaBinding.onBoundView() {
@@ -24,9 +24,9 @@ class ActArquitetura : ActBind<ActArquiteturaBinding>() {
             hideKeyBoard()
         }
 
-        viewModel.text.observe(activity, Observer { retorno -> toast(retorno!!) })
+        viewModel.text.observe(this@ActArquitetura, Observer { retorno -> toast(retorno!!) })
 
-        viewModel.impar.observe(activity, Observer { ehImpar ->
+        viewModel.impar.observe(this@ActArquitetura, Observer { ehImpar ->
             arqText.text = getString(if (ehImpar!!) R.string.is_impar else R.string.is_par)
         })
     }

@@ -9,7 +9,7 @@ import custom.toast
 
 class ActRandom : ActBind<ActRandomBinding>() {
 
-    override val binding by lazy { bind(ActRandomBinding::class) }
+    override val binding: ActRandomBinding by viewBind()
     val list = listOfRange(1..20)
 
     override fun ActRandomBinding.onBoundView() {

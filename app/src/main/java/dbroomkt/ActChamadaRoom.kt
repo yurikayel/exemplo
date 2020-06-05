@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class ActChamadaRoom : ActBind<ActChamadaBinding>() {
 
-    override val binding by lazy { bind(ActChamadaBinding::class) }
+    override val binding: ActChamadaBinding by viewBind()
 
     private val accessUsuario by lazy {
         DatabaseBuilder.getAppDatabase(this).accessUsuario()

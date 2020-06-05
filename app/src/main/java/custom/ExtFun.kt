@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
@@ -17,7 +18,9 @@ import android.widget.EditText
 import android.widget.SearchView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
+import androidx.viewbinding.ViewBinding
 import custom.adapter.ItemViewBuilder
+import kotlin.reflect.KClass
 
 operator fun <T> Collection<T>.get(index: Int): T {
     forEachIndexed { indexed, element -> if (indexed == index) return element }
@@ -125,9 +128,11 @@ fun <UmTipoDeView : View> UmTipoDeView.onClick(function: UmTipoDeView.() -> Unit
     setOnClickListener { function() }
 }
 
+val Context.inflater get() = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
-
-
+@Suppress("UNCHECKED_CAST")
+fun <B : ViewBinding> Context.bindView(klass: KClass<B>) =
+    klass.java.getMethod("inflate", LayoutInflater::class.java).invoke(null, inflater) as B
 
 
 

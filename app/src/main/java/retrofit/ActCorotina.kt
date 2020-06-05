@@ -1,6 +1,7 @@
 package retrofit
 
 import android.arch.lifecycle.Observer
+import android.os.Bundle
 import base.ActBind
 import com.example.exemplo.databinding.ActRetrofitBinding
 import custom.string
@@ -8,8 +9,14 @@ import custom.viewModel
 
 class ActCorotina : ActBind<ActRetrofitBinding>() {
 
-    override val binding by lazy { bind(ActRetrofitBinding::class) }
+    override val binding: ActRetrofitBinding by viewBind()
     private val viewModel by lazy { viewModel<ViewModelCorotina>() }
+
+    override fun Bundle.onExtras() {
+        getString("chaves", "henrique")
+        getString("kiko", "rafinha")
+        getString("trickjaum", "joao")
+    }
 
     override fun ActRetrofitBinding.onBoundView() {
         retroButton.text = "Consultar o Tempo"
@@ -21,7 +28,7 @@ class ActCorotina : ActBind<ActRetrofitBinding>() {
             )
         }
 
-        viewModel.stringFormatada.observe(activity, Observer { retroText.text = it })
+        viewModel.stringFormatada.observe(this@ActCorotina, Observer { retroText.text = it })
     }
 }
 

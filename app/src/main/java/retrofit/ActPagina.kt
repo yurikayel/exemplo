@@ -10,7 +10,7 @@ import retrofit.rickmorty.ViewModelPersonagens
 
 class ActPagina : ActBind<ActPaginaBinding>() {
 
-    override val binding by lazy { bind(ActPaginaBinding::class) }
+    override val binding: ActPaginaBinding by viewBind()
     val viewModel by lazy { viewModel<ViewModelPersonagens>() }
     val set = mutableSetOf<Result>()
     var pagina = 1

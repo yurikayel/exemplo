@@ -10,7 +10,7 @@ import custom.toast
 
 class ActLambda : ActBind<ActLambdaBinding>() {
 
-    override val binding by lazy { bind(ActLambdaBinding::class) }
+    override val binding: ActLambdaBinding by viewBind()
 
     private val onClickListener = View.OnClickListener { toast("lambida") }
     private val button by lazy { newButton(R.style.Button) }

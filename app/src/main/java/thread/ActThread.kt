@@ -7,7 +7,7 @@ import custom.toast
 
 class ActThread : ActBind<ActThreadBinding>() {
 
-    override val binding by lazy { bind(ActThreadBinding::class) }
+    override val binding: ActThreadBinding by viewBind()
 
     var run = false
 
