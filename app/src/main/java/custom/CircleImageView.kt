@@ -1,5 +1,6 @@
 package custom
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.*
@@ -9,9 +10,9 @@ import android.net.Uri
 import android.support.annotation.ColorInt
 import android.support.annotation.Dimension
 import android.support.annotation.DrawableRes
-import android.support.v7.widget.AppCompatImageView
 import android.util.AttributeSet
 import android.view.MotionEvent
+import android.widget.ImageView
 import com.example.exemplo.R
 import kotlin.math.min
 import kotlin.math.pow
@@ -19,8 +20,16 @@ import kotlin.math.sqrt
 
 private const val DEF_PRESS_HIGHLIGHT_COLOR = 0x32000000
 
-open class CircleImageView(context: Context, attrs: AttributeSet?) :
-    AppCompatImageView(context, attrs) {
+@SuppressLint("AppCompatCustomView")
+open class CircleImageView @JvmOverloads
+constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+    defStyleRes: Int = 0
+) :
+    ImageView(context, attrs, defStyleAttr, defStyleRes) {
+
     private var mBitmapShader: Shader? = null
     private val mShaderMatrix: Matrix
     private val mBitmapDrawBounds: RectF
@@ -32,8 +41,6 @@ open class CircleImageView(context: Context, attrs: AttributeSet?) :
     private val mInitialized: Boolean
     private var mPressed = false
     private var mHighlightEnable: Boolean
-
-    constructor(context: Context) : this(context, null) {}
 
     override fun setImageResource(@DrawableRes resId: Int) {
         super.setImageResource(resId)
@@ -158,7 +165,7 @@ open class CircleImageView(context: Context, attrs: AttributeSet?) :
         if (!mInitialized) {
             return
         }
-        mBitmap = getBitmapFromDrawable(getDrawable())
+        mBitmap = getBitmapFromDrawable(drawable)
         if (mBitmap == null) {
             return
         }
@@ -204,7 +211,7 @@ open class CircleImageView(context: Context, attrs: AttributeSet?) :
             Bitmap.Config.ARGB_8888
         )
         val canvas = Canvas(bitmap)
-        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight())
+        drawable.setBounds(0, 0, canvas.width, canvas.height)
         drawable.draw(canvas)
         return bitmap
     }
@@ -213,7 +220,7 @@ open class CircleImageView(context: Context, attrs: AttributeSet?) :
         // find the distance between center of the view and x,y point
         val distance = sqrt(
             (mBitmapDrawBounds.centerX() - x.toDouble()).pow(2.0) +
-                    (mBitmapDrawBounds.centerY() - y.toDouble()).pow(2.0)
+            (mBitmapDrawBounds.centerY() - y.toDouble()).pow(2.0)
         )
         return distance <= mBitmapDrawBounds.width() / 2
     }
@@ -241,12 +248,12 @@ open class CircleImageView(context: Context, attrs: AttributeSet?) :
         mStrokePaint = Paint(Paint.ANTI_ALIAS_FLAG)
         mStrokeBounds = RectF()
         mBitmapDrawBounds = RectF()
-        mStrokePaint.setColor(strokeColor)
-        mStrokePaint.setStyle(Paint.Style.STROKE)
-        mStrokePaint.setStrokeWidth(strokeWidth)
+        mStrokePaint.color = strokeColor
+        mStrokePaint.style = Paint.Style.STROKE
+        mStrokePaint.strokeWidth = strokeWidth
         mPressedPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-        mPressedPaint.setColor(highlightColor)
-        mPressedPaint.setStyle(Paint.Style.FILL)
+        mPressedPaint.color = highlightColor
+        mPressedPaint.style = Paint.Style.FILL
         mHighlightEnable = highlightEnable
         mInitialized = true
         setupBitmap()

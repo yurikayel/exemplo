@@ -3,9 +3,12 @@ package base
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.view.ViewGroup
 import debugging.ExceptionHandler
 
-open class ActBase(open val layout: Any? = null) : AppCompatActivity(), IPermissionResult {
+open class ActBase(open val layout: Int = 0) : AppCompatActivity(), IPermissionResult {
+
+    open val view: Any? = null
 
     companion object {
         @JvmStatic
@@ -18,12 +21,14 @@ open class ActBase(open val layout: Any? = null) : AppCompatActivity(), IPermiss
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Thread.setDefaultUncaughtExceptionHandler(exceptionHandler)
-        when (layout) {
-            is Int -> setContentView(layout as Int)
-            is View -> setContentView(layout as View)
-        }
         intent?.extras?.onExtras()
-        onView()
+        if (layout != 0) {
+            setContentView(layout)
+            ((window.decorView.rootView as ViewGroup).getChildAt(0) as ViewGroup).onView()
+        } else if (view is View) {
+            setContentView(view as View)
+            (view as ViewGroup).onView()
+        }
     }
 
     override fun onResume() {
@@ -33,7 +38,7 @@ open class ActBase(open val layout: Any? = null) : AppCompatActivity(), IPermiss
 
     open fun Bundle.onExtras() {}
 
-    open fun onView() {}
+    open fun ViewGroup.onView() {}
 
     override var iPermissionRequest: IPermissionRequest? = null
 

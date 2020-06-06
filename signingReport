@@ -1,0 +1,38 @@
+> Task :app:signingReport
+Variant: debug
+Config: debug
+Store: C:\Users\yurik\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 2D:53:73:5E:03:B5:75:6F:F1:61:34:35:D7:7B:51:30
+SHA1: 9C:A5:41:E5:8C:D2:06:ED:09:44:5B:E5:8E:66:F1:57:B5:A2:2A:8A
+SHA-256: 37:C4:E1:77:18:08:22:6C:66:6A:C0:97:BE:57:37:51:09:99:38:01:41:FA:1F:9E:16:81:AA:C4:E1:19:C2:BE
+Valid until: Thursday, 17 February 2050
+----------
+Variant: debugUnitTest
+Config: debug
+Store: C:\Users\yurik\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 2D:53:73:5E:03:B5:75:6F:F1:61:34:35:D7:7B:51:30
+SHA1: 9C:A5:41:E5:8C:D2:06:ED:09:44:5B:E5:8E:66:F1:57:B5:A2:2A:8A
+SHA-256: 37:C4:E1:77:18:08:22:6C:66:6A:C0:97:BE:57:37:51:09:99:38:01:41:FA:1F:9E:16:81:AA:C4:E1:19:C2:BE
+Valid until: Thursday, 17 February 2050
+----------
+Variant: releaseUnitTest
+Config: none
+----------
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\yurik\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 2D:53:73:5E:03:B5:75:6F:F1:61:34:35:D7:7B:51:30
+SHA1: 9C:A5:41:E5:8C:D2:06:ED:09:44:5B:E5:8E:66:F1:57:B5:A2:2A:8A
+SHA-256: 37:C4:E1:77:18:08:22:6C:66:6A:C0:97:BE:57:37:51:09:99:38:01:41:FA:1F:9E:16:81:AA:C4:E1:19:C2:BE
+Valid until: Thursday, 17 February 2050
+----------
+Variant: release
+Config: none
+----------
+
+Facebook:
+
+nKVB5YzSBu0JRFvljmbxV7WiKoo=

@@ -93,4 +93,6 @@
     <string name="adoro">Adoro!</string>
     <string name="nao_gosto">Não gosto</string>
     <string name="trickjaum">trickjaum</string>
+    <string name="facebook_app_id">2919315784863846</string>
+    <string name="fb_login_protocol_scheme">fb2919315784863846</string>
 </resources>

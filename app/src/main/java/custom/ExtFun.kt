@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
+import android.content.Intent
 import android.content.res.Resources.getSystem
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
@@ -13,14 +14,14 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.SearchView
-import android.widget.Toast
+import android.widget.*
 import android.widget.Toast.LENGTH_SHORT
 import androidx.viewbinding.ViewBinding
+import com.example.exemplo.R
+import com.squareup.picasso.Picasso
 import custom.adapter.ItemViewBuilder
 import kotlin.reflect.KClass
+import kotlin.reflect.KFunction0
 
 operator fun <T> Collection<T>.get(index: Int): T {
     forEachIndexed { indexed, element -> if (indexed == index) return element }
@@ -80,19 +81,9 @@ fun <T : Comparable<T>> listOfRange(iterable: Iterable<T>): MutableList<T> {
     return list
 }
 
-@Suppress("UNCHECKED_CAST")
-val <Type : Number> Type.dp
-    get() = (toFloat() * getSystem().displayMetrics.density) as Type
-
-@Suppress("UNCHECKED_CAST")
-val <Type : Number> Type.dpToPx
-    get() = (toFloat() / getSystem().displayMetrics.density) as Type
-
-//@Suppress("UNCHECKED_CAST")
-//val <Type : Number> Type.dp get() = (toFloat() * getSystem().displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT) as Type
-//
-//@Suppress("UNCHECKED_CAST")
-//val <Type: Number> Type.dpToPx get() = (toFloat() / getSystem().displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT) as Type
+@Suppress("UNCHECKED_CAST") // Converts Pixel value to DensityPixel value
+val <N : Number> N.dp
+    get() = (toFloat() * getSystem().displayMetrics.density) as N
 
 fun onTextSubmit(block: (String) -> Unit) = object : SearchView.OnQueryTextListener {
     override fun onQueryTextSubmit(dota: String): Boolean {
@@ -111,7 +102,7 @@ fun Context.newButton(style: Int = 0) =
 // reflexão é uma forma da linguagem referenciar a própria linguagem
 // é uma forma de via código saber o que define uma classe
 inline fun <reified ViewType : View> Context.new(
-    style: Int,
+    style: Int = R.style.Button,
     setup: ViewType.() -> Unit = {}
 ): ViewType {
     val view = ViewType::class.java.getConstructor(
@@ -124,7 +115,11 @@ inline fun <reified ViewType : View> Context.new(
     return view
 }
 
-fun <UmTipoDeView : View> UmTipoDeView.onClick(function: UmTipoDeView.() -> Unit) {
+fun <UmTipoDeView : View> UmTipoDeView.onClick(function: UmTipoDeView.() -> Unit = {}) {
+    setOnClickListener { function() }
+}
+
+fun <UmTipoDeView : View> UmTipoDeView.onClick(function: KFunction0<*>) {
     setOnClickListener { function() }
 }
 
@@ -134,12 +129,16 @@ val Context.inflater get() = getSystemService(Context.LAYOUT_INFLATER_SERVICE) a
 fun <B : ViewBinding> Context.bindView(klass: KClass<B>) =
     klass.java.getMethod("inflate", LayoutInflater::class.java).invoke(null, inflater) as B
 
+fun Context.shareText(text: String) {
+    startActivity(
+        Intent.createChooser(
+            Intent().apply {
+                action = Intent.ACTION_SEND
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, text)
+            }, "Whiskas Sache"
+        )
+    )
+}
 
-
-
-
-
-
-
-
-
+infix fun ImageView.setImageFromURL(url: String) = Picasso.get().load(url).into(this)

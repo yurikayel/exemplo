@@ -11,6 +11,7 @@ import dbroomkt.ActChamadaRoom
 import dbsqlite.ActChamada
 import debugging.ActDebugging
 import drawer.ActDrawer
+import facebook.ActFacebook
 import fragment.ActComunicaFrags
 import fragment.ActFragments
 import fragment.ActFragmentsKotlin
@@ -70,7 +71,8 @@ class ActHost : ActBind<ActHostBinding>() {
         ActReified::class,
         ActPermissions::class,
         ActPermissionsJeitoChato::class,
-        ActShare::class
+        ActShare::class,
+        ActFacebook::class
     )
 
     override fun ActHostBinding.onBoundView() {
