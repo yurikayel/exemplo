@@ -6,12 +6,15 @@ import org.jetbrains.annotations.NotNull;
 
 import base.ActBind;
 
+import static custom.ExtFunKt.bindView;
+import static custom.ExtFunKt.getKlass;
+
 public class ActSache extends ActBind<ActSacheBinding> {
 
     @NotNull
     @Override
     public ActSacheBinding getBinding() {
-        return bind(this, ActSacheBinding.class);
+        return bindView(this, getKlass(ActSacheBinding.class));
     }
 
     @Override

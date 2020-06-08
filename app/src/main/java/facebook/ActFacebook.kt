@@ -41,6 +41,7 @@ class ActFacebook : ActBase() {
     lateinit var fotinha: CircleImageView
 
     override fun ViewGroup.onView() {
+
         geraHash = new {
             setPadding(dp16, dp16, dp16, dp16)
             text = "Criar e Compartilhar HASH Facebook"
@@ -54,12 +55,16 @@ class ActFacebook : ActBase() {
         login = LoginButton(context).apply {
             setPadding(dp16, dp16, dp16, dp16)
             text = "Login Facebook"
-            registerCallback(callbackManager, facebookCallback)
+            chamaLogin()
         }
 
         addView(geraHash)
         addView(login)
         addView(fotinha)
+    }
+
+    private fun LoginButton.chamaLogin() {
+        registerCallback(callbackManager, facebookCallback)
     }
 
     private val facebookCallback = object : FacebookCallback<LoginResult> {
@@ -80,7 +85,6 @@ class ActFacebook : ActBase() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         callbackManager.onActivityResult(requestCode, resultCode, data)
-        fotinha.setImageFromURL(urlFotoFace(userID))
         super.onActivityResult(requestCode, resultCode, data)
     }
 

@@ -1,17 +1,17 @@
 package retrofit
 
-import android.arch.lifecycle.Observer
+import androidx.lifecycle.Observer
 import base.ActBind
 import com.example.exemplo.databinding.ActPaginaBinding
 import custom.recyclerAdapter
 import custom.viewModel
 import retrofit.rickmorty.CharacterResponse.Result
-import retrofit.rickmorty.ViewModelPersonagens
+import retrofit.rickmorty.ViewModelPagina
 
 class ActPagina : ActBind<ActPaginaBinding>() {
 
     override val binding: ActPaginaBinding by viewBind()
-    val viewModel by lazy { viewModel<ViewModelPersonagens>() }
+    private val viewModel: ViewModelPagina by viewModel()
     val set = mutableSetOf<Result>()
     var pagina = 1
     var totalPaginas = 30

@@ -1,7 +1,7 @@
 package retrofit
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -23,4 +23,5 @@ class ViewModelCorotina : ViewModel() {
             )
         }
     }
+
 }

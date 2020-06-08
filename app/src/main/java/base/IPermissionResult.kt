@@ -1,9 +1,9 @@
 package base
 
 import android.content.pm.PackageManager.PERMISSION_GRANTED
-import android.support.v4.app.ActivityCompat.requestPermissions
-import android.support.v4.content.ContextCompat.checkSelfPermission
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat.requestPermissions
+import androidx.core.content.ContextCompat.checkSelfPermission
 
 private const val PERMISSION_REQUEST_CODE = 11
 

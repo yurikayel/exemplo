@@ -2,8 +2,6 @@ package custom
 
 import android.content.Context
 import android.content.DialogInterface
-import android.support.v7.app.AppCompatDialog
-import android.support.v7.widget.CardView
 import android.view.View
 import android.view.View.GONE
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
@@ -12,6 +10,8 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatDialog
+import androidx.cardview.widget.CardView
 import com.example.exemplo.R
 
 class AppDialog(

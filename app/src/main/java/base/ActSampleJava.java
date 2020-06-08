@@ -6,12 +6,15 @@ import com.example.exemplo.databinding.ActSampleBinding;
 
 import org.jetbrains.annotations.NotNull;
 
+import static custom.ExtFunKt.bindView;
+import static custom.ExtFunKt.getKlass;
+
 public class ActSampleJava extends ActBind<ActSampleBinding> {
 
     @NotNull
     @Override
     public ActSampleBinding getBinding() {
-        return bind(this, ActSampleBinding.class);
+        return bindView(this, getKlass(ActSampleBinding.class));
     }
 
     @Override

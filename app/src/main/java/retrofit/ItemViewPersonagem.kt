@@ -9,7 +9,7 @@ import retrofit.rickmorty.CharacterResponse.Result
 
 class ItemViewPersonagem : ItemViewBuilder<Result, ItemPersonagemBinding>() {
 
-    override val binding by lazy { bind(ItemPersonagemBinding::class) }
+    override val binding: ItemPersonagemBinding by viewBind()
 
     override fun ItemPersonagemBinding.onBind(position: Int) {
         root.setBackgroundColor(context.getColor(if (position.isEven) R.color.amber_50 else R.color.indigo_50))

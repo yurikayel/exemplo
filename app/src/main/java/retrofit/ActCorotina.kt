@@ -1,7 +1,7 @@
 package retrofit
 
-import android.arch.lifecycle.Observer
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import base.ActBind
 import com.example.exemplo.databinding.ActRetrofitBinding
 import custom.string
@@ -10,7 +10,7 @@ import custom.viewModel
 class ActCorotina : ActBind<ActRetrofitBinding>() {
 
     override val binding: ActRetrofitBinding by viewBind()
-    private val viewModel by lazy { viewModel<ViewModelCorotina>() }
+    private val viewModel: ViewModelCorotina by viewModel()
 
     override fun Bundle.onExtras() {
         getString("chaves", "henrique")

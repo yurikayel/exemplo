@@ -1,7 +1,8 @@
 package intent;
 
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import static custom.ExtFunKt.hideKeyBoard;
 

@@ -2,9 +2,9 @@ package fragment
 
 //import androidx.core.os.bundleOf
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.ViewGroup
 import android.widget.SearchView
+import androidx.fragment.app.Fragment
 import base.ActBase
 import com.example.exemplo.R
 import custom.onTextSubmit

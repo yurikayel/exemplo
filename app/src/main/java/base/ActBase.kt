@@ -1,9 +1,9 @@
 package base
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import debugging.ExceptionHandler
 
 open class ActBase(open val layout: Int = 0) : AppCompatActivity(), IPermissionResult {

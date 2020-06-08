@@ -1,8 +1,9 @@
 package debugging;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import com.example.exemplo.R;
 

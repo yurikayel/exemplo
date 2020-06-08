@@ -1,6 +1,6 @@
 package mvvm
 
-import android.arch.lifecycle.Observer
+import androidx.lifecycle.Observer
 import base.ActBind
 import com.example.exemplo.R
 import com.example.exemplo.databinding.ActArquiteturaBinding
@@ -12,7 +12,7 @@ import custom.viewModel
 class ActArquitetura : ActBind<ActArquiteturaBinding>() {
 
     override val binding: ActArquiteturaBinding by viewBind()
-    private val viewModel by lazy { viewModel<ViewModelArquitetura>() }
+    private val viewModel: ViewModelArquitetura by viewModel()
 
     override fun ActArquiteturaBinding.onBoundView() {
 

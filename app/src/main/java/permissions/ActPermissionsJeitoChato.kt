@@ -2,8 +2,8 @@ package permissions
 
 import android.Manifest.permission.*
 import android.content.pm.PackageManager.PERMISSION_GRANTED
-import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import base.ActBind
 import com.example.exemplo.databinding.ActPermissionsBinding
 import custom.onClick

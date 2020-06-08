@@ -2,10 +2,9 @@ package base
 
 import android.os.Bundle
 import androidx.viewbinding.ViewBinding
-import custom.adapter.InflateBinding
 import custom.bindView
 
-abstract class ActBind<Binding : ViewBinding> : ActBase(), InflateBinding {
+abstract class ActBind<Binding : ViewBinding> : ActBase() {
 
     abstract val binding: Binding
 
@@ -15,7 +14,7 @@ abstract class ActBind<Binding : ViewBinding> : ActBase(), InflateBinding {
         binding.onBoundView()
     }
 
-    abstract fun Binding.onBoundView()
+    open fun Binding.onBoundView() {}
 
     inline fun <reified B : ViewBinding> viewBind() = lazy { bindView(B::class) }
 

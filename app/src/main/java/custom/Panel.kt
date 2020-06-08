@@ -2,9 +2,9 @@ package custom
 
 import android.content.Context
 import android.content.DialogInterface.OnShowListener
-import android.support.v7.app.AppCompatDialog
 import android.view.View
 import android.view.Window.FEATURE_NO_TITLE
+import androidx.appcompat.app.AppCompatDialog
 import com.example.exemplo.R
 
 fun View.newPanel(

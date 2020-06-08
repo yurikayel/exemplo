@@ -2,15 +2,16 @@ package activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+
 import com.example.exemplo.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import static android.widget.Toast.makeText;
 

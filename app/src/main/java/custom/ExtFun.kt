@@ -1,21 +1,21 @@
 package custom
 
 import android.app.Activity
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.Intent
 import android.content.res.Resources.getSystem
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import android.widget.Toast.LENGTH_SHORT
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.example.exemplo.R
 import com.squareup.picasso.Picasso
@@ -69,8 +69,9 @@ fun String.isDigit(): Boolean {
     return true
 }
 
-inline fun <reified Model : ViewModel> FragmentActivity.viewModel(): Model =
+inline fun <reified Model : ViewModel> FragmentActivity.viewModel(): Lazy<Model> = lazy {
     ViewModelProviders.of(this).get(Model::class.java)
+}
 
 inline fun <reified Model : ViewModel> Fragment.viewModel(): Model =
     ViewModelProviders.of(this).get(Model::class.java)
@@ -115,11 +116,11 @@ inline fun <reified ViewType : View> Context.new(
     return view
 }
 
-fun <UmTipoDeView : View> UmTipoDeView.onClick(function: UmTipoDeView.() -> Unit = {}) {
+fun <V : View> V.onClick(function: V.() -> Unit = {}) {
     setOnClickListener { function() }
 }
 
-fun <UmTipoDeView : View> UmTipoDeView.onClick(function: KFunction0<*>) {
+fun <V : View> V.onClick(function: KFunction0<*>) {
     setOnClickListener { function() }
 }
 
@@ -141,4 +142,8 @@ fun Context.shareText(text: String) {
     )
 }
 
-infix fun ImageView.setImageFromURL(url: String) = Picasso.get().load(url).into(this)
+infix fun ImageView.setImageFromURL(url: Any?) = Picasso.get().load(url.toString()).into(this)
+
+@Suppress("UNCHECKED_CAST")
+val <T : Any> Class<T>.klass: KClass<T>
+    get() = this::class as KClass<T>

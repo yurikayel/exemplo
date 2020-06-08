@@ -1,8 +1,8 @@
 package custom
 
-import android.support.v7.widget.RecyclerView.Adapter
-import android.support.v7.widget.RecyclerView.ViewHolder
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView.Adapter
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import custom.adapter.ItemViewBuilder
 import custom.adapter.RecyclerViewHolder
 

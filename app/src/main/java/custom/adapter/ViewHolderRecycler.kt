@@ -1,17 +1,17 @@
 package custom.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.RecyclerView.LayoutParams.MATCH_PARENT
-import android.support.v7.widget.RecyclerView.LayoutParams.WRAP_CONTENT
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.LayoutParams.MATCH_PARENT
+import androidx.recyclerview.widget.RecyclerView.LayoutParams.WRAP_CONTENT
 import androidx.viewbinding.ViewBinding
 import custom.bindView
 
 open class RecyclerViewHolder(val builder: ItemViewBuilder<*, *>) :
     RecyclerView.ViewHolder(builder.build())
 
-abstract class ItemViewBuilder<Data, Binding : ViewBinding> : InflateBinding {
+abstract class ItemViewBuilder<Data, Binding : ViewBinding> {
 
     abstract val binding: Binding
     lateinit var collection: Collection<Data>

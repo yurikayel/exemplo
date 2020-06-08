@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 import custom.adapter.ItemViewBuilder;
 
+import static custom.ExtFunKt.bindView;
 import static custom.ExtFunKt.get;
 
 public class ExemploViewBuilder extends ItemViewBuilder<CharSequence, ExemploItemBinding> {
@@ -13,7 +14,7 @@ public class ExemploViewBuilder extends ItemViewBuilder<CharSequence, ExemploIte
     @NotNull
     @Override
     public ExemploItemBinding getBinding() {
-        return bind(this, ExemploItemBinding.class);
+        return bindView(context, ExtFunKt.getKlass(ExemploItemBinding.class));
     }
 
     @Override

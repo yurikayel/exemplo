@@ -12,6 +12,7 @@ import dbsqlite.ActChamada
 import debugging.ActDebugging
 import drawer.ActDrawer
 import facebook.ActFacebook
+import firebase.ActFirebaseLogin
 import fragment.ActComunicaFrags
 import fragment.ActFragments
 import fragment.ActFragmentsKotlin
@@ -72,7 +73,8 @@ class ActHost : ActBind<ActHostBinding>() {
         ActPermissions::class,
         ActPermissionsJeitoChato::class,
         ActShare::class,
-        ActFacebook::class
+        ActFacebook::class,
+        ActFirebaseLogin::class
     )
 
     override fun ActHostBinding.onBoundView() {

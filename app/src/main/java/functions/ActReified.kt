@@ -21,7 +21,9 @@ class ActReified : ActBind<ActReifiedBinding>() {
             text = "SlideShow"
             layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
             setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_menu_slideshow, 0, 0, 0)
-            onClick { toast("SlideShow") }
+            onClick {
+                toast("SlideShow")
+            }
         }
 
         val buttonGallery = new<Button>(R.style.Button) {

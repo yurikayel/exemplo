@@ -1,7 +1,7 @@
 package custom
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.example.exemplo.databinding.ActHostItemBinding
 import custom.adapter.ItemViewBuilder
 import kotlin.reflect.KClass
