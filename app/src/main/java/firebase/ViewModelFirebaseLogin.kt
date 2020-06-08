@@ -11,17 +11,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions.DEFAULT_SIGN_I
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider.getCredential
-import custom.toast
 
 class ViewModelFirebaseLogin : ViewModel() {
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     val user: FirebaseUser? get() = auth.currentUser
-    val loginRequestCode = 300
-
     lateinit var activity: Activity
 
-    private val client: GoogleSignInClient by lazy {
+    val client: GoogleSignInClient by lazy {
         GoogleSignIn.getClient(
             activity, GoogleSignInOptions.Builder(DEFAULT_SIGN_IN)
                 .requestIdToken(activity.getString(R.string.default_web_client_id))
@@ -30,11 +27,7 @@ class ViewModelFirebaseLogin : ViewModel() {
         )
     }
 
-    lateinit var notifyUI: () -> Unit
-
-    fun callLogin() {
-        activity.startActivityForResult(client.signInIntent, loginRequestCode)
-    }
+    lateinit var notifyUI: (String) -> Unit
 
     fun logIn(data: Intent?) = try {
         GoogleSignIn.getSignedInAccountFromIntent(data).run {
@@ -43,19 +36,19 @@ class ViewModelFirebaseLogin : ViewModel() {
         }
     } catch (exception: Exception) {
         onLoginFail()
-        activity.toast(exception.message ?: "Falha ao tentar acessar conta Google")
+        notifyUI(exception.message ?: "Falha ao tentar acessar conta Google")
     }
 
     fun logOff() {
-        auth.signOut()
-        notifyUI()
+        val message: String
+        if (user != null) {
+            message = "${user?.displayName} saiu!"
+            auth.signOut()
+        } else message = "Já tá deslogado ow!"
+        notifyUI(message)
     }
 
-    val onLoginSuccess = { notifyUI() }
+    val onLoginSuccess = { notifyUI("${user?.displayName} logou com sucesso!") }
 
-    val onLoginFail = {
-        activity.toast("Falha ao tentar login")
-        notifyUI()
-    }
-
+    val onLoginFail = { notifyUI("Falha ao tentar login") }
 }
