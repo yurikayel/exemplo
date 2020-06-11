@@ -1,4 +1,4 @@
-package firebase
+package firebase.login
 
 import android.content.Intent
 import androidx.lifecycle.ViewModel

@@ -1,4 +1,4 @@
-package firebase
+package firebase.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,7 @@ import com.example.exemplo.R
 import com.example.exemplo.databinding.ActFirebaseLoginBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions.DEFAULT_SIGN_IN
 import custom.onClick
 import custom.setImageFromURL
 import custom.toast
@@ -25,7 +25,7 @@ class ActFirebaseLogin : ActBind<ActFirebaseLoginBinding>() {
     private val loginCode = 300
     private val loginIntent by lazy {
         GoogleSignIn.getClient( // um objeto aí pra fazer uns login
-            this@ActFirebaseLogin, GoogleSignInOptions.Builder(DEFAULT_GAMES_SIGN_IN)
+            this@ActFirebaseLogin, GoogleSignInOptions.Builder(DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build()
