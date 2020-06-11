@@ -4,20 +4,24 @@ import android.content.Intent
 import androidx.lifecycle.ViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider.getCredential
 
 class ViewModelFirebaseLogin : ViewModel() {
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-    val user: FirebaseUser? get() = auth.currentUser
 
-    lateinit var notifyUI: (String) -> Unit
+    // Valguete
+    val user get() = auth.currentUser
+
+    lateinit var notifyUI: (String) -> Unit // observem que não tem atribuição aqui
 
     fun logIn(data: Intent?) = try {
         GoogleSignIn.getSignedInAccountFromIntent(data).run {
-            auth.signInWithCredential(getCredential(result?.idToken, null))
-                .addOnCompleteListener { if (isSuccessful) onLoginSuccess() else onLoginFail() }
+            val credential = getCredential(result?.idToken, null)
+            auth.signInWithCredential(credential)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) onLoginSuccess() else onLoginFail()
+                }
         }
     } catch (exception: Exception) {
         onLoginFail()
@@ -29,7 +33,9 @@ class ViewModelFirebaseLogin : ViewModel() {
         if (user != null) {
             message = "${user?.displayName} saiu!"
             auth.signOut()
-        } else message = "Já tá deslogado ow!"
+        } else {
+            message = "Já tá deslogado ow!"
+        }
         notifyUI(message)
     }
 

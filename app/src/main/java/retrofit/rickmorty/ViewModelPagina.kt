@@ -11,6 +11,14 @@ class ViewModelPagina : ViewModel() {
     private val repositoryRickMorty = RepositoryRickMorty()
 
     fun getCharacters(page: Int = 1) = CoroutineScope(IO).launch {
-        characterResponse.postValue(repositoryRickMorty.getCharacters(page))
+        characterResponse.postValue(repositoryRickMorty.getCharacters(((page))))
+    }
+
+    fun teste() {
+
+        val set = setOf(1, 2, 3, 4)
+        val mutableSet = mutableSetOf(5, 6, 7, 8)
+
+        mutableSet.addAll(set)
     }
 }

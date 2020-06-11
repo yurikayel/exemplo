@@ -7,7 +7,7 @@ import com.example.exemplo.R
 import com.example.exemplo.databinding.ActFirebaseLoginBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions.DEFAULT_SIGN_IN
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN
 import custom.onClick
 import custom.setImageFromURL
 import custom.toast
@@ -24,8 +24,8 @@ class ActFirebaseLogin : ActBind<ActFirebaseLoginBinding>() {
 
     private val loginCode = 300
     private val loginIntent by lazy {
-        GoogleSignIn.getClient(
-            this@ActFirebaseLogin, GoogleSignInOptions.Builder(DEFAULT_SIGN_IN)
+        GoogleSignIn.getClient( // um objeto aí pra fazer uns login
+            this@ActFirebaseLogin, GoogleSignInOptions.Builder(DEFAULT_GAMES_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build()
@@ -34,7 +34,9 @@ class ActFirebaseLogin : ActBind<ActFirebaseLoginBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.notifyUI = { updateUI(it) }
+        viewModel.notifyUI = { message ->
+            updateUI(message)
+        }
     }
 
     override fun onResume() {
@@ -51,6 +53,10 @@ class ActFirebaseLogin : ActBind<ActFirebaseLoginBinding>() {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
             loginCode -> viewModel.logIn(data)
+            0         -> {
+            }
+            1         -> {
+            }
         }
     }
 
