@@ -1,22 +1,20 @@
 package firebase.analytics
 
-import android.os.Bundle
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
-import androidx.appcompat.app.AppCompatActivity
+import base.ActBase
 import com.example.exemplo.R
 import custom.new
 import custom.onClick
 import debugging.RafinhaException
 
-class ActAnalytics : AppCompatActivity() {
+class ActAnalytics : ActBase() {
 
-    val view by lazy { new<LinearLayout>(R.style.LinearVertical) }
+    override val view by lazy { new<LinearLayout>(R.style.LinearVertical) }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(view)
-        view.addView(new<Button> {
+    override fun ViewGroup.onView() {
+        addView(new<Button> {
             text = context.getString(R.string.rafinha_exception)
             onClick { throw RafinhaException() }
         })
