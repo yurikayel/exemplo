@@ -2,6 +2,7 @@ package firebase.login
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import base.ActBind
 import com.example.exemplo.R
 import com.example.exemplo.databinding.ActFirebaseLoginBinding
@@ -11,15 +12,15 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions.DEFAULT_SIGN_I
 import custom.onClick
 import custom.setImageFromURL
 import custom.toast
-import custom.viewModel
+import custom.viewBind
 
 private const val DEFAULT_PIC = "https://i.ibb.co/LxQbYGz/cher.jpg"
 
 class ActFirebaseLogin : ActBind<ActFirebaseLoginBinding>() {
 
     override val binding: ActFirebaseLoginBinding by viewBind()
+    private val viewModel: ViewModelFirebaseLogin by viewModels()
 
-    private val viewModel: ViewModelFirebaseLogin by viewModel()
     private val user get() = viewModel.user
 
     private val loginCode = 300
@@ -34,9 +35,7 @@ class ActFirebaseLogin : ActBind<ActFirebaseLoginBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.notifyUI = { message ->
-            updateUI(message)
-        }
+        viewModel.notifyUI = { message -> updateUI(message) }
     }
 
     override fun onResume() {
@@ -53,10 +52,8 @@ class ActFirebaseLogin : ActBind<ActFirebaseLoginBinding>() {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
             loginCode -> viewModel.logIn(data)
-            0         -> {
-            }
-            1         -> {
-            }
+            0         -> viewModel.logIn(data)
+            1         -> viewModel.logIn(data)
         }
     }
 

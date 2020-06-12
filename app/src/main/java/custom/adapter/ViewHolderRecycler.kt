@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.LayoutParams.MATCH_PARENT
 import androidx.recyclerview.widget.RecyclerView.LayoutParams.WRAP_CONTENT
 import androidx.viewbinding.ViewBinding
-import custom.bindView
+import custom.IContext
 
 open class RecyclerViewHolder(val builder: ItemViewBuilder<*, *>) :
     RecyclerView.ViewHolder(builder.build())
 
-abstract class ItemViewBuilder<Data, Binding : ViewBinding> {
+abstract class ItemViewBuilder<Data, Binding : ViewBinding> : IContext {
 
     abstract val binding: Binding
     lateinit var collection: Collection<Data>
@@ -32,6 +32,4 @@ abstract class ItemViewBuilder<Data, Binding : ViewBinding> {
     fun onBind(position: Int) = binding.onBind(position)
 
     abstract fun Binding.onBind(position: Int)
-
-    inline fun <reified B : ViewBinding> viewBind() = lazy { context.bindView(B::class) }
 }

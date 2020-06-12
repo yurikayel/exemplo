@@ -8,6 +8,7 @@ import base.ActHost
 class ActSplash : ActBase() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        Thread.setDefaultUncaughtExceptionHandler(ExceptionHandler())
         startActivity(Intent(this, ActHost::class.java))
         finish()
     }

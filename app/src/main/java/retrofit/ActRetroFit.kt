@@ -4,6 +4,7 @@ import base.ActBind
 import com.example.exemplo.R
 import com.example.exemplo.databinding.ActRetrofitBinding
 import custom.string
+import custom.viewBind
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

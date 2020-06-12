@@ -7,11 +7,13 @@ import com.example.exemplo.databinding.ActHostBinding
 import custom.ActCrossMap
 import custom.ItemViewActivity
 import custom.setup
+import custom.viewBind
 import dbroomkt.ActChamadaRoom
 import dbsqlite.ActChamada
 import debugging.ActDebugging
 import drawer.ActDrawer
 import facebook.ActFacebook
+import firebase.analytics.ActAnalytics
 import firebase.login.ActFirebaseLogin
 import firebase.storage.ActFirebaseStorage
 import fragment.ActComunicaFrags
@@ -76,7 +78,8 @@ class ActHost : ActBind<ActHostBinding>() {
         ActShare::class,
         ActFacebook::class,
         ActFirebaseLogin::class,
-        ActFirebaseStorage::class
+        ActFirebaseStorage::class,
+        ActAnalytics::class
     )
 
     override fun ActHostBinding.onBoundView() {

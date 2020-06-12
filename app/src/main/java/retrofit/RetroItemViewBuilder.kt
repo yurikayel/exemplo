@@ -5,6 +5,7 @@ import com.example.exemplo.databinding.ItemChamadaBinding
 import custom.adapter.ItemViewBuilder
 import custom.get
 import custom.isOdd
+import custom.viewBind
 
 class RetroItemViewBuilder<T> : ItemViewBuilder<T, ItemChamadaBinding>() {
 

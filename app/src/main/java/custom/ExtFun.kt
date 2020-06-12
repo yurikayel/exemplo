@@ -11,10 +11,6 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import android.widget.Toast.LENGTH_SHORT
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.example.exemplo.R
@@ -69,13 +65,6 @@ fun String.isDigit(): Boolean {
     return true
 }
 
-inline fun <reified Model : ViewModel> FragmentActivity.viewModel(): Lazy<Model> = lazy {
-    ViewModelProviders.of(this).get(Model::class.java)
-}
-
-inline fun <reified Model : ViewModel> Fragment.viewModel(): Model =
-    ViewModelProviders.of(this).get(Model::class.java)
-
 fun <T : Comparable<T>> listOfRange(iterable: Iterable<T>): MutableList<T> {
     val list = mutableListOf<T>()
     iterable.forEach { list.add(it) }
@@ -124,11 +113,19 @@ fun <V : View> V.onClick(function: KFunction0<*>) {
     setOnClickListener { function() }
 }
 
+
 val Context.inflater get() = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
 @Suppress("UNCHECKED_CAST")
-fun <B : ViewBinding> Context.bindView(klass: KClass<B>) =
-    klass.java.getMethod("inflate", LayoutInflater::class.java).invoke(null, inflater) as B
+inline fun <reified Binding : ViewBinding> IContext.viewBind() = lazy {
+    Binding::class.java.getMethod("inflate", LayoutInflater::class.java)
+        .invoke(null, activity.inflater) as Binding
+}
+
+@Suppress("UNCHECKED_CAST")
+fun <Binding : ViewBinding> Context.viewBind(klass: KClass<Binding>) =
+    klass.java.getMethod("inflate", LayoutInflater::class.java)
+        .invoke(null, inflater) as Binding
 
 fun Context.shareText(text: String) {
     startActivity(

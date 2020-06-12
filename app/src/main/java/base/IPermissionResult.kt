@@ -1,9 +1,9 @@
 package base
 
 import android.content.pm.PackageManager.PERMISSION_GRANTED
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat.requestPermissions
 import androidx.core.content.ContextCompat.checkSelfPermission
+import custom.IContext
 
 private const val PERMISSION_REQUEST_CODE = 11
 
@@ -27,8 +27,7 @@ interface IPermissionResult {
     }
 }
 
-interface IPermissionRequest {
-    val activity: AppCompatActivity get() = this as AppCompatActivity
+interface IPermissionRequest : IContext {
 
     fun requestPermission(permission: String) =
         if (checkSelfPermission(activity, permission) == PERMISSION_GRANTED)

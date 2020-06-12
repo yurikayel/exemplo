@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import custom.IContext
 
-abstract class FragBase : Fragment() {
+abstract class FragBase : Fragment(), IContext {
 
     open val layout: Int = 0
 

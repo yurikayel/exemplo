@@ -3,6 +3,7 @@ package viewpager
 import base.ActBind
 import com.example.exemplo.databinding.ActPagerBinding
 import custom.setup
+import custom.viewBind
 import fragment.FragAzul
 import fragment.FragVerde
 import fragment.FragVermelho

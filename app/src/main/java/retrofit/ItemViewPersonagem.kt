@@ -5,6 +5,7 @@ import com.example.exemplo.databinding.ItemPersonagemBinding
 import com.squareup.picasso.Picasso
 import custom.adapter.ItemViewBuilder
 import custom.isEven
+import custom.viewBind
 import retrofit.rickmorty.CharacterResponse.Result
 
 class ItemViewPersonagem : ItemViewBuilder<Result, ItemPersonagemBinding>() {

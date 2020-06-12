@@ -1,16 +1,20 @@
 package permissions
 
 import android.Manifest.permission.*
+import android.os.Build
+import androidx.annotation.RequiresApi
 import base.ActBind
 import base.IPermissionRequest
 import com.example.exemplo.databinding.ActPermissionsBinding
 import custom.onClick
 import custom.toast
+import custom.viewBind
 
 class ActPermissions : ActBind<ActPermissionsBinding>(), IPermissionRequest {
 
     override val binding: ActPermissionsBinding by viewBind()
 
+    @RequiresApi(Build.VERSION_CODES.P)
     override fun ActPermissionsBinding.onBoundView() {
         permissionExternalStorage.onClick { requestPermission(WRITE_EXTERNAL_STORAGE) }
         permissionWriteContacts.onClick { requestPermission(WRITE_CONTACTS) }

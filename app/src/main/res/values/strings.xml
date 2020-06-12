@@ -89,10 +89,12 @@
     <string name="no">no</string>
     <string name="ricota_desc">Derivado de queijo de massa mole, fresco e com baixo teor de gordura. É um queijo uma vez que é preparado por meio da coagulação ácida das proteínas presentes no soro.</string>
     <string name="ricota">Ricota</string>
-    <string name="consultar_tempo">Consultar o Tempo</string>
     <string name="adoro">Adoro!</string>
     <string name="nao_gosto">Não gosto</string>
     <string name="trickjaum">trickjaum</string>
     <string name="facebook_app_id">2919315784863846</string>
     <string name="fb_login_protocol_scheme">fb2919315784863846</string>
+    <string name="rafinha">Rafinha</string>
+    <string name="whatever">whatever</string>
+    <string name="consultar_tempo">Consultar o Tempo</string>
 </resources>

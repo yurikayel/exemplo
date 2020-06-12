@@ -7,6 +7,7 @@ import com.example.exemplo.databinding.ActLambdaBinding
 import custom.newButton
 import custom.onClick
 import custom.toast
+import custom.viewBind
 
 class ActLambda : ActBind<ActLambdaBinding>() {
 

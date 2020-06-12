@@ -1,5 +1,6 @@
 package mvvm
 
+import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import base.ActBind
 import com.example.exemplo.R
@@ -7,12 +8,12 @@ import com.example.exemplo.databinding.ActArquiteturaBinding
 import custom.hideKeyBoard
 import custom.string
 import custom.toast
-import custom.viewModel
+import custom.viewBind
 
 class ActArquitetura : ActBind<ActArquiteturaBinding>() {
 
     override val binding: ActArquiteturaBinding by viewBind()
-    private val viewModel: ViewModelArquitetura by viewModel()
+    private val viewModel: ViewModelArquitetura by viewModels()
 
     override fun ActArquiteturaBinding.onBoundView() {
 

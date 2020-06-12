@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.widget.Button
 import base.ActBind
 import base.ActHost
+import com.example.exemplo.R
 import com.example.exemplo.databinding.ActExtensionBinding
+import custom.viewBind
 import kotlin.reflect.KClass
 
 class ActExtension : ActBind<ActExtensionBinding>() {
@@ -28,7 +30,10 @@ class ActExtension : ActBind<ActExtensionBinding>() {
                 this
             }.apply { }
         }
-        extensionLinear.addView(Button(this@ActExtension).apply { text = "TrickJaum" })
+        extensionLinear.addView(Button(this@ActExtension).apply {
+            text =
+                getString(R.string.trickjaum)
+        })
     }
 }
 

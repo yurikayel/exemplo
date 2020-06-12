@@ -5,6 +5,7 @@ import android.content.res.Resources
 import android.view.View
 import android.widget.Toast
 import com.example.exemplo.databinding.RecyclerViewItemBinding
+import custom.viewBind
 
 class ViewBuilderExemplo : ItemViewBuilder<String, RecyclerViewItemBinding>() {
 

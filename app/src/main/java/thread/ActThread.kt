@@ -4,6 +4,7 @@ import base.ActBind
 import com.example.exemplo.databinding.ActThreadBinding
 import custom.int
 import custom.toast
+import custom.viewBind
 
 class ActThread : ActBind<ActThreadBinding>() {
 
@@ -28,7 +29,7 @@ class ActThread : ActBind<ActThreadBinding>() {
         threadStop.setOnClickListener { run = false }
 
         threadUi.setOnClickListener {
-            runOnUiThread(Runnable { contaOsSegundosNaTela(threadInput.int) })
+            runOnUiThread { contaOsSegundosNaTela(threadInput.int) }
         }
     }
 

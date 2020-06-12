@@ -7,6 +7,7 @@ import com.example.exemplo.R
 import com.example.exemplo.databinding.ActShareBinding
 import custom.onClick
 import custom.string
+import custom.viewBind
 
 class ActShare : ActBind<ActShareBinding>() {
     override val binding: ActShareBinding by viewBind()

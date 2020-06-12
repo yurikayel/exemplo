@@ -2,6 +2,7 @@ package thread
 
 import base.ActBind
 import com.example.exemplo.databinding.ActThreadBinding
+import custom.viewBind
 
 class ActAsync : ActBind<ActThreadBinding>() {
 

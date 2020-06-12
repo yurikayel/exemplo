@@ -9,6 +9,7 @@ import com.example.exemplo.databinding.ActReifiedBinding
 import custom.new
 import custom.onClick
 import custom.toast
+import custom.viewBind
 
 class ActReified : ActBind<ActReifiedBinding>() {
 
@@ -18,7 +19,7 @@ class ActReified : ActBind<ActReifiedBinding>() {
 
     override fun ActReifiedBinding.onBoundView() {
         val buttonSlide = new<Button>(R.style.Button) {
-            text = "SlideShow"
+            text = getString(R.string.menu_slideshow)
             layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
             setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_menu_slideshow, 0, 0, 0)
             onClick {
@@ -27,14 +28,14 @@ class ActReified : ActBind<ActReifiedBinding>() {
         }
 
         val buttonGallery = new<Button>(R.style.Button) {
-            text = "Gallery"
+            text = getString(R.string.menu_gallery)
             layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
             setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_menu_gallery, 0, 0, 0)
             onClick { toast("Gallery") }
         }
 
         val buttonCamera = new<Button>(R.style.Button) {
-            text = "Camera"
+            text = getString(R.string.menu_home)
             layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
             setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_menu_camera, 0, 0, 0)
             onClick { toast("Camera") }

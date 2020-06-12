@@ -2,19 +2,20 @@ package base;
 
 import android.os.Bundle;
 
+import com.example.exemplo.R;
 import com.example.exemplo.databinding.ActSampleBinding;
 
 import org.jetbrains.annotations.NotNull;
 
-import static custom.ExtFunKt.bindView;
 import static custom.ExtFunKt.getKlass;
+import static custom.ExtFunKt.viewBind;
 
 public class ActSampleJava extends ActBind<ActSampleBinding> {
 
     @NotNull
     @Override
     public ActSampleBinding getBinding() {
-        return bindView(this, getKlass(ActSampleBinding.class));
+        return viewBind(this, getKlass(ActSampleBinding.class));
     }
 
     @Override
@@ -24,9 +25,9 @@ public class ActSampleJava extends ActBind<ActSampleBinding> {
 
     @Override
     public void onBoundView(@NotNull ActSampleBinding binding) {
-        binding.textViewTitulo.setText("qualquer coisa");
-        binding.textViewSubTitulo.setText("qualquer coisa");
-        binding.textViewMensagem.setText("qualquer coisa");
+        binding.textViewTitulo.setText(getString(R.string.whiskas_sache));
+        binding.textViewSubTitulo.setText(getString(R.string.whiskas_sache));
+        binding.textViewMensagem.setText(getString(R.string.whiskas_sache));
     }
 
 

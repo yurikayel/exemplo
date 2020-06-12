@@ -4,23 +4,19 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import debugging.ExceptionHandler
+import custom.IContext
 
-open class ActBase(open val layout: Int = 0) : AppCompatActivity(), IPermissionResult {
+open class ActBase(open val layout: Int = 0) : AppCompatActivity(), IPermissionResult, IContext {
 
     open val view: Any? = null
 
     companion object {
         @JvmStatic
         lateinit var currentActivity: AppCompatActivity
-
-        @JvmStatic
-        var exceptionHandler = ExceptionHandler()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Thread.setDefaultUncaughtExceptionHandler(exceptionHandler)
         intent?.extras?.onExtras()
         if (layout != 0) {
             setContentView(layout)

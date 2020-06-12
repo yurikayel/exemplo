@@ -1,16 +1,18 @@
 package retrofit
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import base.ActBind
+import com.example.exemplo.R
 import com.example.exemplo.databinding.ActRetrofitBinding
 import custom.string
-import custom.viewModel
+import custom.viewBind
 
 class ActCorotina : ActBind<ActRetrofitBinding>() {
 
     override val binding: ActRetrofitBinding by viewBind()
-    private val viewModel: ViewModelCorotina by viewModel()
+    private val viewModel: ViewModelCorotina by viewModels()
 
     override fun Bundle.onExtras() {
         getString("chaves", "henrique")
@@ -19,7 +21,7 @@ class ActCorotina : ActBind<ActRetrofitBinding>() {
     }
 
     override fun ActRetrofitBinding.onBoundView() {
-        retroButton.text = "Consultar o Tempo"
+        retroButton.text = getString(R.string.consultar_tempo)
 
         retroButton.setOnClickListener {
             viewModel.getWeather(

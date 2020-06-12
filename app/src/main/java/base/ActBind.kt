@@ -2,7 +2,6 @@ package base
 
 import android.os.Bundle
 import androidx.viewbinding.ViewBinding
-import custom.bindView
 
 abstract class ActBind<Binding : ViewBinding> : ActBase() {
 
@@ -15,9 +14,6 @@ abstract class ActBind<Binding : ViewBinding> : ActBase() {
     }
 
     open fun Binding.onBoundView() {}
-
-    inline fun <reified B : ViewBinding> viewBind() = lazy { bindView(B::class) }
-
 }
 
 

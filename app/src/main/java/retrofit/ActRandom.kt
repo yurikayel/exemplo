@@ -6,6 +6,7 @@ import com.example.exemplo.databinding.ActRandomBinding
 import custom.AppDialog
 import custom.listOfRange
 import custom.toast
+import custom.viewBind
 
 class ActRandom : ActBind<ActRandomBinding>() {
 

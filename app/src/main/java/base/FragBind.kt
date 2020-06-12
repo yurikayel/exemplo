@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
-import custom.bindView
 
 abstract class FragBind<T : ViewBinding> : FragBase() {
 
@@ -20,7 +19,4 @@ abstract class FragBind<T : ViewBinding> : FragBase() {
     }
 
     abstract fun T.onBoundView()
-
-    inline fun <reified B : ViewBinding> viewBind() =
-        lazy { requireContext().bindView(B::class) }
 }

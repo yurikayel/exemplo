@@ -97,6 +97,7 @@
             />
         <activity android:name="firebase.login.ActFirebaseLogin" />
         <activity android:name="firebase.storage.ActFirebaseStorage" />
+        <activity android:name="firebase.analytics.ActAnalytics" />
     </application>
 
 </manifest>

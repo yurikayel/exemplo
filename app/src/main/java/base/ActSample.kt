@@ -1,7 +1,9 @@
 package base
 
 import android.os.Bundle
+import com.example.exemplo.R
 import com.example.exemplo.databinding.ActSampleBinding
+import custom.viewBind
 
 class ActSample : ActBind<ActSampleBinding>() {
 
@@ -12,8 +14,8 @@ class ActSample : ActBind<ActSampleBinding>() {
     }
 
     override fun ActSampleBinding.onBoundView() {
-        textViewTitulo.text = "whatever"
-        textViewSubTitulo.text = "whatever"
-        textViewMensagem.text = "whatever"
+        textViewTitulo.text = getString(R.string.whatever)
+        textViewSubTitulo.text = getString(R.string.whatever)
+        textViewMensagem.text = getString(R.string.whatever)
     }
 }

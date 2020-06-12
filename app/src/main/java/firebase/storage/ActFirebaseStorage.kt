@@ -11,10 +11,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
-import custom.onClick
-import custom.setImageFromURL
-import custom.string
-import custom.toast
+import custom.*
 import java.lang.System.currentTimeMillis
 
 private const val PICK_IMAGE_REQUEST = 333
@@ -69,9 +66,6 @@ class ActFirebaseStorage : ActBind<ActFirebaseStorageBinding>() {
         if (imageURI == null) toast("Nenhum arquivo selectionado.")
     }
 
-    private fun getFileExtension(uri: Uri): String? =
-        MimeTypeMap.getSingleton().getExtensionFromMimeType(contentResolver.getType(uri))
-
     private fun onSuccess(storageReference: StorageReference) {
         Handler().postDelayed({ binding.progressBar.progress = 0 }, 500)
         toast("Upload realizado com sucesso!")
@@ -91,4 +85,7 @@ class ActFirebaseStorage : ActBind<ActFirebaseStorageBinding>() {
         val progress = 100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount
         binding.progressBar.progress = progress.toInt()
     }
+
+    private fun getFileExtension(uri: Uri): String? =
+        MimeTypeMap.getSingleton().getExtensionFromMimeType(contentResolver.getType(uri))
 }

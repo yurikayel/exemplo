@@ -5,6 +5,7 @@ import com.example.exemplo.databinding.ItemChamadaBinding
 import custom.adapter.ItemViewBuilder
 import custom.get
 import custom.isEven
+import custom.viewBind
 
 class ItemViewChamada : ItemViewBuilder<Pessoa, ItemChamadaBinding>() {
 
