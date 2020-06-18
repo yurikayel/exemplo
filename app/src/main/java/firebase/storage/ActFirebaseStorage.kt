@@ -18,7 +18,7 @@ private const val PICK_IMAGE_REQUEST = 333
 
 class ActFirebaseStorage : ActBind<ActFirebaseStorageBinding>() {
 
-    private val storage = FirebaseStorage.getInstance().getReference("uploads")
+    //    private val storage = FirebaseStorage.getInstance().getReference("uploads")
     private var uploadTask: StorageTask<UploadTask.TaskSnapshot>? = null
     private var imageURI: Uri? = null
 
@@ -27,7 +27,6 @@ class ActFirebaseStorage : ActBind<ActFirebaseStorageBinding>() {
     override fun ActFirebaseStorageBinding.onBoundView() {
         escolherImagem.onClick(::openFileChooser)
         upload.onClick(::fazerUpload)
-        mostrarUploads.onClick(::mostrar)
     }
 
     private fun fazerUpload() {
@@ -55,13 +54,15 @@ class ActFirebaseStorage : ActBind<ActFirebaseStorageBinding>() {
 
     private fun uploadFile() {
         imageURI?.run {
-            val fileReference = storage.child(
-                currentTimeMillis().toString() + "." + getFileExtension(this)
-            )
+            val nomeArquivo = "${currentTimeMillis()}.${getFileExtension(this)}"
+            val firebase = FirebaseStorage.getInstance()
+            val storage = firebase.getReference("uploads")
+            val fileReference = storage.child(nomeArquivo)
+
             uploadTask = fileReference.putFile(this)
-                .addOnSuccessListener { onSuccess(fileReference) }
-                .addOnFailureListener { toast(it.message ?: "Erro") }
-                .addOnProgressListener { updateProgressBar(it) }
+                    .addOnSuccessListener { onSuccess(fileReference) }
+                    .addOnFailureListener { toast(it.message ?: "Erro") }
+                    .addOnProgressListener { updateProgressBar(it) }
         }
         if (imageURI == null) toast("Nenhum arquivo selectionado.")
     }
@@ -70,14 +71,15 @@ class ActFirebaseStorage : ActBind<ActFirebaseStorageBinding>() {
         Handler().postDelayed({ binding.progressBar.progress = 0 }, 500)
         toast("Upload realizado com sucesso!")
         storageReference.downloadUrl.addOnCompleteListener { downloadURL ->
-            FirebaseDatabase.getInstance().getReference("uploads").run {
-                child(push().key!!).setValue(
-                    Upload(
-                        binding.fileName.string.trim { it <= ' ' },
-                        downloadURL.result.toString()
-                    )
-                )
-            }
+
+            val firebaseDB = FirebaseDatabase.getInstance()
+            val pastaUploads = firebaseDB.getReference("uploads")
+            val pushKey = pastaUploads.push().key!!
+            val usuario = Usuario(
+                binding.fileName.string.trim { it <= ' ' },
+                downloadURL.result.toString()
+            )
+            pastaUploads.child(pushKey).setValue(usuario)
         }
     }
 

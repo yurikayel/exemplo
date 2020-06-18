@@ -21,15 +21,13 @@ class ActFirebaseLogin : ActBind<ActFirebaseLoginBinding>() {
     override val binding: ActFirebaseLoginBinding by viewBind()
     private val viewModel: ViewModelFirebaseLogin by viewModels()
 
-    private val user get() = viewModel.user
-
     private val loginCode = 300
-    private val loginIntent by lazy {
-        GoogleSignIn.getClient( // um objeto aí pra fazer uns login
+    private val signInIntent by lazy {
+        GoogleSignIn.getClient(
             this@ActFirebaseLogin, GoogleSignInOptions.Builder(DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build()
+                    .requestIdToken(getString(R.string.default_web_client_id))
+                    .requestEmail()
+                    .build()
         ).signInIntent
     }
 
@@ -44,7 +42,7 @@ class ActFirebaseLogin : ActBind<ActFirebaseLoginBinding>() {
     }
 
     override fun ActFirebaseLoginBinding.onBoundView() {
-        fireLogIn.onClick { startActivityForResult(loginIntent, loginCode) }
+        fireLogIn.onClick { startActivityForResult(signInIntent, loginCode) }
         fireLogOff.onClick(viewModel::logOff)
     }
 
@@ -52,10 +50,10 @@ class ActFirebaseLogin : ActBind<ActFirebaseLoginBinding>() {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
             loginCode -> viewModel.logIn(data)
-            0         -> viewModel.logIn(data)
-            1         -> viewModel.logIn(data)
         }
     }
+
+    private val user get() = viewModel.user
 
     private fun updateUI(message: String) {
         toast(message)

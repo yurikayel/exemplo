@@ -3,8 +3,10 @@ package custom
 import android.app.Activity
 import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.res.Resources.getSystem
+import android.os.Parcelable
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -14,10 +16,14 @@ import android.widget.Toast.LENGTH_SHORT
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.example.exemplo.R
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.squareup.picasso.Picasso
 import custom.adapter.ItemViewBuilder
+import java.io.*
 import kotlin.reflect.KClass
 import kotlin.reflect.KFunction0
+
 
 operator fun <T> Collection<T>.get(index: Int): T {
     forEachIndexed { indexed, element -> if (indexed == index) return element }
@@ -39,7 +45,7 @@ fun <T> MutableList<T>.update(collection: MutableList<T>) {
 
 fun Activity.hideKeyBoard() {
     (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager?)
-        ?.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+            ?.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
 }
 
 val Int.isEven get() = this % 2 == 0
@@ -119,13 +125,13 @@ val Context.inflater get() = getSystemService(Context.LAYOUT_INFLATER_SERVICE) a
 @Suppress("UNCHECKED_CAST")
 inline fun <reified Binding : ViewBinding> IContext.viewBind() = lazy {
     Binding::class.java.getMethod("inflate", LayoutInflater::class.java)
-        .invoke(null, activity.inflater) as Binding
+            .invoke(null, activity.inflater) as Binding
 }
 
 @Suppress("UNCHECKED_CAST")
 fun <Binding : ViewBinding> Context.viewBind(klass: KClass<Binding>) =
     klass.java.getMethod("inflate", LayoutInflater::class.java)
-        .invoke(null, inflater) as Binding
+            .invoke(null, inflater) as Binding
 
 fun Context.shareText(text: String) {
     startActivity(
@@ -144,3 +150,36 @@ infix fun ImageView.setImageFromURL(url: Any?) = Picasso.get().load(url.toString
 @Suppress("UNCHECKED_CAST")
 val <T : Any> Class<T>.klass: KClass<T>
     get() = this::class as KClass<T>
+
+val <T : Parcelable> T.toJson
+    get(): String = GsonBuilder().setPrettyPrinting()
+            .create()
+            .toJson(this)
+
+fun Context.toFile(text: String, name: String = "config.txt") = try {
+    OutputStreamWriter(openFileOutput(name, MODE_PRIVATE)).run {
+        write(text)
+        close()
+    }
+    "Wrote file:\n\n$text"
+} catch (ioException: IOException) {
+    "File write failed: $ioException"
+}
+
+fun Context.fromFile(name: String = "config.txt") = try {
+    val input = openFileInput(name)
+    val reader = BufferedReader(InputStreamReader(input))
+    val builder = StringBuilder()
+    while (reader.readLine() != null) {
+        builder.append(reader.readLine())
+    }
+    input.close()
+    builder.toString()
+} catch (notFound: FileNotFoundException) {
+    "File not found: $notFound"
+} catch (ioException: IOException) {
+    "Can not read file: $ioException"
+}
+
+inline fun <reified T : Parcelable>
+        T.fromJson(json: String): T = Gson().fromJson(json, T::class.java)

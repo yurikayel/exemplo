@@ -12,7 +12,7 @@
         android:id="@+id/escolher_imagem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose file"
+        android:text="ESCOLHER"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
@@ -22,7 +22,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:hint="Enter file name"
+        android:hint="Insira nome do arquivo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/escolher_imagem"
         app:layout_constraintTop_toTopOf="parent"
@@ -58,17 +58,17 @@
         app:layout_constraintRight_toRightOf="parent"
         />
 
-    <TextView
-        android:id="@+id/mostrar_uploads"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:gravity="center"
-        android:text="Mostrar Uploads"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/upload"
-        app:layout_constraintStart_toEndOf="@+id/upload"
-        app:layout_constraintTop_toTopOf="@+id/upload"
-        />
+    <!--    <TextView-->
+    <!--        android:id="@+id/mostrar_uploads"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="25dp"-->
+    <!--        android:gravity="center"-->
+    <!--        android:text="Mostrar Uploads"-->
+    <!--        android:textSize="16sp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/upload"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/upload"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/upload"-->
+    <!--        />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
