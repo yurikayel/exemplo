@@ -14,6 +14,7 @@ import debugging.ActDebugging
 import drawer.ActDrawer
 import facebook.ActFacebook
 import firebase.analytics.ActAnalytics
+import firebase.database.ActFireDatabase
 import firebase.login.ActFirebaseLogin
 import firebase.storage.ActFirebaseStorage
 import fragment.ActComunicaFrags
@@ -79,7 +80,8 @@ class ActHost : ActBind<ActHostBinding>() {
         ActFacebook::class,
         ActFirebaseLogin::class,
         ActFirebaseStorage::class,
-        ActAnalytics::class
+        ActAnalytics::class,
+        ActFireDatabase::class
     )
 
     override fun ActHostBinding.onBoundView() {

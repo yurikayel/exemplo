@@ -71,7 +71,6 @@ class ActFirebaseStorage : ActBind<ActFirebaseStorageBinding>() {
         Handler().postDelayed({ binding.progressBar.progress = 0 }, 500)
         toast("Upload realizado com sucesso!")
         storageReference.downloadUrl.addOnCompleteListener { downloadURL ->
-
             val firebaseDB = FirebaseDatabase.getInstance()
             val pastaUploads = firebaseDB.getReference("uploads")
             val pushKey = pastaUploads.push().key!!

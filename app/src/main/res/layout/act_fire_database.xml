@@ -21,7 +21,6 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <Button
         android:id="@+id/fire_db_update"
         style="@style/Button"
