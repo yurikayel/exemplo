@@ -13,6 +13,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import android.widget.Toast.LENGTH_SHORT
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.example.exemplo.R
@@ -126,6 +127,24 @@ val Context.inflater get() = getSystemService(Context.LAYOUT_INFLATER_SERVICE) a
 inline fun <reified Binding : ViewBinding> IContext.viewBind() = lazy {
     Binding::class.java.getMethod("inflate", LayoutInflater::class.java)
             .invoke(null, activity.inflater) as Binding
+}
+
+@Suppress("UNCHECKED_CAST")
+inline fun <reified Binding : ViewBinding> Activity.viewBind() = lazy {
+    Binding::class.java.getMethod("inflate", LayoutInflater::class.java)
+            .invoke(null, inflater) as Binding
+}
+
+@Suppress("UNCHECKED_CAST")
+inline fun <reified Binding : ViewBinding> Fragment.viewBind() = lazy {
+    Binding::class.java.getMethod("inflate", LayoutInflater::class.java)
+            .invoke(null, context?.inflater) as Binding
+}
+
+@Suppress("UNCHECKED_CAST")
+inline fun <reified Binding : ViewBinding> ItemViewBuilder<*, *>.viewBind() = lazy {
+    Binding::class.java.getMethod("inflate", LayoutInflater::class.java)
+            .invoke(null, context.inflater) as Binding
 }
 
 @Suppress("UNCHECKED_CAST")
