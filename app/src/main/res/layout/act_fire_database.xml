@@ -14,6 +14,20 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fire_db_nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Insira nome"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/fire_db_apelido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,7 +38,28 @@
     <Button
         android:id="@+id/fire_db_update"
         style="@style/Button"
-        android:text="Atualizar"
+        android:text="Inserir / Atualizar"
+        />
+
+    <Button
+        android:id="@+id/fire_db_delete"
+        style="@style/Button"
+        android:text="Delete"
+        />
+
+    <Button
+        android:id="@+id/fire_db_read"
+        style="@style/Button"
+        android:text="READ"
+        />
+
+    <TextView
+        android:id="@+id/fire_db_output"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Aqui aparece meu Nome e Apelido"
+        android:textSize="24sp"
         />
 
 </LinearLayout>
