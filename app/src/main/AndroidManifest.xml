@@ -99,6 +99,7 @@
         <activity android:name="firebase.storage.ActFirebaseStorage" />
         <activity android:name="firebase.analytics.ActAnalytics" />
         <activity android:name="firebase.database.ActFireDatabase" />
+        <activity android:name="custom.ActDropDown" />
     </application>
 
 </manifest>

@@ -4,10 +4,7 @@ import binding.ActRafinha
 import binding.ActSache
 import binding.ActWhiskas
 import com.example.exemplo.databinding.ActHostBinding
-import custom.ActCrossMap
-import custom.ItemViewActivity
-import custom.setup
-import custom.viewBind
+import custom.*
 import dbroomkt.ActChamadaRoom
 import dbsqlite.ActChamada
 import debugging.ActDebugging
@@ -81,7 +78,8 @@ class ActHost : ActBind<ActHostBinding>() {
         ActFirebaseLogin::class,
         ActFirebaseStorage::class,
         ActAnalytics::class,
-        ActFireDatabase::class
+        ActFireDatabase::class,
+        ActDropDown::class
     )
 
     override fun ActHostBinding.onBoundView() {
