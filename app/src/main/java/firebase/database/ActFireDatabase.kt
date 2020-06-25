@@ -1,5 +1,7 @@
 package firebase.database
 
+import android.os.Bundle
+import android.os.Parcelable
 import androidx.activity.viewModels
 import base.ActBind
 import com.example.exemplo.databinding.ActFireDatabaseBinding
@@ -70,19 +72,15 @@ class ActFireDatabase : ActBind<ActFireDatabaseBinding>() {
         return apelido
     }
 
-//    fun test() {
-//        val eventListener = object : ValueEventListener {
-//            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                dataSnapshot.children.forEach {
-//                    for (valor in it.child("alcunha").children) {
-//                        val name = valor.getValue(String::class.java)
-//                    }
-//                }
-//            }
-//
-//            override fun onCancelled(databaseError: DatabaseError) {}
-//        }
-//        FirebaseDatabase.getInstance().reference.child("messages")
-//                .addListenerForSingleValueEvent(eventListener)
-//    }
+    fun test() =
+        Bundle().putParcelableArrayList(
+            "chave", ArrayList<Apelido>(setOf(Apelido("Y", "K")))
+        )
 }
+
+fun <T : Parcelable> Bundle.putParcelableSet(key: String, set: Set<T>) {
+    putParcelableArrayList(key, ArrayList<T>(set))
+}
+
+fun <T : Parcelable> Bundle.getParcelableSet(key: String, set: Set<T>) =
+    getParcelableArrayList<T>(key)?.let { HashSet<T>(it) }

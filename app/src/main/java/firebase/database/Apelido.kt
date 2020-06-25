@@ -1,10 +1,13 @@
 package firebase.database
 
+import android.os.Parcelable
 import com.google.firebase.database.Exclude
 import com.google.firebase.database.IgnoreExtraProperties
+import kotlinx.android.parcel.Parcelize
 
 @IgnoreExtraProperties
-data class Apelido(val nome: String, val apelido: String) {
+@Parcelize
+data class Apelido(val nome: String, val apelido: String) : Parcelable {
 
     @Exclude
     fun toMap(): Map<String, Any?> = mapOf(

@@ -28,6 +28,7 @@ class ActCorotina : ActBind<ActRetrofitBinding>() {
                 retroLatitude.string,
                 retroLongitude.string
             )
+
         }
 
         viewModel.stringFormatada.observe(this@ActCorotina, Observer { retroText.text = it })

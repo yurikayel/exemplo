@@ -6,6 +6,7 @@ import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.res.Resources.getSystem
+import android.net.Uri
 import android.os.Parcelable
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -183,3 +184,71 @@ fun Context.fromFile(name: String = "config.txt") = try {
 
 inline fun <reified T : Parcelable>
         T.fromJson(json: String): T = Gson().fromJson(json, T::class.java)
+
+fun Context.vamoLa(ondeNoizVai: String) = startActivity(
+    Intent(
+        Intent.ACTION_VIEW,
+        Uri.parse("geo:0,0?q=$ondeNoizVai")
+    ).setPackage("com.google.android.apps.maps")
+)
+
+//class ExtFun
+
+//fun main(args: Array<String>) {
+////    val pessoas = listOf(
+////        Pessoa("C", "b", 1),
+////        Pessoa("A", "c", 2),
+////        Pessoa("B", "a", 3)
+////    ).orderBy("sobrenome")
+////
+////    println(pessoas[0].nome)
+////    println(pessoas[1].nome)
+////    println(pessoas[2].nome)
+////}
+////
+////inline fun <reified Type : Parcelable> Collection<Type>.orderBy(fieldName: String): LinkedHashSet<Type> {
+////    val field = Type::class.java.getDeclaredField(fieldName)
+////    field.isAccessible = true
+////
+////    val orderedList = sortedBy { field.get(this[0]) }
+////    val set = LinkedHashSet<Type>()
+////    set.addAll(orderedList)
+////    return set
+////}
+
+//inline fun <reified Type : Parcelable> Collection<Type>.orderBy(field: String): LinkedHashSet<Type> {
+//    val properties = Type::class.memberProperties
+//
+//    var list: List<Type> = mutableListOf()
+//
+//    properties.forEach { property ->
+//        if (property.name == field) {
+//            list = sortedBy {  property as Comparable<Type> }
+//        }
+//    }
+//
+//    val set = LinkedHashSet<Type>()
+//    set.addAll(list)
+//    return set
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

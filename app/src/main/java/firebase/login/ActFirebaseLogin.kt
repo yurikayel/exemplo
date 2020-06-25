@@ -22,13 +22,13 @@ class ActFirebaseLogin : ActBind<ActFirebaseLoginBinding>() {
     private val viewModel: ViewModelFirebaseLogin by viewModels()
 
     private val loginCode = 300
-    private val signInIntent by lazy {
+    private val signInClient by lazy {
         GoogleSignIn.getClient(
             this@ActFirebaseLogin, GoogleSignInOptions.Builder(DEFAULT_SIGN_IN)
                     .requestIdToken(getString(R.string.default_web_client_id))
                     .requestEmail()
                     .build()
-        ).signInIntent
+        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,8 +42,11 @@ class ActFirebaseLogin : ActBind<ActFirebaseLoginBinding>() {
     }
 
     override fun ActFirebaseLoginBinding.onBoundView() {
-        fireLogIn.onClick { startActivityForResult(signInIntent, loginCode) }
-        fireLogOff.onClick(viewModel::logOff)
+        fireLogIn.onClick { startActivityForResult(signInClient.signInIntent, loginCode) }
+        fireLogOff.onClick {
+            viewModel.logOff()
+            signInClient.revokeAccess()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
