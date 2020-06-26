@@ -79,7 +79,8 @@ class ActHost : ActBind<ActHostBinding>() {
         ActFirebaseStorage::class,
         ActAnalytics::class,
         ActFireDatabase::class,
-        ActDropDown::class
+        ActDropDown::class,
+        ActVebviu::class
     )
 
     override fun ActHostBinding.onBoundView() {

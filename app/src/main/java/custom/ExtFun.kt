@@ -16,6 +16,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.inputmethod.InputMethodManager
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.*
 import android.widget.Toast.LENGTH_SHORT
 import androidx.recyclerview.widget.RecyclerView
@@ -216,7 +218,6 @@ fun View.animateExpand(
         start()
     }
 
-
 private fun View.newSizeValue(expand: Boolean, vertical: Boolean) = if (!expand) 0 else {
     measure(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
     if (vertical) measuredHeight else measuredWidth
@@ -229,6 +230,17 @@ fun View.addUpdateListener(valueAnimator: ValueAnimator, vertical: Boolean) =
         }
         requestLayout()
     }
+
+fun WebView.loadInApp(inApp: Boolean = true) {
+    if (inApp) {
+        webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
+                view.loadUrl(url)
+                return true
+            }
+        }
+    }
+}
 
 //class ExtFun
 
