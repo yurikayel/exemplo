@@ -52,4 +52,14 @@
 
     </LinearLayout>
 
+
+    <Button
+        android:id="@+id/dropdown_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:padding="16dp"
+        android:text="@string/panel"
+        />
+
 </LinearLayout>

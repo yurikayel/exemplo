@@ -242,63 +242,9 @@ fun WebView.loadInApp(inApp: Boolean = true) {
     }
 }
 
-//class ExtFun
-
-//fun main(args: Array<String>) {
-////    val pessoas = listOf(
-////        Pessoa("C", "b", 1),
-////        Pessoa("A", "c", 2),
-////        Pessoa("B", "a", 3)
-////    ).orderBy("sobrenome")
-////
-////    println(pessoas[0].nome)
-////    println(pessoas[1].nome)
-////    println(pessoas[2].nome)
-////}
-////
-////inline fun <reified Type : Parcelable> Collection<Type>.orderBy(fieldName: String): LinkedHashSet<Type> {
-////    val field = Type::class.java.getDeclaredField(fieldName)
-////    field.isAccessible = true
-////
-////    val orderedList = sortedBy { field.get(this[0]) }
-////    val set = LinkedHashSet<Type>()
-////    set.addAll(orderedList)
-////    return set
-////}
-
-//inline fun <reified Type : Parcelable> Collection<Type>.orderBy(field: String): LinkedHashSet<Type> {
-//    val properties = Type::class.memberProperties
-//
-//    var list: List<Type> = mutableListOf()
-//
-//    properties.forEach { property ->
-//        if (property.name == field) {
-//            list = sortedBy {  property as Comparable<Type> }
-//        }
-//    }
-//
-//    val set = LinkedHashSet<Type>()
-//    set.addAll(list)
-//    return set
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+fun EditText.onKey(onKeyCode: (keyCode: Int) -> Unit) {
+    setOnKeyListener { _, keyCode, _ ->
+        onKeyCode(keyCode)
+        false
+    }
+}

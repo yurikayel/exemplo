@@ -8,7 +8,7 @@ import custom.IContext
 
 open class ActBase(open val layout: Int = 0) : AppCompatActivity(), IPermissionResult, IContext {
 
-    open val view: Any? = null
+    open val view: View? = null
 
     companion object {
         @JvmStatic
@@ -18,12 +18,18 @@ open class ActBase(open val layout: Int = 0) : AppCompatActivity(), IPermissionR
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         intent?.extras?.onExtras()
-        if (layout != 0) {
-            setContentView(layout)
-            ((window.decorView.rootView as ViewGroup).getChildAt(0) as ViewGroup).onView()
-        } else if (view is View) {
-            setContentView(view as View)
-            (view as ViewGroup).onView()
+        when {
+            layout != 0       -> {
+                setContentView(layout)
+                ((window.decorView.rootView as ViewGroup).getChildAt(0) as ViewGroup).onView()
+            }
+            view is ViewGroup -> {
+                setContentView(view as View)
+                (view as ViewGroup).onView()
+            }
+            view is View      -> {
+                setContentView(view as View)
+            }
         }
     }
 

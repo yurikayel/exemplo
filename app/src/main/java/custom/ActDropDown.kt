@@ -16,5 +16,6 @@ class ActDropDown : ActBind<ActDropDownBinding>() {
             dropdownContainer.children.forEach { it.onClick { dropdownContainer.animateExpand(false) } }
             dropdownContainer.animateExpand()
         }
+        dropdownPanel.onClick { newPanel(bowserView()) }
     }
 }

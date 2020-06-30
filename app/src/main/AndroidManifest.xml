@@ -101,6 +101,7 @@
         <activity android:name="firebase.database.ActFireDatabase" />
         <activity android:name="custom.ActDropDown" />
         <activity android:name="custom.ActVebviu" />
+        <activity android:name="custom.ActBowserView" />
     </application>
 
 </manifest>
