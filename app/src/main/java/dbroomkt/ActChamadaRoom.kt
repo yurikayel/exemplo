@@ -19,7 +19,7 @@ class ActChamadaRoom : ActBind<ActChamadaBinding>() {
         DatabaseBuilder.getAppDatabase(this).accessUsuario()
     }
 
-    private val usuarios: MutableList<Usuario> = mutableListOf()
+    private val entityUsuarios: MutableList<EntityUsuario> = mutableListOf()
 
     override fun ActChamadaBinding.onBoundView() {
         chamadaCreate.setOnClickListener(onCreateUsuario())
@@ -27,12 +27,12 @@ class ActChamadaRoom : ActBind<ActChamadaBinding>() {
         chamadaUpdate.setOnClickListener(onUpdate())
         chamadaDestroy.setOnClickListener(onDestroyUsuario())
 
-        usuarios.update(accessUsuario.puxaTodaLista())
-        chamadaRecycler.setup<ItemViewUsuario>(usuarios)
+        entityUsuarios.update(accessUsuario.puxaTodaLista())
+        chamadaRecycler.setup<ItemViewUsuario>(entityUsuarios)
     }
 
     private fun ActChamadaBinding.onCreateUsuario() = OnClickListener {
-        val usuario = Usuario(
+        val usuario = EntityUsuario(
             0,
             chamadaNome.string,
             chamadaSobrenome.string,
@@ -64,7 +64,7 @@ class ActChamadaRoom : ActBind<ActChamadaBinding>() {
     private fun onUpdate() = OnClickListener {
         Thread(Runnable {
             binding.run {
-                Usuario(
+                EntityUsuario(
                     chamadaId.int,
                     chamadaNome.string,
                     chamadaSobrenome.string,
@@ -80,7 +80,7 @@ class ActChamadaRoom : ActBind<ActChamadaBinding>() {
 
     private fun ActChamadaBinding.onDestroyUsuario() = OnClickListener {
         Thread(Runnable {
-            accessUsuario.deletar(Usuario(chamadaId.int, "", "", 0))
+            accessUsuario.deletar(EntityUsuario(chamadaId.int, "", "", 0))
             toast("DESTROY\n\nID ${chamadaId.int} destruído")
             runOnUiThread { updateUI() }
         }).start()
@@ -94,7 +94,7 @@ class ActChamadaRoom : ActBind<ActChamadaBinding>() {
 
     private fun updateUI() {
         limpaCampos()
-        usuarios.update(accessUsuario.puxaTodaLista())
+        entityUsuarios.update(accessUsuario.puxaTodaLista())
         binding.chamadaRecycler.update()
         hideKeyBoard()
     }

@@ -11,7 +11,7 @@ class ItemViewActivity : ItemViewBuilder<KClass<AppCompatActivity>, ActHostItemB
     override val binding: ActHostItemBinding by viewBind()
 
     override fun ActHostItemBinding.onBind(position: Int) {
-        val activity = collection.get(position)
+        val activity = collection[position]
         actHostButton.run {
             text = activity.java.name
             setOnClickListener { context.startActivity(Intent(context, activity.java)) }

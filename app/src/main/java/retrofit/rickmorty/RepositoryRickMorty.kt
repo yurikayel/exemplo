@@ -1,14 +1,23 @@
 package retrofit.rickmorty
 
-import retrofit.RetroInit
+import androidx.annotation.VisibleForTesting
+import retrofit.Repository
 
-class RepositoryRickMorty {
-    private var url = "https://rickandmortyapi.com/api/"
-    private var service = ServiceRickMorty::class
+class RepositoryRickMorty : Repository<ServiceRickMorty>(
+    "https://rickandmortyapi.com/api/",
+    ServiceRickMorty::class
+) {
+    @VisibleForTesting
+    suspend fun getCharacters(page: Int = 1) = service.getCharacters(page)
 
-    private val serviceRick = RetroInit(url).create(service)
-
-    suspend fun getCharacters(page: Int = 1): CharacterResponse {
-        return serviceRick.getCharacters(page)
+    @VisibleForTesting
+    suspend fun getAllCharacters(startingPage: Int = 1): CharacterResponse {
+        val response = service.getCharacters(startingPage)
+        response.info.pages.let {
+            for (index in startingPage..it) {
+                response.results.addAll(getCharacters(index).results)
+            }
+        }
+        return response
     }
 }

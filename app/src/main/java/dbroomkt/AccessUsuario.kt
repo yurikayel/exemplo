@@ -6,20 +6,20 @@ import androidx.room.*
 interface AccessUsuario {
 
     @Query("SELECT * FROM usuario")
-    fun puxaTodaLista(): MutableList<Usuario>
+    fun puxaTodaLista(): MutableList<EntityUsuario>
 
     @Query("SELECT * FROM usuario where id LIKE  :id")
-    fun encontrarPorId(id: Int): Usuario
+    fun encontrarPorId(id: Int): EntityUsuario
 
     @Query("SELECT COUNT(*) from usuario")
     fun contarTodos(): Int
 
     @Insert
-    fun inserir(vararg usuarios: Usuario)
+    fun inserir(vararg entityUsuarios: EntityUsuario)
 
     @Delete
-    fun deletar(usuario: Usuario)
+    fun deletar(entityUsuario: EntityUsuario)
 
     @Update
-    fun atualizar(usuario: Usuario)
+    fun atualizar(entityUsuario: EntityUsuario)
 }

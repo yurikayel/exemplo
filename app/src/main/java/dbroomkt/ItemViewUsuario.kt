@@ -7,7 +7,7 @@ import custom.get
 import custom.isOdd
 import custom.viewBind
 
-class ItemViewUsuario : ItemViewBuilder<Usuario, ItemChamadaBinding>() {
+class ItemViewUsuario : ItemViewBuilder<EntityUsuario, ItemChamadaBinding>() {
 
     override val binding: ItemChamadaBinding by viewBind()
 

@@ -127,6 +127,7 @@
         parent="AppDialog">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:animation">@style/FadeAnimation</item>
     </style>
 
     <style name="FadeAnimation">

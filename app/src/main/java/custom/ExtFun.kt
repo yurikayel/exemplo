@@ -11,6 +11,7 @@ import android.content.res.Resources.getSystem
 import android.net.Uri
 import android.os.Parcelable
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,8 +26,13 @@ import androidx.viewbinding.ViewBinding
 import com.example.exemplo.R
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 import com.squareup.picasso.Picasso
 import custom.adapter.ItemViewBuilder
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 import java.io.*
 import kotlin.reflect.KClass
 import kotlin.reflect.KFunction0
@@ -158,11 +164,6 @@ infix fun ImageView.setImageFromURL(url: Any?) = Picasso.get().load(url.toString
 val <T : Any> Class<T>.klass: KClass<T>
     get() = this::class as KClass<T>
 
-val <T : Parcelable> T.toJson
-    get(): String = GsonBuilder().setPrettyPrinting()
-            .create()
-            .toJson(this)
-
 fun Context.toFile(text: String, name: String = "config.txt") = try {
     OutputStreamWriter(openFileOutput(name, MODE_PRIVATE)).run {
         write(text)
@@ -188,8 +189,19 @@ fun Context.fromFile(name: String = "config.txt") = try {
     "Can not read file: $ioException"
 }
 
-inline fun <reified T : Parcelable>
-        T.fromJson(json: String): T = Gson().fromJson(json, T::class.java)
+fun <T> T.toJson(): String = GsonBuilder().setPrettyPrinting().create().toJson(this)
+
+val <T : Parcelable> Array<T>.toJson get(): String = toJson()
+
+val <T : Map<*, Parcelable>> T.toJson get(): String = toJson()
+
+val <T : Iterable<Parcelable>> T.toJson get(): String = toJson()
+
+inline fun <reified T> String.toObjekt(): T =
+    Gson().fromJson(this, T::class.java)
+
+inline fun <reified T> String.toObjekts(): T =
+    Gson().fromJson(this, object : TypeToken<T>() {}.type)
 
 fun Context.vamoLa(ondeNoizVai: String) = startActivity(
     Intent(
@@ -248,3 +260,15 @@ fun EditText.onKey(onKeyCode: (keyCode: Int) -> Unit) {
         false
     }
 }
+
+fun async(
+    dispatcher: CoroutineDispatcher = IO,
+    block: suspend CoroutineScope.() -> Unit
+) =
+    CoroutineScope(dispatcher).launch(block = block)
+
+inline fun <reified T>
+        T.log(
+    info: String = T::class.java.enclosingMethod?.name ?: T::class.java.simpleName
+) =
+    Log.i(T::class.java.simpleName, info)
