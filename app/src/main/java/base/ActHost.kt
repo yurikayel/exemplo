@@ -34,6 +34,7 @@ import retrofit.ActRandom
 import retrofit.ActRetroFit
 import revisao.ActCadastro
 import share.ActShare
+import sharedpref.ActSharedPref
 import thread.ActThread
 import viewpager.ActPager
 import viewpager.ActViewPager
@@ -81,7 +82,8 @@ class ActHost : ActBind<ActHostBinding>() {
         ActFireDatabase::class,
         ActDropDown::class,
         ActVebviu::class,
-        ActBowserView::class
+        ActBowserView::class,
+        ActSharedPref::class
     )
 
     override fun ActHostBinding.onBoundView() {

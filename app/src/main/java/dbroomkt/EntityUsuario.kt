@@ -86,7 +86,7 @@ fun main() {
     )
 
 //    usuarioParcel.collection.forEach { println(it.whiskas) }  // list, array, set
-    usuarioParcel.collection.forEach { println(it.value.whiskas) }  // map
+    usuarioParcel.collection.forEach { println(it.key.toString() + " " + it.value.whiskas) }  // map
 }
 
 fun <T> T.toJson(): String = GsonBuilder().setPrettyPrinting().create().toJson(this)

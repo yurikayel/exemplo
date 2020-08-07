@@ -6,11 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 
-abstract class FragBind<T : ViewBinding> : FragBase() {
+abstract class FragBind<Binding : ViewBinding> : FragBase() {
 
-    abstract val binding: T
+    abstract val binding: Binding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, state: Bundle?) =
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        state: Bundle?
+    ) =
         binding.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -18,5 +22,5 @@ abstract class FragBind<T : ViewBinding> : FragBase() {
         binding.onBoundView()
     }
 
-    abstract fun T.onBoundView()
+    abstract fun Binding.onBoundView()
 }

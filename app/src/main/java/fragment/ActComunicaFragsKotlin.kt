@@ -3,48 +3,31 @@ package fragment
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.example.exemplo.R
-import custom.hideKeyBoard
 
 class ActComunicaFragsKotlin : AppCompatActivity(), ActivityContract {
 
-    // Postergar inicialização = lateinit
-    // lateinit se usa para não declarar um objeto como nulável
-    // ou seja, invariavelmente o objeto sempre vai ter um valor
     private var fragVermelho: FragVermelho? = null
-    private lateinit var fragVerde: Fragment
-    private lateinit var fragAzul: FragAzul
-
-    private val fragManager : FragmentManager = supportFragmentManager
+    private val fragVerde by lazy { findFrag<FragVerde>(R.id.frag_verde) }
+    private lateinit var fragAzul: Fragment
 
     override fun onCreate(bundle: Bundle?) {
         super.onCreate(bundle)
         setContentView(R.layout.act_comunica_frags)
-        fragVermelho = fragManager.findFragmentById(R.id.frag_vermelho) as FragVermelho?
-        fragVerde = findFrag<FragVerde>(R.id.frag_verde)
-        fragAzul = fragManager.findFragmentById(R.id.frag_azul) as FragAzul
+        fragVermelho = findFrag(R.id.frag_vermelho)
+        fragAzul = findFrag(R.id.frag_azul)
     }
 
-    @Suppress("UNCHECKED_CAST")
-    private fun <Tipo> findFrag(fragID : Int) = fragManager.findFragmentById(fragID) as Tipo
+    private fun <T> findFrag(fragID: Int) =
+        supportFragmentManager.findFragmentById(fragID) as T
 
-    override fun setTextVermelho(texto: String) {
-        fragVermelho?.setTextVermelho(texto)
-//        É o mesmo que:
-//        if(fragVermelho != null){
-//            fragVermelho.setTextVermelho(texto)
-//        }
-        hideKeyBoard()
-    }
+    override fun setTextVermelho(texto: String): Unit =
+        fragVermelho!!.setTextVermelho(texto)
 
-    override fun setTextVerde(texto: String) {
-        (fragVerde as FragVerde).setTextVerde(texto)
-        hideKeyBoard()
-    }
+    override fun setTextVerde(texto: String) =
+        fragVerde.setTextVerde(texto)
 
-    override fun setTextAzul(texto: String) {
-        fragAzul.setTextAzul(texto)
-        hideKeyBoard()
-    }
+    override fun setTextAzul(texto: String) =
+        (fragAzul as FragAzul).setTextAzul(texto)
 }
+

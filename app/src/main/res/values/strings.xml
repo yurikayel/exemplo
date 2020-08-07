@@ -98,4 +98,8 @@
     <string name="whatever">whatever</string>
     <string name="consultar_tempo">Consultar o Tempo</string>
     <string name="dropidaun">Drópi Dáun</string>
+    <string name="exemplo_key">whiskas</string>
+    <string name="sharedpref">whiskas</string>
+    <string name="pontos">pontos</string>
+    <string name="uma_chave">key</string>
 </resources>

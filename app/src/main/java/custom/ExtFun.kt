@@ -6,6 +6,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.Context.MODE_PRIVATE
+import android.content.ContextWrapper
 import android.content.Intent
 import android.content.res.Resources.getSystem
 import android.net.Uri
@@ -272,3 +273,9 @@ inline fun <reified T>
     info: String = T::class.java.enclosingMethod?.name ?: T::class.java.simpleName
 ) =
     Log.i(T::class.java.simpleName, info)
+
+val Context.activity: Activity
+    get() = when (this) {
+        is Activity -> this
+        else        -> (this as ContextWrapper).baseContext.activity
+    }

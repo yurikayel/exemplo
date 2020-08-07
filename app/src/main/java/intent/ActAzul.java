@@ -17,10 +17,10 @@ public class ActAzul extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_azul);
+        setContentView(R.layout.act_exemplo);
         if (getIntent().getExtras() != null) {
             textoRecebido = getIntent().getExtras().getString("chave");
-            campoDeTexto = findViewById(R.id.textView3);
+            campoDeTexto = findViewById(R.id.textView);
             campoDeTexto.setText(textoRecebido);
         }
     }

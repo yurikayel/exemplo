@@ -25,6 +25,17 @@
         android:theme="@style/AppTheme.NoActionBar"
         >
 
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"
+            />
+
+        <activity
+            android:name="facebook.ActFacebook"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            />
+
         <activity
             android:name="telainicial.ActSplash"
             android:theme="@style/SplashTheme"
@@ -84,17 +95,6 @@
         <activity android:name="permissions.ActPermissions" />
         <activity android:name="permissions.ActPermissionsJeitoChato" />
         <activity android:name="share.ActShare" />
-
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"
-            />
-
-        <activity
-            android:name="facebook.ActFacebook"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name"
-            />
         <activity android:name="firebase.login.ActFirebaseLogin" />
         <activity android:name="firebase.storage.ActFirebaseStorage" />
         <activity android:name="firebase.analytics.ActAnalytics" />
@@ -103,6 +103,8 @@
         <activity android:name="custom.ActVebviu" />
         <activity android:name="custom.ActBowserView" />
         <activity android:name="tests.ActTests" />
+        <activity android:name="activity.ActCicloDeVida" />
+        <activity android:name="sharedpref.ActSharedPref" />
     </application>
 
 </manifest>

@@ -18,6 +18,7 @@ open class ActBase(open val layout: Int = 0) : AppCompatActivity(), IPermissionR
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         intent?.extras?.onExtras()
+
         when {
             layout != 0       -> {
                 setContentView(layout)

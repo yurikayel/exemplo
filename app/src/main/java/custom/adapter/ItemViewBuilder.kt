@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView.LayoutParams.MATCH_PARENT
 import androidx.recyclerview.widget.RecyclerView.LayoutParams.WRAP_CONTENT
 import androidx.viewbinding.ViewBinding
 import custom.IContext
+import custom.activity
 
 open class RecyclerViewHolder(val builder: ItemViewBuilder<*, *>) :
     RecyclerView.ViewHolder(builder.build())
@@ -22,7 +23,7 @@ abstract class ItemViewBuilder<Data, Binding : ViewBinding> : IContext {
     fun init(group: ViewGroup, coll: Collection<*>) = apply {
         recycler = group as RecyclerView
         collection = coll as Collection<Data>
-        context = group.context
+        context = group.context.activity
     }
 
     fun build() = binding.root.apply {
@@ -33,3 +34,4 @@ abstract class ItemViewBuilder<Data, Binding : ViewBinding> : IContext {
 
     abstract fun Binding.onBind(position: Int)
 }
+
