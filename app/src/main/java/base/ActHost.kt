@@ -1,5 +1,8 @@
 package base
 
+import activity.ActCicloDeVida
+import activity.ActMainJava
+import activity.ActMainKotlin
 import binding.ActRafinha
 import binding.ActSache
 import binding.ActWhiskas
@@ -21,6 +24,7 @@ import functions.ActExtension
 import functions.ActLambda
 import functions.ActReified
 import intent.ActAzul
+import intent.ActExemplo
 import intent.ActVerde
 import intent.ActVermelha
 import mvvm.ActArquitetura
@@ -44,9 +48,9 @@ class ActHost : ActBind<ActHostBinding>() {
     override val binding: ActHostBinding by viewBind()
 
     private val list = listOf(
-        ActVermelha::class,
-        ActVerde::class,
-        ActAzul::class,
+        ActMainJava::class,
+        ActMainKotlin::class,
+        ActExemplo::class,
         ActFragments::class,
         ActComunicaFrags::class,
         ActCadastro::class,

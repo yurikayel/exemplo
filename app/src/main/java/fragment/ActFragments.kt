@@ -11,14 +11,15 @@ import androidx.fragment.app.Fragment
 import com.example.exemplo.R
 
 class ActFragments : AppCompatActivity(), ActivityContract {
+
     var vermelho: Button? = null
     var verde: Button? = null
     var azul: Button? = null
-    var bundleVermelho: Bundle? = null
-    var bundleVerde: Bundle? = null
-    var bundleAzul: Bundle? = null
-    var manager = supportFragmentManager
+    lateinit var bundleVermelho: Bundle
+    lateinit var bundleVerde: Bundle
+    lateinit var bundleAzul: Bundle
     var toast: Toast? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         achaViews()
@@ -38,13 +39,13 @@ class ActFragments : AppCompatActivity(), ActivityContract {
         bundleVermelho = Bundle()
         bundleVerde = Bundle()
         bundleAzul = Bundle()
-        bundleVermelho!!.putString("chave", "valor")
-        bundleVerde!!.putString("chave", "valor")
-        bundleAzul!!.putString("chave", "valor")
+        bundleVermelho.putString("chave", "bundleVermelho")
+        bundleVerde.putString("chave", "bundleVerde")
+        bundleAzul.putString("chave", "bundleAzul")
     }
 
     private fun colocaClick() {
-        clickBotao(vermelho, FragVermelho.newInstance(bundleVermelho))
+        clickBotao(vermelho, FragVermelho(bundleVermelho))
         clickBotao(verde, FragVerde.newInstance(bundleVerde))
         clickBotao(azul, FragAzul.newInstance(bundleAzul))
     }
@@ -53,31 +54,32 @@ class ActFragments : AppCompatActivity(), ActivityContract {
         button!!.setOnClickListener { carregaFrag(fragment) }
     }
 
-    private fun carregaFrag(fragment: Fragment): Void? {
-        val fragVoltou = voltaSeTiver(fragment.javaClass.name)
-        if (!fragVoltou) manager
-            .beginTransaction()
-            .replace(R.id.framelayout_amarelo, fragment)
-            .addToBackStack(fragment.javaClass.name)
-            .commit()
-        return null
+    private fun carregaFrag(fragment: Fragment) {
+        if (!voltaSeTiver(fragment.javaClass.name)) {
+            supportFragmentManager
+                .beginTransaction()  // Não sei, só sei que foi assim
+                .replace(R.id.framelayout_amarelo, fragment)
+                .addToBackStack(fragment.javaClass.name)
+                .commit()
+        }
     }
 
-    private fun voltaSeTiver(fragName: String): Boolean {
-        return manager.popBackStackImmediate(fragName, 0)
-    }
+    private fun voltaSeTiver(fragName: String) =
+        supportFragmentManager.popBackStackImmediate(fragName, 0)
 
     override fun setTextVermelho(texto: String) {
-        toast!!.show()
-        hideSoftKeyBoard()
+        brindaEEsconde()
     }
 
     override fun setTextVerde(texto: String) {
-        toast!!.show()
-        hideSoftKeyBoard()
+        brindaEEsconde()
     }
 
     override fun setTextAzul(texto: String) {
+        brindaEEsconde()
+    }
+
+    private fun brindaEEsconde() {
         toast!!.show()
         hideSoftKeyBoard()
     }

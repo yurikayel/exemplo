@@ -52,6 +52,7 @@
         <activity android:name="activity.ActMainKotlin" />
         <activity android:name="layouts.ActLinear" />
         <activity android:name="components.ComponentsActivity" />
+        <activity android:name="intent.ActExemplo" />
         <activity android:name="intent.ActVermelha" />
         <activity android:name="intent.ActVerde" />
         <activity android:name="intent.ActAzul" />

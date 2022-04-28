@@ -2,16 +2,11 @@ package activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
 import com.example.exemplo.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import static android.widget.Toast.makeText;
 
@@ -20,20 +15,6 @@ public class ActMainJava extends Activity {
     EditText nome, email, endereco, profissao;
 
     Button enviar;
-
-    FloatingActionButton voarVoar;
-
-    OnClickListener onClick = new OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if (todosTemTexto(nome, email, endereco, profissao)) {
-                makeText(view.getContext(), "Favor preencher todos os campos!", Toast.LENGTH_LONG).show();
-            }
-            else {
-                makeText(view.getContext(), "OK!", Toast.LENGTH_LONG).show();
-            }
-        }
-    };
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,7 +25,14 @@ public class ActMainJava extends Activity {
         endereco = findViewById(R.id.edit_endereco);
         profissao = findViewById(R.id.edit_profissao);
         enviar = findViewById(R.id.button_enviar);
-        enviar.setOnClickListener(onClick);
+        enviar.setOnClickListener(view -> {
+            if (todosTemTexto(nome, email, endereco, profissao)) {
+                makeText(view.getContext(), "OK!", Toast.LENGTH_LONG).show();
+            } else {
+                makeText(view.getContext(), "Favor preencher todos os campos!", Toast.LENGTH_LONG)
+                        .show();
+            }
+        });
     }
 
     private boolean todosTemTexto(EditText... editTexts) {

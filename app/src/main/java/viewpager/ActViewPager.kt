@@ -25,7 +25,7 @@ class ActViewPager : AppCompatActivity() {
         tab.setupWithViewPager(pager)
         pager.adapter = ExemploAdapter(
             listOf(
-                FragVermelho.newInstance(),
+                FragVermelho(Bundle()),
                 FragVerde.newInstance(Bundle()),
                 FragAzul.newInstance(Bundle())
             ),

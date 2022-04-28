@@ -15,15 +15,6 @@ class ActCadastroKotlin : AppCompatActivity() {
     private lateinit var senha: EditText
     private lateinit var cadastrar: Button
 
-    private val onClickCadastrar = View.OnClickListener { view ->
-        if (todosPreenchidos(nome, email, senha)) {
-            Toast.makeText(view.context, "OK!", Toast.LENGTH_LONG).show()
-            startActivity(Intent(view.context, ActRevisaoFrags::class.java).putExtra("nome", nome.text.toString()))
-        } else {
-            Toast.makeText(view.context, "Faltou preencher aí!", Toast.LENGTH_LONG).show()
-        }
-    }
-
     private fun todosPreenchidos(vararg listaDeCamposDeTexto: EditText): Boolean {
         listaDeCamposDeTexto.forEach { if (it.text.toString().isEmpty()) return false }
         return true
@@ -36,6 +27,19 @@ class ActCadastroKotlin : AppCompatActivity() {
         email = findViewById(R.id.cadastro_email)
         senha = findViewById(R.id.cadastro_senha)
         cadastrar = findViewById(R.id.cadastro_cadastrar)
-        cadastrar.setOnClickListener(onClickCadastrar)
+        cadastrar.setOnClickListener { view ->
+            if (todosPreenchidos(nome, email, senha)) {
+                Toast.makeText(view.context, "OK!", Toast.LENGTH_LONG).show()
+                startActivity(
+                    Intent(
+                        view.context,
+                        ActRevisaoFrags::class.java
+                    ).putExtra("nome", nome.text.toString())
+                )
+            } else {
+                Toast.makeText(view.context, "Faltou preencher aí!", Toast.LENGTH_LONG)
+                    .show()
+            }
+        }
     }
 }

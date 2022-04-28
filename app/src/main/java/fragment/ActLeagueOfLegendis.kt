@@ -14,9 +14,9 @@ private const val PLAYER_KEY = "PLAYER_NAME"
 class ActLeagueOfLegendis : ActBase(R.layout.activity_main) {
 
     override fun ViewGroup.onView() {
-        findViewById<SearchView>(R.id.search_id).setOnQueryTextListener(onTextSubmit {
-            replaceFragment(FragVermelho.newInstance(Bundle().apply { putString(PLAYER_KEY, it) }))
-        })
+//        findViewById<SearchView>(R.id.search_id).setOnQueryTextListener(onTextSubmit {
+//            replaceFragment(FragVermelho.newInstance(Bundle().apply { putString(PLAYER_KEY, it) }))
+//        })
     }
 
     private fun replaceFragment(fragment: Fragment) =

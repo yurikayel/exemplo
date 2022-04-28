@@ -12,8 +12,6 @@ class ActCicloDeVida : Activity() {
 
         val intent = Intent(this, ActExemplo::class.java)
         startActivity(intent)
-
-
     }
 
 }

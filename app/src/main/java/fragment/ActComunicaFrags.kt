@@ -1,47 +1,31 @@
-package fragment;
+package fragment
 
-import android.os.Bundle;
+import custom.hideKeyBoard
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import com.example.exemplo.R
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
+class ActComunicaFrags : AppCompatActivity(), ActivityContract {
 
-import com.example.exemplo.R;
+    var fragManager = supportFragmentManager
 
-import static custom.ExtFunKt.hideKeyBoard;
-
-public class ActComunicaFrags extends AppCompatActivity implements ActivityContract {
-
-    FragVermelho fragVermelho;
-    FragVerde fragVerde;
-    FragAzul fragAzul;
-
-    FragmentManager fragManager = getSupportFragmentManager();
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_comunica_frags);
-        fragVermelho = (FragVermelho) fragManager.findFragmentById(R.id.frag_vermelho);
-        fragVerde = (FragVerde) fragManager.findFragmentById(R.id.frag_verde);
-        fragAzul = (FragAzul) fragManager.findFragmentById(R.id.frag_azul);
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.act_comunica_frags)
     }
 
-    @Override
-    public void setTextVermelho(String texto) {
-        fragVermelho.setTextVermelho(texto);
-        hideKeyBoard(this);
+    override fun setTextVermelho(texto: String) {
+        (fragManager.findFragmentById(R.id.frag_vermelho) as FragVermelho).setTextVermelho(texto)
+        hideKeyBoard()
     }
 
-    @Override
-    public void setTextVerde(String texto) {
-        fragVerde.setTextVerde(texto);
-        hideKeyBoard(this);
+    override fun setTextVerde(texto: String) {
+        (fragManager.findFragmentById(R.id.frag_verde) as FragVerde).setTextVerde(texto)
+        hideKeyBoard()
     }
 
-    @Override
-    public void setTextAzul(String texto) {
-        fragAzul.setTextAzul(texto);
-        hideKeyBoard(this);
+    override fun setTextAzul(texto: String) {
+        (fragManager.findFragmentById(R.id.frag_azul) as FragAzul).setTextAzul(texto)
+        hideKeyBoard()
     }
 }

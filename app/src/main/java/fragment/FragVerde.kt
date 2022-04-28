@@ -26,8 +26,7 @@ class FragVerde : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is ActivityContract) activity =
-            context
+        if (context is ActivityContract) activity = context
     }
 
     override fun onViewCreated(

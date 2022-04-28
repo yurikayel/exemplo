@@ -23,7 +23,6 @@ class FragAzul : Fragment() {
         savedInstanceState: Bundle?
     ): View = inflater.inflate(R.layout.frag_azul, container, false)
 
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is ActivityContract) activity =

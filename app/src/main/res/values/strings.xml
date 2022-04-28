@@ -102,4 +102,5 @@
     <string name="sharedpref">whiskas</string>
     <string name="pontos">pontos</string>
     <string name="uma_chave">key</string>
+    <string name="textview">Textículo</string>
 </resources>
