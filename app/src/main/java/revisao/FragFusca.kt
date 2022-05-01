@@ -1,21 +1,14 @@
-package revisao;
+package revisao
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import base.FragBase
+import com.example.exemplo.R
+import custom.ISingleton
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+class FragFusca : FragBase(R.layout.frag_fusca) {
 
-import com.example.exemplo.R;
-
-public class FragFusca extends Fragment {
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.frag_fusca, container, false);
+    companion object : ISingleton<FragFusca> {
+        override val instance by lazy { FragFusca() }
+        override val name: String by lazy { instance::class.java.name }
     }
+
 }

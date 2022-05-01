@@ -17,10 +17,11 @@ class ActRevisaoFrags : AppCompatActivity() {
 
         val textoFormatado =
             "Bem vindo(a) ${intent.extras?.getString("nome") ?: "Gunther"}! Clique abaixo para ver Fragmentos:"
+
         findViewById<TextView>(R.id.benvindo_nome).text = textoFormatado
 
-        findViewById<View>(R.id.benvindo_button).setOnClickListener {
-            it.start(ActFragmentsRevisao::class)
+        findViewById<View>(R.id.benvindo_button).setOnClickListener { view ->
+            view.start(ActFragmentsRevisao::class)
         }
 
         findViewById<View>(R.id.benvindo_button_comunica_frags).setOnClickListener {

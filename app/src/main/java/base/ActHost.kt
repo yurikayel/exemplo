@@ -1,6 +1,5 @@
 package base
 
-import activity.ActCicloDeVida
 import activity.ActMainJava
 import activity.ActMainKotlin
 import binding.ActRafinha
@@ -23,10 +22,7 @@ import fragment.ActFragmentsKotlin
 import functions.ActExtension
 import functions.ActLambda
 import functions.ActReified
-import intent.ActAzul
 import intent.ActExemplo
-import intent.ActVerde
-import intent.ActVermelha
 import mvvm.ActArquitetura
 import navdrawer.ActNavDrawer
 import permissions.ActPermissions

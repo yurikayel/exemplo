@@ -22,6 +22,8 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.*
 import android.widget.Toast.LENGTH_SHORT
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.example.exemplo.R
@@ -37,6 +39,7 @@ import kotlinx.coroutines.launch
 import java.io.*
 import kotlin.reflect.KClass
 import kotlin.reflect.KFunction0
+import kotlin.reflect.full.companionObjectInstance
 
 
 operator fun <T> Collection<T>.get(index: Int): T {
@@ -59,7 +62,7 @@ fun <T> MutableList<T>.update(collection: MutableList<T>) {
 
 fun Activity.hideKeyBoard() {
     (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager?)
-            ?.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+        ?.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
 }
 
 val Int.isEven get() = this % 2 == 0
@@ -139,13 +142,13 @@ val Context.inflater get() = getSystemService(Context.LAYOUT_INFLATER_SERVICE) a
 @Suppress("UNCHECKED_CAST")
 inline fun <reified Binding : ViewBinding> IContext.viewBind() = lazy {
     Binding::class.java.getMethod("inflate", LayoutInflater::class.java)
-            .invoke(null, activity.inflater) as Binding
+        .invoke(null, activity.inflater) as Binding
 }
 
 @Suppress("UNCHECKED_CAST")
 fun <Binding : ViewBinding> Context.viewBind(klass: KClass<Binding>) =
     klass.java.getMethod("inflate", LayoutInflater::class.java)
-            .invoke(null, inflater) as Binding
+        .invoke(null, inflater) as Binding
 
 fun Context.shareText(text: String) {
     startActivity(
@@ -159,7 +162,8 @@ fun Context.shareText(text: String) {
     )
 }
 
-infix fun ImageView.setImageFromURL(url: Any?) = Picasso.get().load(url.toString()).into(this)
+infix fun ImageView.setImageFromURL(url: Any?) =
+    Picasso.get().load(url.toString()).into(this)
 
 @Suppress("UNCHECKED_CAST")
 val <T : Any> Class<T>.klass: KClass<T>
@@ -231,10 +235,14 @@ fun View.animateExpand(
         start()
     }
 
-private fun View.newSizeValue(expand: Boolean, vertical: Boolean) = if (!expand) 0 else {
-    measure(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-    if (vertical) measuredHeight else measuredWidth
-}
+private fun View.newSizeValue(expand: Boolean, vertical: Boolean) =
+    if (!expand) 0 else {
+        measure(
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        if (vertical) measuredHeight else measuredWidth
+    }
 
 fun View.addUpdateListener(valueAnimator: ValueAnimator, vertical: Boolean) =
     valueAnimator.addUpdateListener { animator ->
@@ -279,3 +287,80 @@ val Context.activity: Activity
         is Activity -> this
         else        -> (this as ContextWrapper).baseContext.activity
     }
+
+
+
+
+
+
+
+@Suppress("UNCHECKED_CAST")
+inline fun <reified F : Fragment> AppCompatActivity.carregaFrag(
+    container: Int = R.id.fragment_container,
+    addToBackStack: Boolean = true
+) {
+    val companion = (F::class.companionObjectInstance as ISingleton<F>)
+
+    supportFragmentManager.beginTransaction().run {
+        replace(container, companion.instance)
+        if (addToBackStack) addToBackStack(companion.name)
+        commit()
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,14 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import custom.IContext
 
-abstract class FragBase : Fragment(), IContext {
+inline fun <reified T : FragBase> new(bundle: Bundle?): T =
+    T::class.java.newInstance().apply { arguments = bundle }
 
-    open val layout: Int = 0
-
-    companion object {
-        inline fun <reified T : FragBase> new(bundle: Bundle?): T =
-            T::class.java.newInstance().apply { arguments = bundle }
-    }
+abstract class FragBase(val layout : Int = 0) : Fragment(), IContext {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, state: Bundle?):
             View? = inflater.inflate(layout, container, false)

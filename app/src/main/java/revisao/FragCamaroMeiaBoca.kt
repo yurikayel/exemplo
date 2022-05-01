@@ -1,21 +1,16 @@
-package revisao;
+package revisao
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import base.FragBase
+import com.example.exemplo.R
+import custom.ISingleton
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+class FragCamaroMeiaBoca : FragBase(R.layout.frag_camaro) {
 
-import com.example.exemplo.R;
+    companion object : ISingleton<FragCamaroMeiaBoca> {
+        @JvmStatic
+        override val instance by lazy { FragCamaroMeiaBoca() }
 
-public class FragCamaroMeiaBoca extends Fragment {
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.frag_camaro, container, false);
+        @JvmStatic
+        override val name: String by lazy { instance::class.java.name }
     }
 }

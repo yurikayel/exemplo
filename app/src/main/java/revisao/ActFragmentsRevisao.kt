@@ -1,59 +1,22 @@
-package revisao;
+package revisao
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import base.ActBind
+import com.example.exemplo.databinding.ActFragmentsRevisaoBinding
+import custom.carregaFrag
+import custom.viewBind
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+class ActFragmentsRevisao : ActBind<ActFragmentsRevisaoBinding>() {
 
-import com.example.exemplo.R;
+    override val binding: ActFragmentsRevisaoBinding by viewBind()
 
-public class ActFragmentsRevisao extends AppCompatActivity {
+    override fun ActFragmentsRevisaoBinding.onBoundView() {
 
-    Button mostraFusca, mostraCamaro;
-
-    FragmentManager manager = getSupportFragmentManager();
-
-    View.OnClickListener clickFusca = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            carregaFragmentoFusca();
+        trocaFragsFusca.setOnClickListener {
+            carregaFrag<FragFusca>(addToBackStack = false)
         }
-    };
 
-    View.OnClickListener clickCamaro = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            carregaFragmentoCamaro();
+        trocaFragsCamaroMeiaBoca.setOnClickListener {
+            carregaFrag<FragCamaroMeiaBoca>(addToBackStack = false)
         }
-    };
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        achaViews();
-        carregaFragmentoFusca();
-    }
-
-    private void achaViews() {
-        setContentView(R.layout.act_fragments_revisao);
-        mostraFusca = findViewById(R.id.troca_frags_fusca);
-        mostraCamaro = findViewById(R.id.troca_frags_camaro);
-
-        mostraFusca.setOnClickListener(clickFusca);
-        mostraCamaro.setOnClickListener(clickCamaro);
-    }
-
-    private void carregaFragmentoFusca() {
-        manager.beginTransaction().replace(R.id.troca_frags_framelayout, new FragFusca()).commit();
-    }
-
-    public void carregaFragmentoCamaro(){
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.troca_frags_framelayout, new FragCamaroMeiaBoca());
-        transaction.commit();
     }
 }

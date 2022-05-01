@@ -9,7 +9,7 @@
     >
 
     <FrameLayout
-        android:id="@+id/troca_frags_framelayout"
+        android:id="@+id/fragment_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_blue_bright"
@@ -28,12 +28,12 @@
         android:background="@android:color/holo_red_dark"
         android:text="@string/fusca_69"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/troca_frags_camaro"
+        app:layout_constraintEnd_toStartOf="@id/troca_frags_camaro_meia_boca"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/troca_frags_framelayout" />
+        app:layout_constraintTop_toBottomOf="@id/fragment_container" />
 
     <Button
-        android:id="@+id/troca_frags_camaro"
+        android:id="@+id/troca_frags_camaro_meia_boca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
